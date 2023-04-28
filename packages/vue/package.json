@@ -1,0 +1,11 @@
+{
+  "name": "@blro/ui-primitive-vue",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blro0319/ui-primitive.git",
+    "directory": "packages/vue"
+  },
+  "type": "module"
+}
