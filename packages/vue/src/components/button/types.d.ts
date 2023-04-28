@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from "vue";
 
-export interface ButtonProps {
+export interface VButtonProps {
   /**
    * @default
    * ```ts
