@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ButtonHTMLAttributes } from "vue";
+import { type ButtonHTMLAttributes, ref } from "vue";
 
 interface Props {
   /**
@@ -22,10 +22,24 @@ withDefaults(defineProps<Props>(), {
   type: "button",
   disabled: false,
 });
+
+const root = ref<HTMLButtonElement | null>(null);
+
+defineExpose({
+  focus(options?: FocusOptions) {
+    root.value?.focus(options);
+  },
+  blur() {
+    root.value?.blur();
+  },
+  click() {
+    root.value?.click();
+  },
+});
 </script>
 
 <template>
-  <button :type="type" :disabled="disabled" class="button">
+  <button :type="type" :disabled="disabled" ref="root" class="button">
     <slot />
   </button>
 </template>
