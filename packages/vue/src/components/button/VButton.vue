@@ -1,7 +1,28 @@
 <script setup lang="ts">
-import { type ButtonHTMLAttributes, ref } from "vue";
+import {
+  type AnchorHTMLAttributes,
+  type ButtonHTMLAttributes,
+  computed,
+  ref,
+  toRefs,
+  type ComponentPublicInstance,
+} from "vue";
+import { type RouteLocationRaw } from "vue-router";
 
 interface Props {
+  href?: AnchorHTMLAttributes["href"];
+  to?: RouteLocationRaw;
+  /**
+   * @default
+   * ```ts
+   * // When `href` is set
+   * "_blank"
+   *
+   * // When `to` is set
+   * "_self"
+   * ```
+   */
+  target?: AnchorHTMLAttributes["target"];
   /**
    * @default
    * ```ts
@@ -18,34 +39,64 @@ interface Props {
   disabled?: boolean;
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   type: "button",
   disabled: false,
 });
 
-const root = ref<HTMLButtonElement | null>(null);
+const { href, to, target } = toRefs(props);
+
+const root = ref<HTMLElement | ComponentPublicInstance | null>(null);
+const rootElement = computed(() => {
+  if (!root.value) return;
+  if (root.value instanceof HTMLElement) return root.value;
+  if (root.value.$el instanceof HTMLElement) return root.value.$el;
+});
+
+const componentIs = computed(() => {
+  if (typeof href?.value === "string") return "a";
+  if (to?.value) return "RouterLink";
+  return "button";
+});
+const attrs = computed(() => {
+  return {
+    a: {
+      href: href?.value,
+      rel: "noopener noreferrer",
+      target: target?.value ?? "_blank",
+    },
+    button: {
+      type: props.type,
+      disabled: props.disabled,
+    },
+    RouterLink: {
+      to: to?.value,
+      target: target?.value ?? "_self",
+    },
+  }[componentIs.value];
+});
 
 defineExpose({
   focus(options?: FocusOptions) {
-    root.value?.focus(options);
+    rootElement.value?.focus(options);
   },
   blur() {
-    root.value?.blur();
+    rootElement.value?.blur();
   },
   click() {
-    root.value?.click();
+    rootElement.value?.click();
   },
 });
 </script>
 
 <template>
-  <button :type="type" :disabled="disabled" ref="root" class="button">
+  <component :is="componentIs" v-bind="attrs" ref="root" class="v-button">
     <slot />
-  </button>
+  </component>
 </template>
 
 <style lang="scss" scoped>
-.button {
+.v-button {
   cursor: pointer;
 
   &[disabled] {
