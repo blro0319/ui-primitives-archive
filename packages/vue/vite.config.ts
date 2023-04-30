@@ -16,4 +16,10 @@ export default defineConfig({
       output: { globals: { vue: "Vue" } },
     },
   },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src/"),
+      "@sandbox": path.resolve(__dirname, "sandbox/"),
+    },
+  },
 });
