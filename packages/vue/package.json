@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && npm run build:types",
-    "build:types": "vue-tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist/types"
+    "build:types": "vue-tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --jsx preserve --outDir dist/types"
   },
   "devDependencies": {
     "@babel/types": "^7.21.5",
