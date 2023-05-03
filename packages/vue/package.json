@@ -25,6 +25,7 @@
     "@types/lodash-es": "^4.17.7",
     "@types/node": "^18.16.2",
     "@vitejs/plugin-vue": "^4.2.1",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vue/tsconfig": "^0.3.2",
     "@vueuse/core": "^10.1.0",
     "lodash-es": "^4.17.21",
