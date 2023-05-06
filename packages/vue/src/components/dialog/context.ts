@@ -1,4 +1,4 @@
-import { createContext } from "@/utils";
+import { createContext } from "~/utils";
 import type { VDialogContext } from "./types";
 
 const { setContext, createUseComposable } = createContext(

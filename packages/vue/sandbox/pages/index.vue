@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VButton, VDialog } from "@/components";
+import { VButton, VDialog } from "~/components";
 import { ref } from "vue";
 
 const count = ref(0);

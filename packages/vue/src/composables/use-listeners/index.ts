@@ -1,4 +1,4 @@
-import { useInstance } from "@/composables";
+import { useInstance } from "~/composables";
 
 export function useListeners() {
   return Object.entries(useInstance().$.vnode.props || {})

@@ -1,5 +1,5 @@
-import { ALPHABETS, NUMBERS } from "@/constants";
-import { randomInt } from "@/utils";
+import { ALPHABETS, NUMBERS } from "~/constants";
+import { randomInt } from "~/utils";
 
 const POOL = ALPHABETS + NUMBERS;
 
