@@ -15,7 +15,7 @@
   "module": "dist/primitive-vue.es.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build && npm run build:types",
     "build:types": "vue-tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --jsx preserve --outDir dist/types"
   },
