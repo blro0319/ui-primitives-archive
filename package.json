@@ -6,5 +6,10 @@
   "repository": "https://github.com/blro0319/ui-primitive",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "build": "npm run build:vue && npm run build:nuxt",
+    "build:vue": "npm run build --workspace=packages/vue",
+    "build:nuxt": "npm run build --workspace=packages/nuxt"
+  }
 }
