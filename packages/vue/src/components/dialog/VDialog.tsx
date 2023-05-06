@@ -12,9 +12,9 @@ import {
   useBodyScroll,
   useGlobalCancelStack,
   useListeners,
-} from "@/composables";
-import type { VCustomEventListener } from "@/types";
-import { VCustomEvent, dispatchVCustomEventAsync } from "@/utils";
+} from "~/composables";
+import type { VCustomEventListener } from "~/types";
+import { VCustomEvent, dispatchVCustomEventAsync } from "~/utils";
 import { setVDialogContext } from "./context";
 
 export default defineComponent<

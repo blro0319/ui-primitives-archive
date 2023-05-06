@@ -1,5 +1,5 @@
 import { findLastIndex } from "lodash-es";
-import type { MaybePromise } from "@/types";
+import type { MaybePromise } from "~/types";
 import type { UseGlobalHistoryStackRevokeOptions } from "./types";
 
 export function useGlobalHistoryStack(handler: (event: PopStateEvent) => void) {
