@@ -22,7 +22,6 @@ export default defineComponent<
     transition: {
       type: PropType<TransitionProps>;
       required: false;
-      default: undefined;
     };
   },
   () => false | JSX.Element,
@@ -53,12 +52,11 @@ export default defineComponent<
     transition: {
       type: Object as PropType<TransitionProps>,
       required: false,
-      default: undefined,
     },
   },
   emits: ["show", "afterShow", "close", "afterClose", "cancel"],
   setup(props, { attrs, emit, expose, slots }) {
-    const { transition } = toRefs(props);
+    const { transition = ref(undefined) } = toRefs(props);
     const dialog = ref<HTMLDialogElement>();
     const visible = ref(false);
 

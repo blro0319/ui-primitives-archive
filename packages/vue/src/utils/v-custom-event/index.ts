@@ -1,41 +1,41 @@
 import type { VCustomEventListener, VCustomEventOptions } from "./types";
 
 export class VCustomEvent {
-  #cancelable = false;
+  private _cancelable = false;
   get cancelable() {
-    return this.#cancelable;
+    return this._cancelable;
   }
 
-  #defaultPrevented = false;
+  private _defaultPrevented = false;
   get defaultPrevented() {
-    return this.#defaultPrevented;
+    return this._defaultPrevented;
   }
 
-  #target: EventTarget | null = null;
+  private _target: EventTarget | null = null;
   get target() {
-    return this.#target;
+    return this._target;
   }
 
-  #timeStamp: number;
+  private _timeStamp: number;
   get timeStamp() {
-    return this.#timeStamp;
+    return this._timeStamp;
   }
 
-  #type = "";
+  private _type = "";
   get type() {
-    return this.#type;
+    return this._type;
   }
 
   constructor(type: string, options?: VCustomEventOptions) {
-    this.#cancelable = options?.cancelable || false;
-    this.#target = options?.target || null;
-    this.#timeStamp = performance.now();
-    this.#type = type;
+    this._cancelable = options?.cancelable || false;
+    this._target = options?.target || null;
+    this._timeStamp = performance.now();
+    this._type = type;
   }
 
   preventDefault() {
     if (!this.cancelable) return;
-    this.#defaultPrevented = true;
+    this._defaultPrevented = true;
   }
 }
 

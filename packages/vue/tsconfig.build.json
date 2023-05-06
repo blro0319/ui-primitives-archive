@@ -1,4 +1,15 @@
 {
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.cy.ts", "**/*.spec.ts", "**/__tests__/**/*"]
+  "include": ["env.d.ts", "src/**/*"],
+  "exclude": [
+    "node_modules",
+    "**/*.cy.ts",
+    "**/*.spec.ts",
+    "**/__tests__/**/*"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"]
+    }
+  }
 }
