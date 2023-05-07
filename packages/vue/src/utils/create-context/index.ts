@@ -23,21 +23,19 @@ export function createContext<
       provide(injectionKey, context);
       return context;
     },
-    createUseComposable(componentName: string = "<unknown>") {
-      return (): ContextReturn => {
-        if (injectionDefault === undefined) {
-          const context = inject(injectionKey);
-          if (!context) {
-            const msg = `${componentName} component must used within ${rootComponentName} component.`;
-            throw new Error(msg);
-          }
-          // @ts-expect-error
-          return context;
-        } else {
-          // @ts-expect-error
-          return inject(injectionKey, injectionDefault?.() || null);
+    useContext(componentName: string = "<unknown>"): ContextReturn {
+      if (injectionDefault === undefined) {
+        const context = inject(injectionKey);
+        if (!context) {
+          const msg = `${componentName} component must used within ${rootComponentName} component.`;
+          throw new Error(msg);
         }
-      };
+        // @ts-expect-error
+        return context;
+      } else {
+        // @ts-expect-error
+        return inject(injectionKey, injectionDefault?.() || null);
+      }
     },
   };
 }
