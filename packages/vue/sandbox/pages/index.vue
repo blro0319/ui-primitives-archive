@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { VButton, VDialog } from "~/components";
+import {
+  VButton,
+  VDialog,
+  VTooltip,
+  VTooltipContent,
+  VTooltipTrigger,
+} from "~/components";
 import { ref } from "vue";
 
 const count = ref(0);
@@ -9,7 +15,10 @@ const dialog = ref<InstanceType<typeof VDialog>>();
 <template>
   <div>
     <h1>Blro UI Primitive Vue</h1>
-    <VButton @click="count++">Counter: {{ count }}</VButton>
+    <VTooltip :enter-delay="1000" :leave-delay="1000">
+      <VTooltipTrigger :as="VButton" @click="count++">Counter</VTooltipTrigger>
+      <VTooltipContent style="position: fixed">{{ count }}</VTooltipContent>
+    </VTooltip>
     <VButton to="/foo">Foo</VButton>
     <VButton href="https://vuejs.org">Vue.js</VButton>
     <VButton @click="dialog?.show()">Show</VButton>
