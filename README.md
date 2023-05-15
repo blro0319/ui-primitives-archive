@@ -4,12 +4,13 @@
 
 ### Components
 
-- [ ] Button
-- [ ] Dialog
+- [v] Button
+- [v] Dialog
 - [ ] Dropdown Menu
 - [ ] Context Menu
 - [ ] Table
 - [ ] Tabs
+- [v] Tooltip
 - [ ] Form
 - [ ] Field
   - [ ] Field Label
