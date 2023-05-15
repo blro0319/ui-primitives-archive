@@ -1,45 +1,8 @@
 <script setup lang="ts">
-import {
-  type AnchorHTMLAttributes,
-  type ButtonHTMLAttributes,
-  computed,
-  ref,
-  toRefs,
-  type ComponentPublicInstance,
-} from "vue";
-import { type RouteLocationRaw } from "vue-router";
+import { computed, ref, toRefs, type ComponentPublicInstance } from "vue";
+import type { VButtonProps } from "./types";
 
-interface Props {
-  href?: AnchorHTMLAttributes["href"];
-  to?: RouteLocationRaw;
-  /**
-   * @default
-   * ```ts
-   * // When `href` is set
-   * "_blank"
-   *
-   * // When `to` is set
-   * "_self"
-   * ```
-   */
-  target?: AnchorHTMLAttributes["target"];
-  /**
-   * @default
-   * ```ts
-   * "button"
-   * ```
-   */
-  type?: ButtonHTMLAttributes["type"];
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  disabled?: boolean;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<VButtonProps>(), {
   type: "button",
   disabled: false,
 });

@@ -1,18 +1,10 @@
 <script setup lang="ts">
 import { computed, toRefs } from "vue";
-import type { MaybeArray } from "~/types";
-import type { VSelectOptionValue } from "./types";
+import type { VSelectEmits, VSelectProps } from "./types";
 import { setVSelectContext } from "./context";
 
-interface Props {
-  modelValue: MaybeArray<VSelectOptionValue>;
-}
-interface Emits {
-  (e: "update:modelValue", value: MaybeArray<VSelectOptionValue>): void;
-}
-
-const props = defineProps<Props>();
-const emit = defineEmits<Emits>();
+const props = defineProps<VSelectProps>();
+const emit = defineEmits<VSelectEmits>();
 
 const { modelValue } = toRefs(props);
 const model = computed({

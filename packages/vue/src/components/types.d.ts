@@ -1,3 +1,4 @@
-export type * from "./button";
-export type * from "./dialog";
+export type * from "./button/types";
+export type * from "./dialog/types";
 export type * from "./select/types";
+export type * from "./tooltip/types";
