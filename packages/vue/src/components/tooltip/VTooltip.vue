@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
 import { setVTooltipContext } from "./context";
+import type { VTooltipProps } from "./types";
 
-interface Props {
-  enterDelay?: number;
-  leaveDelay?: number;
-}
-
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<VTooltipProps>(), {
   enterDelay: 0,
   leaveDelay: 0,
 });

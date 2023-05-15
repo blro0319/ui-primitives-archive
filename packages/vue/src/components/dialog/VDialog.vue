@@ -1,37 +1,22 @@
 <script lang="ts">
-import {
-  defineComponent,
-  nextTick,
-  ref,
-  toRefs,
-  type TransitionProps,
-} from "vue";
+export default defineComponent({ inheritAttrs: false });
+</script>
+
+<script setup lang="ts">
+import { defineComponent, nextTick, ref, toRefs } from "vue";
 import {
   useBodyScroll,
   useGlobalCancelStack,
   useListeners,
 } from "~/composables";
-import type { VCustomEventListener } from "~/types";
+import type { VCustomEventListener, VDialogEmits, VDialogProps } from "~/types";
 import { VCustomEvent, dispatchVCustomEventAsync } from "~/utils";
 import { setVDialogContext } from "./context";
 
-interface Props {
-  transition?: TransitionProps;
-}
-interface Emits {
-  (e: "show"): void;
-  (e: "after-show"): void;
-  (e: "close"): void;
-  (e: "after-close"): void;
-  (e: "cancel", event: VCustomEvent): void;
-}
-
-export default defineComponent({ inheritAttrs: false });
-</script>
-
-<script setup lang="ts">
-const props = withDefaults(defineProps<Props>(), { transition: undefined });
-const emit = defineEmits<Emits>();
+const props = withDefaults(defineProps<VDialogProps>(), {
+  transition: undefined,
+});
+const emit = defineEmits<VDialogEmits>();
 
 const { transition } = toRefs(props);
 const dialog = ref<HTMLDialogElement>();
