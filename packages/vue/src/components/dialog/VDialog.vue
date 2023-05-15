@@ -5,7 +5,7 @@ export default defineComponent({ inheritAttrs: false });
 <script setup lang="ts">
 import { defineComponent, nextTick, ref, toRefs } from "vue";
 import {
-  useBodyScroll,
+  useBodyScrollLock,
   useGlobalCancelStack,
   useListeners,
 } from "~/composables";
@@ -21,9 +21,12 @@ const emit = defineEmits<VDialogEmits>();
 const { transition } = toRefs(props);
 const dialog = ref<HTMLDialogElement>();
 const visible = ref(false);
+let activeElement: HTMLElement | null = null;
+let mode: "show" | "showModal" = "show";
 
 const listeners = useListeners();
-const bodyScroll = useBodyScroll();
+const { disableBodyScroll } = useBodyScrollLock();
+let enableBodyScroll: (() => void) | undefined;
 const cancelStack = useGlobalCancelStack(async () => {
   await cancel();
   if (visible.value) cancelStack.create();
@@ -35,9 +38,13 @@ async function internalShow(method: "show" | "showModal") {
   visible.value = true;
   await nextTick();
 
+  activeElement = document.activeElement as HTMLElement;
   dialog.value?.[method]();
-  if (method === "showModal") bodyScroll.disable();
+  if (method === "showModal") {
+    enableBodyScroll = disableBodyScroll();
+  }
 
+  mode = method;
   emit("show");
   if (!transition.value) emit("after-show");
 }
@@ -53,7 +60,6 @@ async function cancel() {
   const prevented = !(await emitCancelEvent());
   if (prevented) return;
   close();
-  if (!transition.value) handleAfterClose();
 }
 async function emitCancelEvent() {
   const event = new VCustomEvent("cancel", {
@@ -68,7 +74,8 @@ setVDialogContext({ cancel, close });
 
 function handleAfterClose() {
   dialog.value?.close();
-  bodyScroll.enable();
+  activeElement?.focus();
+  if (mode === "showModal") enableBodyScroll?.();
   emit("after-close");
 }
 
@@ -84,10 +91,24 @@ defineExpose({
   <Transition
     v-bind="transition"
     @after-enter="emit('after-show')"
-    @after-leave="handleAfterClose()"
+    @after-leave="handleAfterClose"
   >
-    <dialog v-show="visible" v-bind="$attrs" ref="dialog" @cancel.prevent>
+    <dialog
+      v-show="visible"
+      v-bind="$attrs"
+      ref="dialog"
+      class="v-dialog"
+      @cancel.prevent
+    >
       <slot />
     </dialog>
   </Transition>
 </template>
+
+<style lang="scss" scoped>
+.v-dialog {
+  :where(&) {
+    display: block;
+  }
+}
+</style>
