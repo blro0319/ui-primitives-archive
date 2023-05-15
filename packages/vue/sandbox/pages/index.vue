@@ -2,14 +2,19 @@
 import {
   VButton,
   VDialog,
+  VSelect,
+  VSelectMenu,
+  VSelectTrigger,
   VTooltip,
   VTooltipContent,
   VTooltipTrigger,
 } from "~/components";
 import { ref } from "vue";
+import TestOption from "~sandbox/components/TestOption.vue";
 
 const count = ref(0);
 const dialog = ref<InstanceType<typeof VDialog>>();
+const value = ref(["0"]);
 </script>
 
 <template>
@@ -31,6 +36,18 @@ const dialog = ref<InstanceType<typeof VDialog>>();
       Dialog
       <VButton @click="dialog?.close()">Close</VButton>
     </VDialog>
+    <VSelect v-model="value">
+      <VSelectTrigger />
+      <VSelectMenu>
+        <TestOption
+          v-for="value in [0, 1, 2, 3]"
+          :label="`${value}`"
+          :value="`${value}`"
+        >
+          {{ value }}
+        </TestOption>
+      </VSelectMenu>
+    </VSelect>
   </div>
 </template>
 
