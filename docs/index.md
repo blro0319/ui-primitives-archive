@@ -1,25 +1,29 @@
 ---
-# https://vitepress.dev/reference/default-theme-home-page
 layout: home
 
 hero:
   name: "UI Primitive"
-  text: "Headless Vue Components"
-  tagline: My great project tagline
+  text: "Headless UI Components for Vue"
+  tagline: Headless, A11y, Keyboard Interactions
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Get Started
+      link: /get-started/
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Components
+      link: /components/
+    - theme: alt
+      text: API Reference
+      link: /api/
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Headless
+    icon: 🎨
+    details: Keep the functionality, lose the styling
+  - title: WAI-ARIA Compliant
+    icon: 💙
+    details: All components follow the WAI-ARIA guidelines
+  - title: Keyboard Interactions
+    icon: ⌨️
+    details: No need to implement keyboard interactions yourself
 ---
-

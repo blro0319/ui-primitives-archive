@@ -1,28 +1,62 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from "vitepress";
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "UI Primitive",
   description: "Headless Vue Components",
-  themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
-
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
-})
+  locales: {
+    root: {
+      label: "English",
+      lang: "en-US",
+      themeConfig: {
+        nav: [
+          { text: "Get Started", link: "/get-started/" },
+          { text: "Components", link: "/components/" },
+          { text: "API", link: "/api/" },
+        ],
+        socialLinks: [
+          { icon: "github", link: "https://github.com/blro0319/ui-primitive" },
+        ],
+        sidebar: {
+          "/components/": [
+            {
+              text: "Components",
+              items: [
+                { text: "Button", link: "/components/button/" },
+                { text: "Dialog", link: "/components/dialog/" },
+                { text: "Select", link: "/components/select/" },
+                { text: "Tooltip", link: "/components/tooltip/" },
+              ],
+            },
+          ],
+        },
+      },
+    },
+    ko: {
+      label: "한국어",
+      lang: "ko-KR",
+      themeConfig: {
+        nav: [
+          { text: "시작하기", link: "/ko/get-started/" },
+          { text: "컴포넌트", link: "/ko/components/" },
+          { text: "API", link: "/ko/api/" },
+        ],
+        socialLinks: [
+          { icon: "github", link: "https://github.com/blro0319/ui-primitive" },
+        ],
+        sidebar: {
+          "/ko/components/": [
+            {
+              text: "Components",
+              items: [
+                { text: "Button", link: "/ko/components/button/" },
+                { text: "Dialog", link: "/ko/components/dialog/" },
+                { text: "Select", link: "/ko/components/select/" },
+                { text: "Tooltip", link: "/ko/components/tooltip/" },
+              ],
+            },
+          ],
+        },
+      },
+    },
+  },
+});
