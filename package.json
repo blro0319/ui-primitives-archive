@@ -12,6 +12,12 @@
     "dev:nuxt": "npm run dev --workspace=packages/nuxt",
     "build": "npm run build:vue && npm run build:nuxt",
     "build:vue": "npm run build --workspace=packages/vue",
-    "build:nuxt": "npm run build --workspace=packages/nuxt"
+    "build:nuxt": "npm run build --workspace=packages/nuxt",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0-alpha.75"
   }
 }
