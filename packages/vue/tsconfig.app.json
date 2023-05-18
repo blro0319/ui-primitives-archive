@@ -11,6 +11,7 @@
   "compilerOptions": {
     "composite": true,
     "types": ["node"],
+    "jsx": "preserve",
     "strict": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

@@ -6,9 +6,13 @@ export default defineComponent({ inheritAttrs: false });
 import { disableBodyScroll, enableBodyScroll } from "@blro/body-scroll-lock";
 import { defineComponent, nextTick, ref, toRefs } from "vue";
 import { useGlobalCancelStack, useListeners } from "~/composables";
-import type { VCustomEventListener, VDialogEmits, VDialogProps } from "~/types";
-import { VCustomEvent, dispatchVCustomEventAsync } from "~/utils";
+import {
+  VCustomEvent,
+  dispatchVCustomEventAsync,
+  type VCustomEventListener,
+} from "~/utils";
 import { setVDialogContext } from "./context";
+import type { VDialogEmits, VDialogProps } from ".";
 
 const props = defineProps<VDialogProps>();
 const emit = defineEmits<VDialogEmits>();

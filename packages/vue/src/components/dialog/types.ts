@@ -1,5 +1,5 @@
 import type { TransitionProps } from "vue";
-import type { UseGlobalCancelStackOptions } from "~/types";
+import type { UseGlobalCancelStackOptions } from "~/composables";
 import type { VCustomEvent } from "~/utils";
 
 export interface VDialogProps {
