@@ -1,4 +1,3 @@
-export * from "./use-body-scroll-lock";
 export * from "./use-global-cancel-stack";
 export * from "./use-global-escape-stack";
 export * from "./use-global-history-stack";

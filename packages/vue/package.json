@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@babel/types": "^7.21.5",
+    "@blro/body-scroll-lock": "^0.1.0",
     "@tsconfig/node18": "^2.0.1",
     "@types/lodash-es": "^4.17.7",
     "@types/node": "^18.16.9",

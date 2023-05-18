@@ -3,34 +3,27 @@ export default defineComponent({ inheritAttrs: false });
 </script>
 
 <script setup lang="ts">
+import { disableBodyScroll, enableBodyScroll } from "@blro/body-scroll-lock";
 import { defineComponent, nextTick, ref, toRefs } from "vue";
-import {
-  useBodyScrollLock,
-  useGlobalCancelStack,
-  useListeners,
-} from "~/composables";
+import { useGlobalCancelStack, useListeners } from "~/composables";
 import type { VCustomEventListener, VDialogEmits, VDialogProps } from "~/types";
 import { VCustomEvent, dispatchVCustomEventAsync } from "~/utils";
 import { setVDialogContext } from "./context";
 
-const props = withDefaults(defineProps<VDialogProps>(), {
-  transition: undefined,
-});
+const props = defineProps<VDialogProps>();
 const emit = defineEmits<VDialogEmits>();
 
-const { transition } = toRefs(props);
+const { transition, cancelTrigger } = toRefs(props);
 const dialog = ref<HTMLDialogElement>();
 const visible = ref(false);
 let activeElement: HTMLElement | null = null;
 let mode: "show" | "showModal" = "show";
 
 const listeners = useListeners();
-const { disableBodyScroll } = useBodyScrollLock();
-let enableBodyScroll: (() => void) | undefined;
 const cancelStack = useGlobalCancelStack(async () => {
   await cancel();
   if (visible.value) cancelStack.create();
-});
+}, cancelTrigger?.value);
 
 async function internalShow(method: "show" | "showModal") {
   if (visible.value) return;
@@ -41,12 +34,12 @@ async function internalShow(method: "show" | "showModal") {
   activeElement = document.activeElement as HTMLElement;
   dialog.value?.[method]();
   if (method === "showModal") {
-    enableBodyScroll = disableBodyScroll();
+    disableBodyScroll();
   }
 
   mode = method;
   emit("show");
-  if (!transition.value) emit("after-show");
+  if (!transition?.value) emit("after-show");
 }
 
 function close() {
@@ -75,7 +68,7 @@ setVDialogContext({ cancel, close });
 function handleAfterClose() {
   dialog.value?.close();
   activeElement?.focus();
-  if (mode === "showModal") enableBodyScroll?.();
+  if (mode === "showModal") enableBodyScroll();
   emit("after-close");
 }
 
