@@ -1,5 +1,3 @@
-import type { VCustomEventListener, VCustomEventOptions } from "./types";
-
 export class VCustomEvent {
   private _cancelable = false;
   get cancelable() {
@@ -53,3 +51,10 @@ export async function dispatchVCustomEventAsync(
   await Promise.all(listeners.map((listener) => listener(event)));
   return !event.defaultPrevented;
 }
+
+export interface VCustomEventOptions {
+  cancelable?: VCustomEvent["cancelable"];
+  target?: VCustomEvent["target"];
+}
+
+export type VCustomEventListener = (event: VCustomEvent) => void;

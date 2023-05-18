@@ -1,6 +1,8 @@
-import { useGlobalEscapeStack, useGlobalHistoryStack } from "~/composables";
-import type { UseGlobalHistoryStackRevokeOptions } from "~/composables/types";
-import type { UseGlobalCancelStackOptions } from "./types";
+import {
+  useGlobalEscapeStack,
+  useGlobalHistoryStack,
+  type UseGlobalHistoryStackRevokeOptions,
+} from "~/composables";
 
 export function useGlobalCancelStack(
   handler: (event: PopStateEvent | KeyboardEvent) => void,
@@ -27,4 +29,21 @@ export function useGlobalCancelStack(
   }
 
   return { create, revoke };
+}
+
+export interface UseGlobalCancelStackOptions {
+  /**
+   * @default
+   * ```ts
+   * true
+   * ```
+   */
+  escape?: boolean;
+  /**
+   * @default
+   * ```ts
+   * true
+   * ```
+   */
+  history?: boolean;
 }

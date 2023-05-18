@@ -7,6 +7,10 @@
     "**/__tests__/**/*"
   ],
   "compilerOptions": {
+    "outDir": "dist/types",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]

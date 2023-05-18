@@ -1,6 +1,5 @@
 import { findLastIndex } from "lodash-es";
 import type { MaybePromise } from "~/types";
-import type { UseGlobalHistoryStackRevokeOptions } from "./types";
 
 export function useGlobalHistoryStack(handler: (event: PopStateEvent) => void) {
   function create() {
@@ -55,4 +54,8 @@ function handlePopState(event: PopStateEvent) {
     handler?.(event);
   }
   if (!useGlobalHistoryStack.stack.length) removeWindowHandler();
+}
+
+export interface UseGlobalHistoryStackRevokeOptions {
+  historyBack: boolean;
 }
