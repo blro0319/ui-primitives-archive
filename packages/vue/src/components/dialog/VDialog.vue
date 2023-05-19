@@ -4,7 +4,7 @@ export default defineComponent({ inheritAttrs: false });
 
 <script setup lang="ts">
 import { disableBodyScroll, enableBodyScroll } from "@blro/body-scroll-lock";
-import { defineComponent, nextTick, ref, toRefs } from "vue";
+import { computed, defineComponent, nextTick, ref, toRefs } from "vue";
 import { useGlobalCancelStack, useListeners } from "~/composables";
 import {
   VCustomEvent,
@@ -14,7 +14,10 @@ import {
 import { setVDialogContext } from "./context";
 import type { VDialogEmits, VDialogProps } from ".";
 
-const props = defineProps<VDialogProps>();
+const props = withDefaults(defineProps<VDialogProps>(), {
+  transition: undefined,
+  cancelTrigger: "all",
+});
 const emit = defineEmits<VDialogEmits>();
 
 const { transition, cancelTrigger } = toRefs(props);
@@ -24,10 +27,20 @@ let activeElement: HTMLElement | null = null;
 let mode: "show" | "showModal" = "show";
 
 const listeners = useListeners();
-const cancelStack = useGlobalCancelStack(async () => {
-  await cancel();
-  if (visible.value) cancelStack.create();
-}, cancelTrigger?.value);
+
+const cancelStack = useGlobalCancelStack(
+  async () => {
+    await cancel();
+    if (visible.value) cancelStack.create();
+  },
+  computed(() => {
+    if (cancelTrigger.value === "all") return { escape: true, history: true };
+    return {
+      escape: cancelTrigger.value === "escape",
+      history: cancelTrigger.value === "history",
+    };
+  })
+);
 
 async function internalShow(method: "show" | "showModal") {
   if (visible.value) return;

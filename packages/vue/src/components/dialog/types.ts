@@ -1,10 +1,9 @@
 import type { TransitionProps } from "vue";
-import type { UseGlobalCancelStackOptions } from "~/composables";
 import type { VCustomEvent } from "~/utils";
 
 export interface VDialogProps {
   transition?: TransitionProps;
-  cancelTrigger?: UseGlobalCancelStackOptions;
+  cancelTrigger?: "all" | "escape" | "history";
 }
 export interface VDialogEmits {
   (e: "show"): void;
