@@ -1,23 +1,115 @@
 <script setup lang="ts">
-import { VDialog } from "@blro/ui-primitive-vue";
+import { VCustomEvent, VDialog } from "@blro/ui-primitive-vue";
 import { ref } from "vue";
 
-const dialog = ref<InstanceType<typeof VDialog>>();
+const basic = ref<InstanceType<typeof VDialog>>();
+const transition = ref<InstanceType<typeof VDialog>>();
+const cancelAll = ref<InstanceType<typeof VDialog>>();
+const cancelEscape = ref<InstanceType<typeof VDialog>>();
+const cancelHistory = ref<InstanceType<typeof VDialog>>();
+const preventCancel = ref<InstanceType<typeof VDialog>>();
+const halfPreventCancel = ref<InstanceType<typeof VDialog>>();
+const asyncPreventCancel = ref<InstanceType<typeof VDialog>>();
+
+function preventCancelHalf(event: VCustomEvent) {
+  if (Math.random() < 0.5) event.preventDefault();
+}
+function preventCancelAsync(event: VCustomEvent) {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      if (Math.random() < 0.5) event.preventDefault();
+      resolve();
+    }, 1000);
+  });
+}
 </script>
 
 <template>
   <div class="dialog">
     <h1>VDialog</h1>
-    <button @click="dialog?.show()">Show</button>
-    <button @click="dialog?.showModal()">Show Modal</button>
-    <VDialog ref="dialog">
-      Hello, Dialog!
-      <button @click="dialog?.close()">Close</button>
-    </VDialog>
+    <article>
+      <h2>Basic Usage</h2>
+      <div class="dialog__button-group">
+        <button @click="basic?.show()">Show</button>
+        <button @click="basic?.showModal()">Show Modal</button>
+      </div>
+      <VDialog ref="basic">
+        Hello, Dialog!
+        <button @click="basic?.close()">Close</button>
+      </VDialog>
+    </article>
+    <article>
+      <h2>With Transition</h2>
+      <div class="dialog__button-group">
+        <button @click="transition?.show()">Show</button>
+        <button @click="transition?.showModal()">Show Modal</button>
+      </div>
+      <VDialog :transition="{ name: 'dialog__transition' }" ref="transition">
+        Hello, Transition Dialog!
+        <button @click="transition?.close()">Close</button>
+      </VDialog>
+    </article>
+    <article>
+      <h2>Control Cancel Triggers</h2>
+      <div class="dialog__button-group">
+        <button @click="cancelAll?.show()">Cancel by Escape & History</button>
+        <button @click="cancelEscape?.show()">Cancel by Escape</button>
+        <button @click="cancelHistory?.show()">Cancel by History</button>
+      </div>
+      <VDialog ref="cancelAll">
+        This dialog will be canceled by escape key and history.
+      </VDialog>
+      <VDialog cancel-trigger="escape" ref="cancelEscape">
+        This dialog will be canceled by escape key.
+      </VDialog>
+      <VDialog cancel-trigger="history" ref="cancelHistory">
+        This dialog will be canceled by history.
+      </VDialog>
+    </article>
+    <article>
+      <h2>Prevent Cancel Event</h2>
+      <div class="dialog__button-group">
+        <button @click="preventCancel?.show()">Show</button>
+        <button @click="halfPreventCancel?.show()">Show (50%)</button>
+        <button @click="asyncPreventCancel?.show()">Show (Async)</button>
+      </div>
+      <VDialog ref="preventCancel" @cancel.prevent>
+        This dialog will not be canceled.
+        <button @click="preventCancel?.close()">Close</button>
+        <button @click="preventCancel?.cancel()">
+          Cancel (will not working)
+        </button>
+      </VDialog>
+      <VDialog ref="halfPreventCancel" @cancel="preventCancelHalf">
+        50% chance to prevent cancel.
+        <button @click="halfPreventCancel?.close()">Close</button>
+        <button @click="halfPreventCancel?.cancel()">Cancel</button>
+      </VDialog>
+      <VDialog ref="asyncPreventCancel" @cancel="preventCancelAsync">
+        50% chance to prevent cancel after 1 second.
+        <button @click="asyncPreventCancel?.close()">Close</button>
+        <button @click="asyncPreventCancel?.cancel()">Cancel</button>
+      </VDialog>
+    </article>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .dialog {
+  &__button-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__transition {
+    &-enter-active,
+    &-leave-active {
+      transition: opacity 250ms;
+    }
+    &-enter-from,
+    &-leave-to {
+      opacity: 0;
+    }
+  }
 }
 </style>
