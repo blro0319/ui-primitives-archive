@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { COMPONENTS } from "#playground/constants";
+const COMPONENTS = Object.keys(import.meta.glob("./component/*.vue")).map(
+  (path) => path.replace(/.*?([^/]+)\.vue$/, "$1")
+);
 </script>
 
 <template>
