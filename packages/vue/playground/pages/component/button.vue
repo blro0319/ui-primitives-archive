@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { VButton } from "@blro/ui-primitive-vue";
 import { ref } from "vue";
+import { VButton } from "~/components";
 
 const counter = ref(0);
 </script>

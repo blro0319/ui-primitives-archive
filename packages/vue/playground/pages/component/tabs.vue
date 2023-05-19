@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { VTabs, VTabsList, VTabsPanel, VTabsTrigger } from "~/components";
 import { ref } from "vue";
+import { VTabs, VTabsList, VTabsPanel, VTabsTrigger } from "~/components";
 
 const TABS = ["first", "second", "third"] as const;
 

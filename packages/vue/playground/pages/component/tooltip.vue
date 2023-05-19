@@ -1,9 +1,5 @@
 <script setup lang="ts">
-import {
-  VTooltip,
-  VTooltipContent,
-  VTooltipTrigger,
-} from "@blro/ui-primitive-vue";
+import { VTooltip, VTooltipContent, VTooltipTrigger } from "~/components";
 </script>
 
 <template>

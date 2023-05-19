@@ -4,7 +4,7 @@ import {
   VSelectMenu,
   VSelectOption,
   VSelectTrigger,
-} from "@blro/ui-primitive-vue";
+} from "~/components";
 import { ref } from "vue";
 
 const value = ref<string>("");
