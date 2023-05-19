@@ -71,6 +71,7 @@ let whileCanceling = false;
 async function cancel() {
   if (!visible.value || whileCanceling) return;
 
+  // TODO: 비동기 이벤트 호출 제거
   whileCanceling = true;
   const prevented = !(await emitCancelEvent());
   whileCanceling = false;
