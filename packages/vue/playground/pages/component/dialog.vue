@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { VCustomEvent, VDialog } from "@blro/ui-primitive-vue";
 import { ref } from "vue";
+import { VDialog } from "~/components";
+import { VCustomEvent } from "~/utils";
 
 const basic = ref<InstanceType<typeof VDialog>>();
 const transition = ref<InstanceType<typeof VDialog>>();
