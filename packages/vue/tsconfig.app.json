@@ -4,8 +4,8 @@
     "env.d.ts",
     "src/**/*",
     "src/**/*.vue",
-    "sandbox/**/*",
-    "sandbox/**/*.vue"
+    "playground/**/*",
+    "playground/**/*.vue"
   ],
   "exclude": ["src/**/__tests__/*", "src/**/*.cy.ts"],
   "compilerOptions": {
@@ -22,7 +22,7 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"],
-      "~sandbox/*": ["sandbox/*"]
+      "#playground/*": ["playground/*"]
     }
   }
 }

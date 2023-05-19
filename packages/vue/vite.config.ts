@@ -20,7 +20,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "~": path.resolve(__dirname, "src/"),
-      "~sandbox": path.resolve(__dirname, "sandbox/"),
+      "#playground": path.resolve(__dirname, "playground/"),
     },
   },
 });

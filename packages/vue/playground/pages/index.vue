@@ -10,7 +10,7 @@ import {
   VTooltipTrigger,
 } from "~/components";
 import { ref } from "vue";
-import TestOption from "~sandbox/components/TestOption.vue";
+import TestOption from "#playground/components/TestOption.vue";
 
 const count = ref(0);
 const dialog = ref<InstanceType<typeof VDialog>>();
