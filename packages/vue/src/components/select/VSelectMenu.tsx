@@ -7,7 +7,7 @@ import {
   type VNode,
   type VNodeNormalizedChildren,
 } from "vue";
-import { matchCompoundType } from "~/utils";
+import { filterCompoundVNodes } from "~/utils";
 import { useVSelectContext } from "./context";
 import type { VSelectOptionProps } from "./types";
 
@@ -51,26 +51,7 @@ export default defineComponent({
 });
 
 function filterOptions(targets: VNode[] | VNodeNormalizedChildren) {
-  if (!Array.isArray(targets)) return [];
-
-  const options: VSelectOptionProps[] = [];
-  targets.forEach((target) => {
-    if (!target || typeof target !== "object") return;
-
-    if (Array.isArray(target)) {
-      options.push(...filterOptions(target));
-      return;
-    }
-
-    if (matchCompoundType(target, "VSelectOption")) {
-      options.push(target.props as VSelectOptionProps);
-      return;
-    }
-
-    if (target.children?.length) {
-      options.push(...filterOptions(target.children));
-    }
+  return filterCompoundVNodes(targets, "VSelectOption").map(({ props }) => {
+    return props as VSelectOptionProps;
   });
-
-  return options;
 }
