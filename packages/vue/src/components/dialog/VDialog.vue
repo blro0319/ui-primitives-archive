@@ -30,8 +30,9 @@ const listeners = useListeners();
 
 const cancelStack = useGlobalCancelStack(
   async () => {
+    cancelStack.create();
     await cancel();
-    if (visible.value) cancelStack.create();
+    if (!visible.value) cancelStack.revoke();
   },
   computed(() => {
     if (cancelTrigger.value === "all") return { escape: true, history: true };
@@ -65,9 +66,15 @@ function close() {
   visible.value = false;
   emit("close");
 }
+
+let whileCanceling = false;
 async function cancel() {
-  if (!visible.value) return;
+  if (!visible.value || whileCanceling) return;
+
+  whileCanceling = true;
   const prevented = !(await emitCancelEvent());
+  whileCanceling = false;
+
   if (prevented) return;
   close();
 }
