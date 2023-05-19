@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { VButton } from "~/components";
 import type { ComponentAs } from "~/types";
 import { useVTooltipContext } from "./context";
+import { useGlobalEscapeStack } from "~/composables";
 
 interface Props {
   as?: ComponentAs;
@@ -12,6 +13,7 @@ withDefaults(defineProps<Props>(), { as: VButton });
 
 const { enterDelay, leaveDelay, id, trigger, visible } =
   useVTooltipContext("<VTooltipTrigger>");
+const escapeStack = useGlobalEscapeStack(() => hide(true));
 const ariaDescribedby = computed(() => (visible.value ? id.value : undefined));
 
 let showTimeout: NodeJS.Timeout | number | undefined;
@@ -25,6 +27,7 @@ function show() {
   clearAllTimeout();
   showTimeout = setTimeout(() => {
     visible.value = true;
+    escapeStack.create();
   }, enterDelay.value);
 }
 function hide(immediately = false) {
@@ -32,6 +35,7 @@ function hide(immediately = false) {
   const delay = immediately ? 0 : leaveDelay.value;
   hideTimeout = setTimeout(() => {
     visible.value = false;
+    escapeStack.revoke();
   }, delay);
 }
 
