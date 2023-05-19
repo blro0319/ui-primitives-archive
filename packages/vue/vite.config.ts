@@ -1,10 +1,20 @@
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import path from "node:path";
+import { transformLazyShow } from "v-lazy-show";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          nodeTransforms: [transformLazyShow],
+        },
+      },
+    }),
+    vueJsx(),
+  ],
   build: {
     outDir: "./dist",
     lib: {
