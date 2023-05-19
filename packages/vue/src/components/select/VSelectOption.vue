@@ -4,8 +4,8 @@ import type { VSelectOptionValue } from "./types";
 import { useVSelectContext } from "./context";
 
 interface Props {
-  label: string;
   value: VSelectOptionValue;
+  label?: string;
   disabled?: boolean;
 }
 
@@ -75,7 +75,7 @@ function handlePointerEnter() {
     @click="handleClick()"
     @pointerenter="handlePointerEnter()"
   >
-    <slot>{{ label }}</slot>
+    <slot>{{ label || value }}</slot>
   </li>
 </template>
 
