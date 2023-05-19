@@ -1,3 +1,5 @@
+import type { MaybeRefOrGetter } from "@vueuse/core";
+import { computed, toValue } from "vue";
 import {
   useGlobalEscapeStack,
   useGlobalHistoryStack,
@@ -6,25 +8,28 @@ import {
 
 export function useGlobalCancelStack(
   handler: (event: PopStateEvent | KeyboardEvent) => void,
-  options: UseGlobalCancelStackOptions = {}
+  options?: MaybeRefOrGetter<UseGlobalCancelStackOptions>
 ) {
-  const { escape: useEscape = true, history: useHistory = true } = options;
+  const resolvedOptions = computed(() => {
+    const { escape = true, history = true } = toValue(options) || {};
+    return { escape, history };
+  });
 
-  const escape = useEscape ? useGlobalEscapeStack(_handler) : null;
-  const history = useHistory ? useGlobalHistoryStack(_handler) : null;
+  const escapeStack = useGlobalEscapeStack(_handler);
+  const historyStack = useGlobalHistoryStack(_handler);
 
   function create() {
-    escape?.create();
-    history?.create();
+    if (resolvedOptions.value.escape) escapeStack.create();
+    if (resolvedOptions.value.history) historyStack.create();
   }
   function revoke(options?: UseGlobalHistoryStackRevokeOptions) {
-    escape?.revoke();
-    history?.revoke(options);
+    if (resolvedOptions.value.escape) escapeStack.revoke();
+    if (resolvedOptions.value.history) historyStack.revoke(options);
   }
 
   async function _handler(event: PopStateEvent | KeyboardEvent) {
-    if (event instanceof PopStateEvent) escape?.revoke();
-    else await history?.revoke({ historyBack: true });
+    if (event instanceof PopStateEvent) escapeStack.revoke();
+    else await historyStack.revoke({ historyBack: true });
     handler(event);
   }
 
