@@ -1,6 +1,6 @@
-# 시작하기
+# 설치하기
 
-## 설치
+## Vue
 
 명령줄에서 패키지를 설치합니다.
 
@@ -34,7 +34,7 @@ import { VDialog } from "@blro/ui-primitives-vue";
 </template>
 ```
 
-### Nuxt 모듈
+## Nuxt 모듈
 
 [Nuxt 프레임워크](https://nuxt.com/)를 사용하는 경우 컴포넌트와 컴포저블 자동 가져오기를 위한 모듈을 사용할 수 있습니다.
 
