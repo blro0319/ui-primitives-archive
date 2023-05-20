@@ -8,11 +8,10 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:vue": "npm run dev --workspace=packages/vue",
-    "dev:nuxt": "npm run dev --workspace=packages/nuxt",
-    "build": "npm run build:vue && npm run build:nuxt",
-    "build:vue": "npm run build --workspace=packages/vue",
-    "build:nuxt": "npm run build --workspace=packages/nuxt",
+    "vue:dev": "npm run dev --workspace=packages/vue",
+    "vue:build": "npm run build --workspace=packages/vue",
+    "nuxt:dev": "npm run dev --workspace=packages/nuxt",
+    "nuxt:build": "npm run build --workspace=packages/nuxt",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
