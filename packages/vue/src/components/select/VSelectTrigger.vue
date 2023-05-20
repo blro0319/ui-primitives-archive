@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useCurrentElement } from "@vueuse/core";
 import { computed, onMounted } from "vue";
 import { VButton } from "~/components";
-import { useInstance } from "~/composables";
 import type { ComponentAs } from "~/types";
 import { useVSelectContext } from "./context";
 
@@ -11,7 +11,7 @@ interface Props {
 
 withDefaults(defineProps<Props>(), { as: VButton });
 
-const instance = useInstance();
+const element = useCurrentElement<HTMLElement>();
 const { triggerAttrs, triggerElement, toggleMenu, showMenu, selectedItems } =
   useVSelectContext("<VSelectTrigger>");
 const defaultLabel = computed(() => {
@@ -19,9 +19,7 @@ const defaultLabel = computed(() => {
 });
 
 onMounted(() => {
-  const el = instance.$el;
-  if (!el || !(el instanceof HTMLElement)) return;
-  triggerElement.value = el;
+  triggerElement.value = element.value;
 });
 
 function handleKeyDown(event: KeyboardEvent) {
