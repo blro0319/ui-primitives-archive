@@ -12,7 +12,7 @@ const { visible } = useVTooltipContext("<VTooltipContent>");
 </script>
 
 <template>
-  <component v-if="visible" :is="as">
+  <component v-show="visible" :is="as">
     <slot />
   </component>
 </template>

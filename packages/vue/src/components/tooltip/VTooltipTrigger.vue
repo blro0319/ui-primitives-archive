@@ -11,7 +11,7 @@ interface Props {
 
 withDefaults(defineProps<Props>(), { as: VButton });
 
-const { enterDelay, leaveDelay, id, trigger, visible } =
+const { enterDelay, leaveDelay, id, trigger, visible, hooks } =
   useVTooltipContext("<VTooltipTrigger>");
 const escapeStack = useGlobalEscapeStack(() => hide(true));
 const ariaDescribedby = computed(() => (visible.value ? id.value : undefined));
@@ -28,6 +28,7 @@ function show() {
   showTimeout = setTimeout(() => {
     visible.value = true;
     escapeStack.create();
+    hooks.trigger("show");
   }, enterDelay.value);
 }
 function hide(immediately = false) {
@@ -36,6 +37,7 @@ function hide(immediately = false) {
   hideTimeout = setTimeout(() => {
     visible.value = false;
     escapeStack.revoke();
+    hooks.trigger("hide");
   }, delay);
 }
 
