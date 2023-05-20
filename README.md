@@ -1,4 +1,4 @@
-# Blro UI Primitive
+# Blro UI Primitives
 
 ## To-Do
 

@@ -1,18 +1,18 @@
 {
-  "name": "@blro/ui-primitive-vue",
+  "name": "@blro/ui-primitives-vue",
   "version": "0.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blro0319/ui-primitive.git",
+    "url": "git+https://github.com/blro0319/ui-primitives.git",
     "directory": "packages/vue"
   },
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "dist/primitive-vue.umd.js",
-  "module": "dist/primitive-vue.es.js",
+  "main": "dist/primitives-vue.umd.js",
+  "module": "dist/primitives-vue.es.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
     "dev": "vite --host",

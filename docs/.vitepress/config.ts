@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress";
 
 export default defineConfig({
-  title: "UI Primitive",
+  title: "UI Primitives",
   description: "Headless Vue Components",
   locales: {
     root: {
@@ -14,7 +14,7 @@ export default defineConfig({
           { text: "API", link: "/api/" },
         ],
         socialLinks: [
-          { icon: "github", link: "https://github.com/blro0319/ui-primitive" },
+          { icon: "github", link: "https://github.com/blro0319/ui-primitives" },
         ],
         sidebar: {
           "/components/": [
@@ -41,7 +41,7 @@ export default defineConfig({
           { text: "API", link: "/ko/api/" },
         ],
         socialLinks: [
-          { icon: "github", link: "https://github.com/blro0319/ui-primitive" },
+          { icon: "github", link: "https://github.com/blro0319/ui-primitives" },
         ],
         sidebar: {
           "/ko/components/": [
