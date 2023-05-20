@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /get-started/
+      link: /guide/
     - theme: alt
       text: Components
       link: /components/
@@ -17,13 +17,13 @@ hero:
       link: /api/
 
 features:
-  - title: Headless
-    icon: 🎨
-    details: Keep the functionality, lose the styling
   - title: WAI-ARIA Compliant
     icon: 💙
     details: All components follow the WAI-ARIA guidelines
-  - title: Keyboard Interactions
-    icon: ⌨️
-    details: No need to implement keyboard interactions yourself
+  - title: Developer Experience
+    icon: 💻
+    details: Consistent and documented API written in TypeScript
+  - title: Headless
+    icon: 🎨
+    details: Keep the functionality, lose the styling
 ---

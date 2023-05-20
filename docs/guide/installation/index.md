@@ -1,6 +1,6 @@
-# Get Started
+# Installation
 
-## Installation
+## Vue
 
 Install the package on the command line.
 
@@ -34,7 +34,7 @@ import { VDialog } from "@blro/ui-primitives-vue";
 </template>
 ```
 
-### Nuxt Module
+## Nuxt Module
 
 If you are using [Nuxt framework](https://nuxt.com/), you can use a module for automatic import of components and composable.
 
