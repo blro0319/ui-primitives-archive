@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: 시작하기
-      link: /ko/get-started/
+      link: /ko/guide/
     - theme: alt
       text: 컴포넌트
       link: /ko/components/
