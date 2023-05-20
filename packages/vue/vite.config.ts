@@ -19,8 +19,8 @@ export default defineConfig({
     outDir: "./dist",
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
-      name: "primitive-vue",
-      fileName: (format) => `primitive-vue.${format}.js`,
+      name: "primitives-vue",
+      fileName: (format) => `primitives-vue.${format}.js`,
     },
     rollupOptions: {
       external: ["vue"],

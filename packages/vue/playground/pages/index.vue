@@ -6,7 +6,7 @@ const COMPONENTS = Object.keys(import.meta.glob("./component/*.vue")).map(
 
 <template>
   <div>
-    <h1>Blro UI Primitive Vue</h1>
+    <h1>Blro UI Primitives Vue</h1>
     <h2>Components</h2>
     <ul>
       <li v-for="component in COMPONENTS" :key="component">

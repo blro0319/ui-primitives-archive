@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "UI Primitive"
+  name: "UI Primitives"
   text: "Vue를 위한 Headless UI 라이브러리"
   tagline: 사용자 지정 스타일, 접근성, 키보드 상호작용
   actions:

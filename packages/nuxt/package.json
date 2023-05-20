@@ -1,10 +1,10 @@
 {
-  "name": "@blro/ui-primitive-nuxt",
+  "name": "@blro/ui-primitives-nuxt",
   "version": "0.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/blro0319/ui-primitive.git",
+    "url": "git+https://github.com/blro0319/ui-primitives.git",
     "directory": "packages/nuxt"
   },
   "type": "module"

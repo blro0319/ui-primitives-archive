@@ -1,9 +1,9 @@
 {
   "private": true,
-  "name": "@blro/ui-primitive",
+  "name": "@blro/ui-primitives",
   "version": "0.0.0",
   "license": "MIT",
-  "repository": "https://github.com/blro0319/ui-primitive",
+  "repository": "https://github.com/blro0319/ui-primitives",
   "workspaces": [
     "packages/*"
   ],

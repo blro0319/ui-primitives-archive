@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "UI Primitive"
+  name: "UI Primitives"
   text: "Headless UI Components for Vue"
   tagline: Headless, A11y, Keyboard Interactions
   actions:

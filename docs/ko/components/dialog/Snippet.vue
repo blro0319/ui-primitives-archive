@@ -1,6 +1,6 @@
 <!-- #region script -->
 <script setup lang="ts">
-import { VDialog } from "@blro/ui-primitive-vue";
+import { VDialog } from "@blro/ui-primitives-vue";
 import { ref } from "vue";
 
 const dialog = ref<InstanceType<typeof VDialog>>();
