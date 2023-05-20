@@ -20,7 +20,12 @@ function close() {
 <template>
   <button class="button" @click="show()">열기</button>
   <button class="button" @click="showModal()">모달로 열기</button>
-  <VDialog :transition="{ name: 'dialog' }" ref="dialog" class="dialog">
+  <VDialog
+    :transition="{ name: 'dialog' }"
+    cancel-trigger="escape"
+    ref="dialog"
+    class="dialog"
+  >
     안녕, 다이얼로그!
     <button class="button" @click="close()">닫기</button>
   </VDialog>
