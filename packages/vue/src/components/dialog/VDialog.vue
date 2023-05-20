@@ -5,12 +5,7 @@ export default defineComponent({ inheritAttrs: false });
 <script setup lang="ts">
 import { disableBodyScroll, enableBodyScroll } from "@blro/body-scroll-lock";
 import { computed, defineComponent, nextTick, ref, toRefs } from "vue";
-import { useGlobalCancelStack, useListeners } from "~/composables";
-import {
-  VCustomEvent,
-  dispatchVCustomEventAsync,
-  type VCustomEventListener,
-} from "~/utils";
+import { useGlobalCancelStack } from "~/composables";
 import { setVDialogContext } from "./context";
 import type { VDialogEmits, VDialogProps } from ".";
 
@@ -26,13 +21,10 @@ const visible = ref(false);
 let activeElement: HTMLElement | null = null;
 let mode: "show" | "showModal" = "show";
 
-const listeners = useListeners();
-
 const cancelStack = useGlobalCancelStack(
-  async () => {
-    cancelStack.create();
-    await cancel();
-    if (!visible.value) cancelStack.revoke();
+  () => {
+    cancel();
+    if (visible.value) cancelStack.create();
   },
   computed(() => {
     if (cancelTrigger.value === "all") return { escape: true, history: true };
@@ -67,25 +59,11 @@ function close() {
   emit("close");
 }
 
-let whileCanceling = false;
-async function cancel() {
-  if (!visible.value || whileCanceling) return;
-
-  // TODO: 비동기 이벤트 호출 제거
-  whileCanceling = true;
-  const prevented = !(await emitCancelEvent());
-  whileCanceling = false;
-
-  if (prevented) return;
-  close();
-}
-async function emitCancelEvent() {
-  const event = new VCustomEvent("cancel", {
-    cancelable: true,
-    target: dialog.value,
-  });
-  const functions = (listeners.cancel || []) as VCustomEventListener[];
-  return await dispatchVCustomEventAsync(event, functions);
+function cancel() {
+  if (!visible.value) return;
+  const event = new Event("cancel", { cancelable: true });
+  emit("cancel", event);
+  if (!event.defaultPrevented) close();
 }
 
 setVDialogContext({ cancel, close });

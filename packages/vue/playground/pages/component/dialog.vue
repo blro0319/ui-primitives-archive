@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { VDialog } from "~/components";
-import { VCustomEvent } from "~/utils";
 
 const basic = ref<InstanceType<typeof VDialog>>();
 const transition = ref<InstanceType<typeof VDialog>>();
@@ -10,18 +9,9 @@ const cancelEscape = ref<InstanceType<typeof VDialog>>();
 const cancelHistory = ref<InstanceType<typeof VDialog>>();
 const preventCancel = ref<InstanceType<typeof VDialog>>();
 const halfPreventCancel = ref<InstanceType<typeof VDialog>>();
-const asyncPreventCancel = ref<InstanceType<typeof VDialog>>();
 
-function preventCancelHalf(event: VCustomEvent) {
+function preventCancelHalf(event: Event) {
   if (Math.random() < 0.5) event.preventDefault();
-}
-function preventCancelAsync(event: VCustomEvent) {
-  return new Promise<void>((resolve) => {
-    setTimeout(() => {
-      if (Math.random() < 0.5) event.preventDefault();
-      resolve();
-    }, 1000);
-  });
 }
 </script>
 
@@ -72,7 +62,6 @@ function preventCancelAsync(event: VCustomEvent) {
       <div class="dialog__button-group">
         <button @click="preventCancel?.show()">Show</button>
         <button @click="halfPreventCancel?.show()">Show (50%)</button>
-        <button @click="asyncPreventCancel?.show()">Show (Async)</button>
       </div>
       <VDialog ref="preventCancel" @cancel.prevent>
         This dialog will not be canceled.
@@ -85,11 +74,6 @@ function preventCancelAsync(event: VCustomEvent) {
         50% chance to prevent cancel.
         <button @click="halfPreventCancel?.close()">Close</button>
         <button @click="halfPreventCancel?.cancel()">Cancel</button>
-      </VDialog>
-      <VDialog ref="asyncPreventCancel" @cancel="preventCancelAsync">
-        50% chance to prevent cancel after 1 second.
-        <button @click="asyncPreventCancel?.close()">Close</button>
-        <button @click="asyncPreventCancel?.cancel()">Cancel</button>
       </VDialog>
     </article>
   </div>
