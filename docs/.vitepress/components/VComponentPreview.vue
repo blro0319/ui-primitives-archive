@@ -18,7 +18,7 @@
   margin-top: 16px;
   padding: 20px;
 
-  border: 1px solid var(--vp-c-border);
+  border: 1px solid var(--vp-c-divider);
   border-radius: 8px;
 }
 </style>
