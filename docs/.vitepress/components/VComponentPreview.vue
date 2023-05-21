@@ -7,7 +7,7 @@
 <style scoped>
 .v-component-preview {
   position: relative;
-  z-index: 1;
+  z-index: 100;
 
   display: flex;
   flex-direction: column;
