@@ -10,6 +10,8 @@ export interface VSelectProps {
 }
 export interface VSelectEmits {
   (e: "update:modelValue", value: MaybeArray<VSelectOptionValue>): void;
+  (e: "show-menu"): void;
+  (e: "hide-menu"): void;
 }
 
 export interface VSelectOptionProps {
