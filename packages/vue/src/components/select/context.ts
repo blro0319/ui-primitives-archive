@@ -2,13 +2,18 @@ import { onClickOutside } from "@vueuse/core";
 import { clamp } from "lodash-es";
 import { computed, type HTMLAttributes, onMounted, ref } from "vue";
 import { useGlobalEscapeStack } from "~/composables";
-import { createContext, randomStr } from "~/utils";
+import { createContext, createEventHooks, randomStr } from "~/utils";
 import type { SetVSelectContextOptions, VSelectOptionProps } from "./types";
 import { useSelectMenuShortcut } from "./composables/useMenuShortcut";
 
 const { setContext, useContext } = createContext(
   "<VSelect>",
   (options: SetVSelectContextOptions) => {
+    const hooks = createEventHooks<{
+      showMenu(): void;
+      hideMenu(): void;
+    }>();
+
     const { value } = options;
     const multiple = computed(() => Array.isArray(value.value));
 
@@ -65,10 +70,12 @@ const { setContext, useContext } = createContext(
       escapeStack.create();
       menuOpened.value = true;
       setActiveIndex(firstSelectedIndex.value);
+      hooks.trigger("showMenu");
     }
     function closeMenu() {
       escapeStack.revoke();
       menuOpened.value = false;
+      hooks.trigger("hideMenu");
     }
 
     // ----- Items ----- //
@@ -146,6 +153,7 @@ const { setContext, useContext } = createContext(
     }
 
     return {
+      hooks,
       model,
       multiple,
       id,

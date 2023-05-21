@@ -12,7 +12,9 @@ const model = computed({
   set: (value) => emit("update:modelValue", value),
 });
 
-setVSelectContext({ value: model });
+const { hooks } = setVSelectContext({ value: model });
+hooks.$on("showMenu", () => emit("show-menu"));
+hooks.$on("hideMenu", () => emit("hide-menu"));
 </script>
 
 <template>
