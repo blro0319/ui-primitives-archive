@@ -3,6 +3,7 @@ import { cloneDeep } from "lodash-es";
 import {
   computed,
   type MaybeRefOrGetter,
+  onUnmounted,
   ref,
   type Ref,
   toValue,
@@ -12,9 +13,11 @@ import {
 import { createEventHooks } from "~/utils";
 import {
   createField,
+  useFormContext,
   type FieldValidateResult,
   type FieldValidityState,
   type Rule,
+  type UseFormContextInvalidEvent,
 } from "~/validate";
 
 export function useField<RuleName extends string, Value>(
@@ -23,6 +26,7 @@ export function useField<RuleName extends string, Value>(
   const hooks = createEventHooks<{
     valid(result: UseFieldValidateResult<RuleName>): void;
     invalid(result: UseFieldValidateResult<RuleName>): void;
+    formInvalid(result: UseFormContextInvalidEvent): void;
     reset(): void;
   }>();
 
@@ -91,7 +95,7 @@ export function useField<RuleName extends string, Value>(
     else stopWatch();
   });
 
-  return {
+  const context = {
     value,
     defaultValue,
     rules,
@@ -102,14 +106,22 @@ export function useField<RuleName extends string, Value>(
     validate,
     $validate,
     reset,
-    startWatch,
-    stopWatch,
     on: hooks.on,
     once: hooks.once,
     off: hooks.off,
     $on: hooks.$on,
     $once: hooks.$once,
   };
+
+  const form = useFormContext();
+  if (form) {
+    const deleteField = form.addField(context, (event) => {
+      hooks.trigger("formInvalid", event);
+    });
+    onUnmounted(deleteField);
+  }
+
+  return context;
 }
 
 export interface UseFieldOptions<RuleName extends string, Value> {
