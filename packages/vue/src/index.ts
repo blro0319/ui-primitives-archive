@@ -2,6 +2,7 @@ export * from "./components";
 export * from "./composables";
 export * from "./types";
 export * from "./utils";
+export * from "./validate";
 
 export type VCompoundType = "VSelectOption" | "VTabsTrigger";
 declare module "vue" {

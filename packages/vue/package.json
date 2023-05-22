@@ -29,6 +29,7 @@
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vue/tsconfig": "^0.4.0",
     "@vueuse/core": "^10.1.2",
+    "date-fns": "^2.30.0",
     "lodash-es": "^4.17.21",
     "sass": "^1.62.1",
     "tsc-alias": "^1.8.6",
