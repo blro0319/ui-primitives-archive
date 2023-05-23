@@ -32,7 +32,7 @@ export function useField<RuleName extends string, Value>(
 
   const field = createField(options.value, options.rules);
   const { value } = options;
-  const { rules } = field;
+  const { rules, isRequired } = field;
   const defaultValue = computed(() => toValue(options.defaultValue));
   const validityMessages = computed(() => toValue(options.validityMessages));
   const watchFlag = computed(() => toValue(options.watch) ?? false);
@@ -99,6 +99,7 @@ export function useField<RuleName extends string, Value>(
     value,
     defaultValue,
     rules,
+    isRequired,
     validityMessages,
     validityState,
     invalidRules,
