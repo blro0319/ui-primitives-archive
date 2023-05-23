@@ -1,5 +1,7 @@
 import type { Component } from "vue";
 
+export type VCompoundType = "VSelectOption" | "VTabsTrigger";
+
 export type ComponentAs = string | Component;
 
 export type AnyFunction = (...args: any[]) => any;
