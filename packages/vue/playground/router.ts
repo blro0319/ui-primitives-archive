@@ -7,7 +7,7 @@ export const router = createRouter({
   routes: [
     { path: "/", component: () => import("./pages/index.vue") },
     ...Object.entries(components).map(([path, component]) => ({
-      path: path.replace(/^\.\/pages(\/component\/[a-z]+)\.vue/, "$1"),
+      path: path.replace(/^\.\/pages(\/component\/[a-z\-]+)\.vue/, "$1"),
       component,
     })),
   ],
