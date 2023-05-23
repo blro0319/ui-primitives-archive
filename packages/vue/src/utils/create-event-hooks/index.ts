@@ -1,61 +1,45 @@
 import { tryOnBeforeUnmount } from "@vueuse/core";
 import type { AnyFunction } from "~/types";
 
-export function createEventHooks<
-  Listeners extends Record<string, AnyFunction>
->() {
-  const listenerMap = new Map<
-    keyof Listeners,
-    Set<Listeners[keyof Listeners]>
-  >();
+export function createEventHooks<L extends Record<string, AnyFunction>>() {
+  const listenerMap = new Map<keyof L, Set<L[keyof L]>>();
 
-  async function trigger<T extends keyof Listeners>(
+  async function trigger<T extends keyof L>(
     hook: T,
-    ...args: Parameters<Listeners[T]>
+    ...args: Parameters<L[T]>
   ) {
-    const results = [] as ReturnType<Listeners[T]>[];
+    const results = [] as ReturnType<L[T]>[];
     const listeners = listenerMap.get(hook) || [];
     listeners.forEach((listener) => results.push(listener(...args)));
     return await Promise.all(results);
   }
 
-  function on<EventName extends keyof Listeners>(
-    hook: EventName,
-    listener: Listeners[EventName]
-  ) {
+  function on<E extends keyof L>(hook: E, listener: L[E]) {
     if (!listenerMap.has(hook)) listenerMap.set(hook, new Set());
     listenerMap.get(hook)?.add(listener);
     return () => off(hook, listener);
   }
-  function once<EventName extends keyof Listeners>(
-    hook: EventName,
-    listener: Listeners[EventName]
-  ) {
+  function once<E extends keyof L>(hook: E, listener: L[E]) {
     const off = on(hook, ((...args) => {
       off();
       return listener(...args);
-    }) as Listeners[EventName]);
+    }) as L[E]);
     return off;
   }
-  function off<EventName extends keyof Listeners>(
-    hook: EventName,
-    listener: Listeners[EventName]
-  ) {
+  function off<E extends keyof L>(hook: E, listener: L[E]) {
     listenerMap.get(hook)?.delete(listener);
   }
 
-  function $on<EventName extends keyof Listeners>(
-    hook: EventName,
-    listener: Listeners[EventName]
-  ) {
+  function clear() {
+    listenerMap.clear();
+  }
+
+  function $on<E extends keyof L>(hook: E, listener: L[E]) {
     const off = on(hook, listener);
     tryOnBeforeUnmount(off);
     return off;
   }
-  function $once<EventName extends keyof Listeners>(
-    hook: EventName,
-    listener: Listeners[EventName]
-  ) {
+  function $once<E extends keyof L>(hook: E, listener: L[E]) {
     const off = once(hook, listener);
     tryOnBeforeUnmount(off);
     return off;
@@ -66,6 +50,7 @@ export function createEventHooks<
     on,
     once,
     off,
+    clear,
     $on,
     $once,
   };
