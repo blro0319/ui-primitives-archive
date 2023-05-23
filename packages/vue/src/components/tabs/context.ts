@@ -7,11 +7,7 @@ import {
   toValue,
 } from "vue";
 import { createContext, randomStr } from "~/utils";
-import type {
-  VTabsActivationMode,
-  VTabsOrientation,
-  VTabsTriggerProps,
-} from "./types";
+import type { VTabsActivationMode, VTabsOrientation } from "./types";
 
 const { setContext, useContext } = createContext(
   "<VTabs>",
@@ -25,9 +21,7 @@ const { setContext, useContext } = createContext(
       id.value = `v-tabs-${randomStr()}`;
     });
 
-    const triggers = ref<VTabsTriggerProps[]>([]);
-    const triggerSelectMap = new Map<string, (setModel?: boolean) => void>();
-    const activeValue = ref(modelValue.value);
+    // ----- Panels ----- //
 
     const panels = ref(new Set<string>());
 
@@ -36,10 +30,6 @@ const { setContext, useContext } = createContext(
       orientation,
       activationMode,
       id,
-      // Triggers
-      triggers,
-      triggerSelectMap,
-      activeValue,
       // Panels
       panels,
     };
