@@ -1,7 +1,6 @@
-import VTabs from "./VTabs.vue";
-import VTabsList from "./VTabsList";
-import VTabsPanel from "./VTabsPanel.vue";
-import VTabsTrigger from "./VTabsTrigger.vue";
-export { VTabs, VTabsList, VTabsPanel, VTabsTrigger };
+export { default as VTabs } from "./VTabs.vue";
+export { default as VTabsList } from "./VTabsList.vue";
+export { default as VTabsPanel } from "./VTabsPanel.vue";
+export { default as VTabsTrigger } from "./VTabsTrigger.vue";
 export * from "./context";
 export type * from "./types";
