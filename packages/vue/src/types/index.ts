@@ -1,4 +1,17 @@
-import type { Component } from "vue";
+import type {
+  Component,
+  HTMLAttributes,
+  NativeElements,
+  ReservedProps,
+} from "vue";
+
+export type VBindAttributes<
+  Tag extends keyof NativeElements | unknown = unknown
+> = (Tag extends keyof NativeElements
+  ? NativeElements[Tag]
+  : HTMLAttributes & ReservedProps) & {
+  [key: `data-${string}`]: string;
+};
 
 export type VCompoundType = "VSelectOption" | "VTabsTrigger";
 
