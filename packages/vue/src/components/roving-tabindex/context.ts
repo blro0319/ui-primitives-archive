@@ -36,7 +36,7 @@ const { setContext, useContext } = createContext(
     // ----- Root ----- //
 
     const root = ref<ComponentPublicInstance | HTMLElement>();
-    const rootElement = computed(() => unrefElement(root));
+    const rootElement = computed(() => unrefElement(root.value));
 
     const rootAttrs = {
       ref: root,
