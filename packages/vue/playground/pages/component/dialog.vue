@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { VDialog } from "~/components";
+import { VDialog, VDialogDescription, VDialogTitle } from "~/components";
 
 const basic = ref<InstanceType<typeof VDialog>>();
 const transition = ref<InstanceType<typeof VDialog>>();
+const content = ref<InstanceType<typeof VDialog>>();
 const cancelAll = ref<InstanceType<typeof VDialog>>();
 const cancelEscape = ref<InstanceType<typeof VDialog>>();
 const cancelHistory = ref<InstanceType<typeof VDialog>>();
@@ -38,6 +39,18 @@ function preventCancelHalf(event: Event) {
       <VDialog :transition="{ name: 'dialog__transition' }" ref="transition">
         Hello, Transition Dialog!
         <button @click="transition?.close()">Close</button>
+      </VDialog>
+    </article>
+    <article>
+      <h2>Title & Description</h2>
+      <div class="dialog__button-group">
+        <button @click="content?.show()">Show</button>
+        <button @click="content?.showModal()">Show Modal</button>
+      </div>
+      <VDialog ref="content">
+        <VDialogTitle>Title</VDialogTitle>
+        <VDialogDescription>Description</VDialogDescription>
+        <button @click="content?.close()">Close</button>
       </VDialog>
     </article>
     <article>
