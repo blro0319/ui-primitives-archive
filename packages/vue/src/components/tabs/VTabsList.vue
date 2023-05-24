@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { VRovingTabindex } from "~/components";
+import { VRovingTabindex, type VRovingTabindexChangeEvent } from "~/components";
 import { useVTabsContext } from "./context";
 import type { VTabsListProps } from "./types";
 
@@ -10,7 +10,8 @@ withDefaults(defineProps<VTabsListProps>(), {
   loop: false,
 });
 
-const { modelValue, orientation } = useVTabsContext("<VTabsList>");
+const { modelValue, orientation, activationMode } =
+  useVTabsContext("<VTabsList>");
 const root = ref<InstanceType<typeof VRovingTabindex>>();
 
 function handleKeyDown(event: KeyboardEvent) {
@@ -18,6 +19,13 @@ function handleKeyDown(event: KeyboardEvent) {
   if ([" ", "Enter"].includes(key)) {
     event.preventDefault();
     const value = root.value?.activeItem?.dataset.vTabsTrigger;
+    if (value) modelValue.value = value;
+  }
+}
+
+function handleChangeTabindex(event: VRovingTabindexChangeEvent) {
+  if (activationMode.value === "automatic") {
+    const value = event.target.dataset.vTabsTrigger;
     if (value) modelValue.value = value;
   }
 }
@@ -29,11 +37,11 @@ function handleKeyDown(event: KeyboardEvent) {
     :as-child="asChild"
     :orientation="orientation"
     :loop="loop"
+    role="tablist"
     ref="root"
     @keydown="handleKeyDown"
+    @change="handleChangeTabindex"
   >
     <slot />
   </VRovingTabindex>
 </template>
-
-<style lang="scss" scoped></style>

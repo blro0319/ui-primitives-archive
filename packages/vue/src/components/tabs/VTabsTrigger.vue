@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useCurrentElement } from "@vueuse/core";
-import { computed, toRefs } from "vue";
+import { unrefElement } from "@vueuse/core";
+import { type ComponentPublicInstance, computed, ref, toRefs } from "vue";
 import { VRovingTabindexItem } from "~/components";
 import type { VBindAttributes } from "~/types";
 import { useVTabsContext } from "./context";
@@ -18,7 +18,8 @@ const props = withDefaults(defineProps<VTabsTriggerProps>(), {
 
 const { value, disabled } = toRefs(props);
 const { modelValue, id, panels } = useVTabsContext();
-const element = useCurrentElement<HTMLElement>();
+const trigger = ref<ComponentPublicInstance | HTMLElement>();
+const triggerElement = computed(() => unrefElement(trigger));
 
 const selected = computed(() => modelValue.value === value.value);
 const controls = computed(() => {
@@ -34,9 +35,10 @@ const attrs = computed(() => {
     "aria-selected": selected.value,
     "aria-controls": controls.value,
     "data-v-tabs-trigger": value.value,
-    onClick() {
+    onClick(event: MouseEvent) {
       if (disabled.value) return;
-      element.value.focus();
+      event.preventDefault();
+      triggerElement.value?.focus();
       modelValue.value = value.value;
     },
   } satisfies VBindAttributes<"button">;
