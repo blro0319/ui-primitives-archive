@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
 import { setVRovingTabindexContext } from "./context";
-import type { VRovingTabindexProps } from "./types";
+import type { VRovingTabindexEmits, VRovingTabindexProps } from "./types";
 
 const props = withDefaults(defineProps<VRovingTabindexProps>(), {
   as: "div",
@@ -9,9 +9,11 @@ const props = withDefaults(defineProps<VRovingTabindexProps>(), {
   orientation: "horizontal",
   loop: false,
 });
+const emit = defineEmits<VRovingTabindexEmits>();
 
 const { orientation, loop } = toRefs(props);
 const {
+  hooks,
   id,
   rootAttrs,
   items,
@@ -21,6 +23,8 @@ const {
   setActiveItemAt,
   setActiveItem,
 } = setVRovingTabindexContext({ orientation, loop });
+
+hooks.$on("change", (event) => emit("change", event));
 
 defineExpose({
   id,
