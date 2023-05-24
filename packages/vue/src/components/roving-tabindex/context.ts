@@ -9,13 +9,20 @@ import {
   ref,
   toValue,
 } from "vue";
-import { createContext, randomStr } from "~/utils";
+import { createContext, createEventHooks, randomStr } from "~/utils";
 import type { VBindAttributes } from "~/types";
-import type { VRovingTabindexOrientation } from "./types";
+import type {
+  VRovingTabindexChangeEvent,
+  VRovingTabindexOrientation,
+} from "./types";
 
 const { setContext, useContext } = createContext(
   "<VRovingTabindex>",
   (options: SetVRovingTabindexContextOptions = {}) => {
+    const hooks = createEventHooks<{
+      change(event: VRovingTabindexChangeEvent): void;
+    }>();
+
     const id = ref("");
     onMounted(() => {
       id.value = randomStr();
@@ -107,11 +114,14 @@ const { setContext, useContext } = createContext(
     }
     function setActiveItem(target: HTMLElement) {
       if (activeItem.value === target || !items.value.has(target)) return;
+      const old = activeItem.value;
       activeItem.value = target;
       target.focus();
+      hooks.trigger("change", { target, old });
     }
 
     return {
+      hooks,
       id,
       orientation,
       loop,

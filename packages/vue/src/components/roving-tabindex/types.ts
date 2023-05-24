@@ -30,6 +30,14 @@ export interface VRovingTabindexProps {
    */
   loop?: boolean;
 }
+export interface VRovingTabindexEmits {
+  (e: "change", event: VRovingTabindexChangeEvent): void;
+}
+
+export interface VRovingTabindexChangeEvent {
+  target: HTMLElement;
+  old: HTMLElement | undefined;
+}
 
 export interface VRovingTabindexItemProps {
   /**
