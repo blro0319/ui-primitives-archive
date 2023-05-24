@@ -1,4 +1,5 @@
 import type { TransitionProps } from "vue";
+import type { ComponentAs } from "~/types";
 
 export interface VDialogProps {
   transition?: TransitionProps;
@@ -10,6 +11,40 @@ export interface VDialogEmits {
   (e: "close"): void;
   (e: "after-close"): void;
   (e: "cancel", event: Event): void;
+}
+
+export interface VDialogTitleProps {
+  /**
+   * @default
+   * ```ts
+   * "div"
+   * ```
+   */
+  as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
+  asChild?: boolean;
+}
+
+export interface VDialogDescriptionProps {
+  /**
+   * @default
+   * ```ts
+   * "div"
+   * ```
+   */
+  as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
+  asChild?: boolean;
 }
 
 export interface VDialogContext {
