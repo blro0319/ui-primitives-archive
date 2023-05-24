@@ -1,9 +1,17 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import type { VDropdownTriggerProps } from "./types";
+import type { VBindAttributes } from "~/types";
 
 withDefaults(defineProps<VDropdownTriggerProps>(), {
-  as: "div",
+  as: "button",
   asChild: false,
+});
+
+const attrs = computed(() => {
+  return {
+    "aria-haspopup": "menu",
+  } as VBindAttributes<"button">;
 });
 </script>
 
