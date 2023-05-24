@@ -21,6 +21,9 @@ export type AnyFunction = (...args: any[]) => any;
 
 export type MaybeArray<T> = T | T[];
 export type MaybePromise<T> = T | PromiseLike<T>;
+export type MaybeString<
+  T extends string | number | bigint | boolean | null | undefined
+> = T | `${T}`;
 
 export type Prettify<T> = { [K in keyof T]: T[K] } & {};
 
