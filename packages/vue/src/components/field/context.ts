@@ -1,48 +1,52 @@
 import {
   computed,
-  onMounted,
   type MaybeRefOrGetter,
   ref,
+  type Ref,
   toValue,
   watch,
+  type WatchStopHandle,
 } from "vue";
-import {
-  createContext,
-  createEventHooks,
-  randomStr,
-  upperFirst,
-} from "~/utils";
+import { setVContentContext } from "~/components";
+import { useId } from "~/composables";
+import type { VBindAttributes } from "~/types";
+import { createContext } from "~/utils";
 import type { UseField } from "~/validate";
 import type { VFieldReportTiming } from "./types";
 
 const { setContext, useContext } = createContext(
   "<VField>",
   (options: VFieldContextOptions) => {
-    const hooks = createEventHooks<{
-      inputChange(): void;
-      inputBlur(): void;
-      inputSubmit(): void;
-    }>();
-
     const reportWhen = computed(() => toValue(options.reportWhen) || "submit");
-    watch(reportWhen, (when) => {
-      hooks.clear();
-      if (when !== "none") hooks.on(`input${upperFirst(when)}`, reportValidity);
-    });
 
-    const id = ref("");
-    onMounted(() => {
-      id.value = `v-field-${randomStr()}`;
-    });
+    const id = useId("v-field");
+    const inputId = useId("v-field-input");
 
     const isRequired = ref(false);
     const errors = ref<string[]>([]);
     const reportedErrors = ref<string[]>([]);
 
-    let fieldRegistered = false;
-    function registerField(field: UseField) {
-      if (fieldRegistered) return;
-      fieldRegistered = true;
+    const { rootAttrs } = setVContentContext();
+
+    const inputBind = computed(() => {
+      return {
+        "id": inputId.value,
+        "aria-required": isRequired.value ? "true" : undefined,
+        "aria-describedby": rootAttrs.value["aria-describedby"],
+        "aria-invalid": !!errors.value.length,
+        "onBlur"() {
+          console.log("onBlur");
+          if (reportWhen.value === "blur") {
+            validate()?.then(reportValidity);
+          }
+        },
+      } satisfies VBindAttributes<"input">;
+    });
+
+    let field: UseField | undefined;
+    function registerField(target: UseField) {
+      if (field) return;
+      field = target;
 
       field.$on("valid", () => {
         errors.value = [];
@@ -54,8 +58,29 @@ const { setContext, useContext } = createContext(
         errors.value = [];
         resetReportedValidity();
       });
+
+      field.$on("submit", () => {
+        if (reportWhen.value === "submit") reportValidity();
+      });
+      watchValue(field.value);
     }
 
+    let watchHandler: WatchStopHandle | undefined;
+    function watchValue(value: Ref<unknown>) {
+      if (watchHandler) watchHandler();
+      watchHandler = watch(value, async () => {
+        if (reportWhen.value === "change") {
+          validate()?.then(reportValidity);
+        }
+      });
+    }
+
+    function validate() {
+      return field?.validate();
+    }
+    function $validate() {
+      return field?.$validate();
+    }
     function reportValidity() {
       reportedErrors.value = [...errors.value];
     }
@@ -64,16 +89,21 @@ const { setContext, useContext } = createContext(
     }
 
     return {
+      reportWhen,
       id,
+      inputId,
       isRequired,
       errors,
       reportedErrors,
+      inputBind,
+      validate,
+      $validate,
       registerField,
       reportValidity,
       resetReportedValidity,
-      hooks,
     };
-  }
+  },
+  null
 );
 
 export const setVFieldContext = setContext;

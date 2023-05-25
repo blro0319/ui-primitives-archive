@@ -1,5 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { VContentDescription } from "~/components";
+import type { VFieldDescriptionProps } from "./types";
 
-<template></template>
+defineProps<VFieldDescriptionProps>();
+</script>
 
-<style lang="scss" scoped></style>
+<template>
+  <VContentDescription :as="as" :as-child="asChild" v-slot="slotBind">
+    <slot v-bind="slotBind" />
+  </VContentDescription>
+</template>

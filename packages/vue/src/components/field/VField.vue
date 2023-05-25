@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
-import { VContent } from "~/components";
 import { setVFieldContext } from "./context";
 import type { VFieldProps } from "./types";
 
@@ -10,11 +9,17 @@ const props = withDefaults(defineProps<VFieldProps>(), {
 
 const { reportWhen } = toRefs(props);
 
-setVFieldContext({ reportWhen });
+const { validate, $validate, reportValidity } = setVFieldContext({
+  reportWhen,
+});
+
+defineExpose({
+  validate,
+  $validate,
+  reportValidity,
+});
 </script>
 
 <template>
-  <VContent v-bind="$props">
-    <slot />
-  </VContent>
+  <slot />
 </template>

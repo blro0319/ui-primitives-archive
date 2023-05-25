@@ -13,11 +13,11 @@ import {
 import { createEventHooks } from "~/utils";
 import {
   createField,
-  useFormContext,
+  useForm,
   type FieldValidateResult,
   type FieldValidityState,
   type Rule,
-  type UseFormContextInvalidEvent,
+  type UseFormSubmitEvent,
 } from "~/validate";
 
 export function useField<RuleName extends string, Value>(
@@ -26,7 +26,7 @@ export function useField<RuleName extends string, Value>(
   const hooks = createEventHooks<{
     valid(result: UseFieldValidateResult<RuleName>): void;
     invalid(result: UseFieldValidateResult<RuleName>): void;
-    formInvalid(result: UseFormContextInvalidEvent): void;
+    submit(event: UseFormSubmitEvent): void;
     reset(): void;
   }>();
 
@@ -114,10 +114,10 @@ export function useField<RuleName extends string, Value>(
     $once: hooks.$once,
   };
 
-  const form = useFormContext();
+  const form = useForm();
   if (form) {
     const deleteField = form.addField(context, (event) => {
-      hooks.trigger("formInvalid", event);
+      hooks.trigger("submit", event);
     });
     onUnmounted(deleteField);
   }

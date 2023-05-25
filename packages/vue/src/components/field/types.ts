@@ -1,15 +1,21 @@
-import type { VContentProps } from "~/components";
-import type { Prettify } from "~/types";
+import type { ComponentAs } from "~/types";
 
-export type VFieldProps = Prettify<
-  VContentProps & {
-    /**
-     * @default
-     * ```ts
-     * "submit"
-     * ```
-     */
-    reportWhen?: VFieldReportTiming;
-  }
->;
+export interface VFieldProps {
+  reportWhen?: VFieldReportTiming;
+}
+
 export type VFieldReportTiming = "none" | "change" | "blur" | "submit";
+
+// ----- Description ----- //
+
+export interface VFieldDescriptionProps {
+  as?: ComponentAs;
+  asChild?: boolean;
+}
+
+// ----- Error ----- //
+
+export interface VFieldErrorProps {
+  as?: ComponentAs;
+  asChild?: boolean;
+}
