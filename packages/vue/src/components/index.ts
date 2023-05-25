@@ -3,6 +3,7 @@ export * from "./button";
 export * from "./content";
 export * from "./dialog";
 export * from "./field";
+export * from "./fieldset";
 export * from "./form";
 export * from "./roving-tabindex";
 export * from "./select";
