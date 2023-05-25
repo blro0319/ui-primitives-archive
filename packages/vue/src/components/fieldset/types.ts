@@ -1,3 +1,59 @@
-import type { VContentDescriptionProps } from "~/components";
+import type { ComponentAs } from "~/types";
 
-export type VFieldsetDescriptionProps = VContentDescriptionProps;
+export interface VFieldsetProps {
+  /**
+   * @default
+   * ```ts
+   * "fieldset"
+   * ```
+   */
+  as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
+  asChild?: boolean;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
+  disabled?: boolean;
+}
+
+export interface VFieldsetDescriptionProps {
+  /**
+   * @default
+   * ```ts
+   * "div"
+   * ```
+   */
+  as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
+  asChild?: boolean;
+}
+
+export interface VFieldsetTitleProps {
+  /**
+   * @default
+   * ```ts
+   * "legend"
+   * ```
+   */
+  as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
+  asChild?: boolean;
+}
