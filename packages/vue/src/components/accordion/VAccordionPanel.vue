@@ -14,15 +14,15 @@ const { triggerId, panelId, visible } =
 
 const bind = computed<VBindAttributes>(() => {
   return {
-    id: panelId.value,
-    role: "region",
+    "id": panelId.value,
+    "role": "region",
     "aria-labelledby": triggerId.value,
   } satisfies VBindAttributes;
 });
 </script>
 
 <template>
-  <VContent v-lazy-show="visible" :as="as" v-bind="bind">
+  <VContent v-show="visible" :as="as" v-bind="bind">
     <slot />
   </VContent>
 </template>

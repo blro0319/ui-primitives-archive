@@ -140,28 +140,58 @@ export interface VAccordionContextOptions {
 
 // ----- Item ----- //
 
-const item = createContext("<VAccordionItem>", () => {
-  const { activeItems, removeRenderedItem } =
-    useVAccordionContext("<VAccordionItem>");
+const item = createContext(
+  "<VAccordionItem>",
+  (options?: VAccordionItemContextOptions) => {
+    const initialOpened = computed(() => toValue(options?.open) || false);
+    const { activeItems, toggleItem, showItem, hideItem, removeRenderedItem } =
+      useVAccordionContext("<VAccordionItem>");
 
-  const id = useId("v-accordion-item");
-  const triggerId = computed(() => `${id.value}-trigger`);
-  const panelId = computed(() => `${id.value}-content`);
+    const id = useId("v-accordion-item");
+    const triggerId = computed(() => `${id.value}-trigger`);
+    const panelId = computed(() => `${id.value}-content`);
 
-  const visible = computed(() => activeItems.value.includes(panelId.value));
+    const isMounted = ref(false);
+    const visible = computed(() => {
+      if (!isMounted.value) return initialOpened.value;
+      return activeItems.value.includes(panelId.value);
+    });
 
-  onUnmounted(() => removeRenderedItem(panelId.value));
+    onMounted(() => {
+      if (initialOpened.value) showItem(panelId.value);
+      isMounted.value = true;
+    });
+    onUnmounted(() => removeRenderedItem(panelId.value));
 
-  return {
-    id,
-    triggerId,
-    panelId,
-    visible,
-  };
-});
+    function toggle() {
+      toggleItem(panelId.value);
+    }
+    function show() {
+      showItem(panelId.value);
+    }
+    function hide() {
+      hideItem(panelId.value);
+    }
+
+    return {
+      initialOpened,
+      id,
+      triggerId,
+      panelId,
+      visible,
+      toggle,
+      show,
+      hide,
+    };
+  }
+);
 
 export const setVAccordionItemContext = item.setContext;
 export const useVAccordionItemContext = item.useContext;
+
+export interface VAccordionItemContextOptions {
+  open?: MaybeRefOrGetter<boolean>;
+}
 
 // ----- Header ----- //
 

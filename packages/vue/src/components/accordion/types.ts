@@ -32,17 +32,10 @@ export interface VAccordionItemProps {
   /**
    * @default
    * ```ts
-   * "div"
-   * ```
-   */
-  as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
    * false
    * ```
    */
-  asChild?: boolean;
+  open?: boolean;
 }
 
 // ----- Header ----- //
