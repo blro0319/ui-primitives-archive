@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { useVFieldContext } from "./context";
 
-const { id } = useVFieldContext("<VFieldLabel>");
+const { inputId = ref("") } = useVFieldContext("<VFieldLabel>") || {};
 </script>
 
 <template>
-  <label :for="id">
+  <label :for="inputId">
     <slot />
   </label>
 </template>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { VContent } from "~/components";
-import { setFormContext } from "~/validate";
+import { setForm } from "~/validate";
 import type { VFormEmits } from "./types";
 
 const emit = defineEmits<VFormEmits>();
 
-const { $validate, reset } = setFormContext();
+const { $validate, reset } = setForm();
 
 let whileSubmitting = false;
 async function submit() {
