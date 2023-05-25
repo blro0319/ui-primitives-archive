@@ -1,5 +1,7 @@
 export * from "./after";
 export * from "./before";
+export * from "./float";
+export * from "./integer";
 export * from "./is-email";
 export * from "./is-equal";
 export * from "./max-length";
@@ -8,4 +10,5 @@ export * from "./max";
 export * from "./min-length";
 export * from "./min-size";
 export * from "./min";
+export * from "./pattern";
 export * from "./required";
