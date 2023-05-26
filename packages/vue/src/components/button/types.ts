@@ -1,8 +1,7 @@
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "vue";
 import type { RouteLocationRaw } from "vue-router";
 
 export interface VButtonProps {
-  href?: AnchorHTMLAttributes["href"];
+  href?: string;
   to?: RouteLocationRaw;
   /**
    * @default
@@ -14,14 +13,14 @@ export interface VButtonProps {
    * "_self"
    * ```
    */
-  target?: AnchorHTMLAttributes["target"];
+  target?: string;
   /**
    * @default
    * ```ts
    * "button"
    * ```
    */
-  type?: ButtonHTMLAttributes["type"];
+  type?: "submit" | "reset" | "button";
   /**
    * @default
    * ```ts

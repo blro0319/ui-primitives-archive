@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { unrefElement } from "@vueuse/core";
 import { computed, ref, toRefs, type ComponentPublicInstance } from "vue";
 import type { VButtonProps } from "./types";
 
@@ -10,18 +11,14 @@ const props = withDefaults(defineProps<VButtonProps>(), {
 const { href, to, target } = toRefs(props);
 
 const root = ref<HTMLElement | ComponentPublicInstance | null>(null);
-const rootElement = computed(() => {
-  if (!root.value) return;
-  if (root.value instanceof HTMLElement) return root.value;
-  if (root.value.$el instanceof HTMLElement) return root.value.$el;
-});
+const rootElement = computed(() => unrefElement(root.value) as HTMLElement);
 
 const componentIs = computed(() => {
   if (typeof href?.value === "string") return "a";
   if (to?.value) return "RouterLink";
   return "button";
 });
-const attrs = computed(() => {
+const bind = computed(() => {
   return {
     a: {
       href: href?.value,
@@ -53,7 +50,7 @@ defineExpose({
 </script>
 
 <template>
-  <component :is="componentIs" v-bind="attrs" ref="root" class="v-button">
+  <component :is="componentIs" v-bind="bind" ref="root" class="v-button">
     <slot />
   </component>
 </template>
@@ -62,7 +59,8 @@ defineExpose({
 .v-button {
   cursor: pointer;
 
-  &[disabled] {
+  &[disabled],
+  &[aria-disabled="true"] {
     cursor: not-allowed;
   }
 }
