@@ -8,9 +8,9 @@ import Snippet from "./Snippet.vue";
 
 버튼은 사용자가 다양한 이벤트를 발생시킬 수 있도록 하는 컴포넌트입니다. 링크는 자원을 가리키는 컴포넌트입니다. 자원은 페이지, 파일 등이 될 수 있습니다. UI Primitives는 버튼과 링크를 구분하지 않습니다. 대신 `href` 속성과 `to` 속성을 사용하여 버튼과 링크를 구분합니다.
 
-> [버튼 디자인 패턴](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
+> [ARIA 버튼 디자인 패턴](https://www.w3.org/WAI/ARIA/apg/patterns/button/)
 >
-> [링크 디자인 패턴](https://www.w3.org/WAI/ARIA/apg/patterns/link/)
+> [ARIA 링크 디자인 패턴](https://www.w3.org/WAI/ARIA/apg/patterns/link/)
 
 <VComponentPreview>
   <Snippet />
