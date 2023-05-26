@@ -1,5 +1,5 @@
 <template>
-  <div class="v-component-preview">
+  <div role="presentation" class="v-component-preview">
     <slot />
   </div>
 </template>
@@ -13,12 +13,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
 
   margin-top: 16px;
-  padding: 20px;
+  padding: 64px 0;
 
-  border: 1px solid var(--vp-c-divider);
+  background-color: #f6f6f7;
   border-radius: 8px;
+
+  color: #3c3c43;
 }
 </style>
