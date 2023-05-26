@@ -59,11 +59,58 @@ export default {
         {
           text: "Components",
           items: [
-            { text: "Button", link: "/ko/components/button/" },
-            { text: "Dialog", link: "/ko/components/dialog/" },
-            { text: "Select", link: "/ko/components/select/" },
-            { text: "Tabs", link: "/ko/components/tabs/" },
-            { text: "Tooltip", link: "/ko/components/tooltip/" },
+            {
+              text: "Accordion",
+              link: "/ko/components/accordion/",
+            },
+            {
+              text: "Button",
+              link: "/ko/components/button/",
+            },
+            {
+              text: "Content",
+              link: "/ko/components/content/",
+            },
+            {
+              text: "Dialog",
+              link: "/ko/components/dialog/",
+            },
+            {
+              text: "Dropdown",
+              link: "/ko/components/dropdown/",
+            },
+            {
+              text: "Field",
+              link: "/ko/components/field/",
+            },
+            {
+              text: "Fieldset",
+              link: "/ko/components/fieldset/",
+            },
+            {
+              text: "Form",
+              link: "/ko/components/form/",
+            },
+            {
+              text: "Roving Tabindex",
+              link: "/ko/components/roving-tabindex/",
+            },
+            {
+              text: "Select",
+              link: "/ko/components/select/",
+            },
+            {
+              text: "Tabs",
+              link: "/ko/components/tabs/",
+            },
+            {
+              text: "Text Input",
+              link: "/ko/components/text-input/",
+            },
+            {
+              text: "Tooltip",
+              link: "/ko/components/tooltip/",
+            },
           ],
         },
       ],
