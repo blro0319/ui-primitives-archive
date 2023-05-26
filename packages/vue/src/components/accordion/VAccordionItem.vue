@@ -8,9 +8,9 @@ const props = withDefaults(defineProps<VAccordionItemProps>(), {
 });
 
 const { open } = toRefs(props);
-setVAccordionItemContext({ open });
+const { visible } = setVAccordionItemContext({ open });
 </script>
 
 <template>
-  <slot />
+  <slot v-bind="{ opened: visible }" />
 </template>

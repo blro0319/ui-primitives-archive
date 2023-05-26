@@ -1,4 +1,4 @@
-import type { ComponentAs, MaybeString } from "~/types";
+import type { ComponentAs } from "~/types";
 
 export interface VAccordionProps {
   /**
@@ -44,17 +44,17 @@ export interface VAccordionHeaderProps {
   /**
    * @default
    * ```ts
+   * "h3"
+   * ```
+   */
+  as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
    * false
    * ```
    */
   asChild?: boolean;
-  /**
-   * @default
-   * ```ts
-   * 3
-   * ```
-   */
-  level?: MaybeString<1 | 2 | 3 | 4 | 5 | 6>;
 }
 
 // ----- Trigger ----- //
@@ -86,4 +86,11 @@ export interface VAccordionPanelProps {
    * ```
    */
   as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
+  asChild?: boolean;
 }
