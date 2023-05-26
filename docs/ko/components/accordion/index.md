@@ -109,6 +109,8 @@ import Snippet from "./Snippet.vue";
 
 ## `<VAccordionPanel>`
 
+### 속성
+
 `as`
 
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
