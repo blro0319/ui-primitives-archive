@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
+import type { ComponentAs } from "~/types";
 import { setVAccordionContext } from "./context";
 import type { VAccordionProps } from "./types";
 
 const props = withDefaults(defineProps<VAccordionProps>(), {
-  as: "div",
+  as: (): ComponentAs => "div",
   asChild: false,
   expandMode: "single",
 });

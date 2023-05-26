@@ -2,7 +2,7 @@
 import { unrefElement } from "@vueuse/core";
 import { type ComponentPublicInstance, computed, ref, toRefs } from "vue";
 import { VRovingTabindexItem } from "~/components";
-import type { VBindAttributes } from "~/types";
+import type { ComponentAs, VBindAttributes } from "~/types";
 import { useVTabsContext } from "./context";
 import type { VTabsTriggerProps } from "./types";
 
@@ -11,7 +11,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<VTabsTriggerProps>(), {
-  as: "button",
+  as: (): ComponentAs => "button",
   asChild: false,
   disabled: false,
 });
@@ -29,13 +29,13 @@ const controls = computed(() => {
 
 const attrs = computed(() => {
   return {
-    id: `${id.value}-${value.value}-trigger`,
-    disabled: disabled.value,
-    role: "tab",
+    "id": `${id.value}-${value.value}-trigger`,
+    "disabled": disabled.value,
+    "role": "tab",
     "aria-selected": selected.value,
     "aria-controls": controls.value,
     "data-v-tabs-trigger": value.value,
-    onClick(event: MouseEvent) {
+    "onClick"(event: MouseEvent) {
       if (disabled.value) return;
       event.preventDefault();
       triggerElement.value?.focus();

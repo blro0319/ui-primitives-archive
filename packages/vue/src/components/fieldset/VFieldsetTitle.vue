@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import type { ComponentAs } from "~/types";
 import type { VFieldsetTitleProps } from "./types";
 
 withDefaults(defineProps<VFieldsetTitleProps>(), {
-  as: "legend",
+  as: (): ComponentAs => "legend",
   asChild: false,
 });
 </script>

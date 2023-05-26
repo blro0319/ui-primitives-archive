@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { VContent } from "~/components";
-import type { VBindAttributes } from "~/types";
+import type { ComponentAs, VBindAttributes } from "~/types";
 import { useVAccordionItemContext } from "./context";
 import type { VAccordionPanelProps } from "./types";
 
 withDefaults(defineProps<VAccordionPanelProps>(), {
-  as: "div",
+  as: (): ComponentAs => "div",
 });
 
 const { triggerId, panelId, visible } =

@@ -6,7 +6,9 @@ interface Props {
   as?: ComponentAs;
 }
 
-withDefaults(defineProps<Props>(), { as: "div" });
+withDefaults(defineProps<Props>(), {
+  as: (): ComponentAs => "div",
+});
 
 const { visible } = useVTooltipContext("<VTooltipContent>");
 </script>

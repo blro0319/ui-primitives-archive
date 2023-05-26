@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { toRefs } from "vue";
+import type { ComponentAs } from "~/types";
 import { setVRovingTabindexContext } from "./context";
 import type { VRovingTabindexEmits, VRovingTabindexProps } from "./types";
 
 const props = withDefaults(defineProps<VRovingTabindexProps>(), {
-  as: "div",
+  as: (): ComponentAs => "div",
   asChild: false,
   orientation: "horizontal",
   loop: false,

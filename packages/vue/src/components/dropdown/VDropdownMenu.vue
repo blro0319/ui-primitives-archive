@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import type { ComponentAs, VBindAttributes } from "~/types";
 import type { VDropdownMenuProps } from "./types";
-import type { VBindAttributes } from "~/types";
 import { useVDropdownContext } from "./context";
 
 withDefaults(defineProps<VDropdownMenuProps>(), {
-  as: "div",
+  as: (): ComponentAs => "div",
   asChild: false,
 });
 
