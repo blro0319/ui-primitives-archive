@@ -8,6 +8,10 @@ export default {
     docFooter: { next: "다음", prev: "이전" },
     langMenuLabel: "언어 변경",
     lastUpdatedText: "마지막 수정 일시",
+    outline: {
+      label: "목차",
+      level: [2, 3],
+    },
     returnToTopLabel: "맨 위로",
     sidebarMenuLabel: "메뉴",
     footer: {
