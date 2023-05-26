@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { VRovingTabindex, type VRovingTabindexChangeEvent } from "~/components";
+import type { ComponentAs } from "~/types";
 import { useVTabsContext } from "./context";
 import type { VTabsListProps } from "./types";
 
 withDefaults(defineProps<VTabsListProps>(), {
-  as: "div",
+  as: (): ComponentAs => "div",
   asChild: false,
   loop: false,
 });

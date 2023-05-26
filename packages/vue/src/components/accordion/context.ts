@@ -80,7 +80,7 @@ const root = createContext(
       const buttons = rootElement.value.querySelectorAll<HTMLElement>(
         `[data-v-accordion-trigger="${id.value}"]`
       );
-      triggers.value = new Set(buttons);
+      triggers.value = new Set(Array.from(buttons));
     }
 
     // ----- Items ----- //

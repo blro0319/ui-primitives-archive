@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { watchImmediate } from "@vueuse/core";
 import { onBeforeUnmount, toRefs } from "vue";
+import type { ComponentAs } from "~/types";
 import { useVTabsContext } from "./context";
 import type { VTabsPanelProps } from "./types";
 
 const props = withDefaults(defineProps<VTabsPanelProps>(), {
-  as: "div",
+  as: (): ComponentAs => "div",
 });
 
 const { value } = toRefs(props);

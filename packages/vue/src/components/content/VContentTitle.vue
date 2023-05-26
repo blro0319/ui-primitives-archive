@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import type { ComponentAs } from "~/types";
 import { randomStr } from "~/utils";
 import { useVContentContext } from "./context";
 import type { VContentTitleProps } from "./types";
 
 withDefaults(defineProps<VContentTitleProps>(), {
-  as: "div",
+  as: (): ComponentAs => "div",
   asChild: false,
 });
 

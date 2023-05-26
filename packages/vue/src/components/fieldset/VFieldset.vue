@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { computed, toRefs } from "vue";
 import { VContent } from "~/components";
-import type { VBindAttributes } from "~/types";
+import type { ComponentAs, VBindAttributes } from "~/types";
 import { setVFieldsetContext } from "./context";
 import type { VFieldsetProps } from "./types";
 
 const props = withDefaults(defineProps<VFieldsetProps>(), {
-  as: "fieldset",
+  as: (): ComponentAs => "fieldset",
   disabled: false,
 });
 

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import type { VBindAttributes } from "~/types";
+import type { ComponentAs, VBindAttributes } from "~/types";
 import type { VAccordionTriggerProps } from "./types";
 import { useVAccordionContext, useVAccordionItemContext } from "./context";
 
 withDefaults(defineProps<VAccordionTriggerProps>(), {
-  as: "button",
+  as: (): ComponentAs => "button",
   asChild: false,
 });
 
@@ -22,11 +22,11 @@ const controls = computed(() => {
 
 const bind = computed(() => {
   return {
-    id: triggerId.value,
+    "id": triggerId.value,
     "aria-controls": controls.value,
     "aria-expanded": visible.value,
     "data-v-accordion-trigger": id.value,
-    onClick: handleClick,
+    "onClick": handleClick,
   } satisfies VBindAttributes<"button">;
 });
 

@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import type { ComponentAs } from "~/types";
 import { randomStr } from "~/utils";
 import { useVContentContext } from "./context";
 import type { VContentDescriptionProps } from "./types";
 import { onBeforeUnmount } from "vue";
 
 withDefaults(defineProps<VContentDescriptionProps>(), {
-  as: "div",
+  as: (): ComponentAs => "div",
   asChild: false,
 });
 

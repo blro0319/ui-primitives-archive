@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import type { ComponentAs } from "~/types";
 import { setVContentContext } from "./context";
 import type { VContentProps } from "./types";
 
 withDefaults(defineProps<VContentProps>(), {
-  as: "div",
+  as: (): ComponentAs => "div",
   asChild: false,
 });
 
