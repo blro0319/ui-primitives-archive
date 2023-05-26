@@ -22,7 +22,7 @@ const data = [
     initialOpen: false,
   },
   {
-    title: "target",
+    title: "rel",
     content:
       "하나의 스페이스로 구분하는, 연결한 URL과의 관계를 나타내는 링크 유형 목록.",
     initialOpen: false,

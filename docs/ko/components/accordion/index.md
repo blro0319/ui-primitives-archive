@@ -8,7 +8,7 @@ import Snippet from "./Snippet.vue";
 
 아코디언은 세로로 쌓인 헤더와 패널 내용의 집합입니다. 패널의 내용은 헤더의 상호작용으로 숨기거나 표시할 수 있습니다.
 
-> [아코디언 디자인 패턴](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
+> [ARIA 아코디언 디자인 패턴](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/)
 
 <VComponentPreview>
   <Snippet />
