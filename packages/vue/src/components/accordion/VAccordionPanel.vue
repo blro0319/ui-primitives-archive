@@ -7,12 +7,13 @@ import type { VAccordionPanelProps } from "./types";
 
 withDefaults(defineProps<VAccordionPanelProps>(), {
   as: (): ComponentAs => "div",
+  asChild: false,
 });
 
 const { triggerId, panelId, visible } =
   useVAccordionItemContext("<VAccordionPanel>");
 
-const bind = computed<VBindAttributes>(() => {
+const bind = computed(() => {
   return {
     "id": panelId.value,
     "role": "region",
@@ -22,7 +23,13 @@ const bind = computed<VBindAttributes>(() => {
 </script>
 
 <template>
-  <VContent v-show="visible" :as="as" v-bind="bind">
-    <slot />
+  <VContent
+    v-show="visible"
+    :as="as"
+    :as-child="asChild"
+    v-bind="bind"
+    v-slot="slotBind"
+  >
+    <slot v-bind="{ ...slotBind, ...bind }" />
   </VContent>
 </template>
