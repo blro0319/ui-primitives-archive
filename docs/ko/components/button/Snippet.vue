@@ -1,16 +1,12 @@
 <!-- #region script -->
 <script setup lang="ts">
 import { VButton } from "@blro/ui-primitives-vue";
-
-function handleClick() {
-  alert("버튼 클릭");
-}
 </script>
 <!-- #endregion script -->
 <!-- #region template -->
 <template>
   <div class="snippet">
-    <VButton class="button" @click="handleClick">버튼</VButton>
+    <VButton class="button">버튼</VButton>
     <VButton href="https://github.com/blro0319/ui-primitives" class="link">
       GitHub
     </VButton>
@@ -47,11 +43,14 @@ button {
 
   color: #ffffff;
 
-  transition: box-shadow 250ms;
+  transition: background-color 100ms, box-shadow 250ms;
 }
 .button:hover,
 .button:focus-visible {
   box-shadow: 0 0 0 4px rgba(16 185 129 / 25%);
+}
+.button:active {
+  background-color: #0fad79;
 }
 
 .link {
