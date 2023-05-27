@@ -14,7 +14,7 @@ import { VButton } from "@blro/ui-primitives-vue";
 </template>
 <!-- #endregion template -->
 <!-- #region styles -->
-<style lang="scss" scoped>
+<style scoped>
 /* 스타일 초기화 */
 a,
 button {

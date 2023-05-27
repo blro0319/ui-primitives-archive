@@ -24,7 +24,7 @@ import {
 </template>
 <!-- #endregion template -->
 <!-- #region styles -->
-<style lang="scss" scoped>
+<style scoped>
 a,
 div,
 p {
