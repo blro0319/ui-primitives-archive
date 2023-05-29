@@ -4,14 +4,6 @@ import Snippet from "./Snippet.vue";
 
 # Dialog
 
-<VComponentPreview style="flex-direction: row;">
+<VComponentPreview>
   <Snippet />
 </VComponentPreview>
-
-::: code-group
-
-<<< @/ko/components/dialog/Snippet.vue#template [Template]
-<<< @/ko/components/dialog/Snippet.vue#script [Script]
-<<< @/ko/components/dialog/Snippet.vue#styles [Styles]
-
-:::

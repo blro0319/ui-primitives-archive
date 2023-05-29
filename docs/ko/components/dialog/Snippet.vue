@@ -14,82 +14,88 @@ function showModal() {
 function close() {
   dialog.value?.close();
 }
+function cancel() {
+  dialog.value?.cancel();
+}
 </script>
 <!-- #endregion script -->
 <!-- #region template -->
 <template>
-  <button class="button" @click="show()">열기</button>
-  <button class="button" @click="showModal()">모달로 열기</button>
-  <VDialog
-    :transition="{ name: 'dialog' }"
-    cancel-trigger="escape"
-    ref="dialog"
-    class="dialog"
-  >
-    안녕, 다이얼로그!
-    <button class="button" @click="close()">닫기</button>
-  </VDialog>
+  <div class="snippet">
+    <button class="button" @click="show()">열기</button>
+    <button class="button" @click="showModal()">모달로 열기</button>
+    <VDialog
+      :transition="{ name: 'dialog' }"
+      cancel-trigger="escape"
+      ref="dialog"
+      class="dialog"
+    >
+      <div class="backdrop" @click.self="cancel()" />
+      <div class="panel">
+        안녕, 다이얼로그!
+        <button class="button" @click="close()">닫기</button>
+      </div>
+    </VDialog>
+  </div>
 </template>
 <!-- #endregion template -->
 <!-- #region styles -->
-<style lang="scss" scoped>
-.dialog {
+<style scoped>
+/* 스타일 초기화 */
+button,
+div {
+  all: unset;
+}
+
+.snippet {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-
-  background-color: var(--vp-c-bg-elv);
-  border: var(--vp-c-divider);
-  border-radius: 12px;
-}
-.dialog::backdrop {
-  background-color: rgba(0 0 0 / 60%);
+  gap: 8px;
 }
 
-.dialog-enter-active,
-.dialog-leave-active {
-  transition-property: opacity, transform;
-  transition-duration: 250ms;
+.dialog {
+  padding: 0;
+
+  background: none;
+  border: none;
 }
-.dialog-enter-active::backdrop,
-.dialog-leave-active::backdrop {
-  transition: opacity 250ms;
+.backdrop {
+  position: fixed;
+  inset: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
 }
-.dialog-enter-from,
-.dialog-leave-to {
-  opacity: 0;
-  transform: translateY(16px) scale(96%);
+.panel {
+  position: relative;
+  padding: 16px;
+  background-color: #ffffff;
 }
-.dialog-enter-from::backdrop,
-.dialog-leave-to::backdrop {
-  opacity: 0;
+.dialog:not(:modal) > .backdrop {
+  display: none;
 }
 
 .button {
-  padding: 0 20px;
-  font-size: 1rem;
+  cursor: pointer;
 
-  background-color: var(--vp-button-alt-bg);
-  border: 1px solid var(--vp-button-alt-border);
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
 
-  color: var(--vp-button-alt-text);
-  font-size: 14px;
-  line-height: 38px;
+  height: 40px;
+  padding: 0 16px;
 
-  transition-property: background-color, border-color, color;
-  transition-duration: 250ms;
+  background-color: #10b981;
+  border-radius: 8px;
+  box-shadow: 0 0 0 0 rgba(16 185 129 / 0%);
+
+  color: #ffffff;
+
+  transition: background-color 150ms, box-shadow 150ms;
 }
-.button:hover {
-  background-color: var(--vp-button-alt-hover-bg);
-  border-color: var(--vp-button-alt-hover-border);
-  color: var(--vp-button-alt-hover-text);
+.button:hover,
+.button:focus-visible {
+  box-shadow: 0 0 0 4px rgba(16 185 129 / 25%);
 }
 .button:active {
-  background-color: var(--vp-button-alt-active-bg);
-  border-color: var(--vp-button-alt-active-border);
-  color: var(--vp-button-alt-active-text);
+  background-color: #10a372;
 }
 </style>
 <!-- #endregion styles -->

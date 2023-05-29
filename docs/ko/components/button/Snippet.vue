@@ -43,14 +43,14 @@ button {
 
   color: #ffffff;
 
-  transition: background-color 100ms, box-shadow 250ms;
+  transition: background-color 150ms, box-shadow 150ms;
 }
 .button:hover,
 .button:focus-visible {
   box-shadow: 0 0 0 4px rgba(16 185 129 / 25%);
 }
 .button:active {
-  background-color: #0fad79;
+  background-color: #10a372;
 }
 
 .link {
