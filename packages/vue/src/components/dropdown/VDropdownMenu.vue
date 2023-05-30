@@ -9,7 +9,8 @@ withDefaults(defineProps<VDropdownMenuProps>(), {
   as: (): ComponentAs => "div",
 });
 
-const { hooks, visible, menu } = useVDropdownContext("VDropdownMenu");
+const { hooks, triggerId, menuId, visible, menu } =
+  useVDropdownContext("VDropdownMenu");
 
 hooks.$on("showMenu", (focusAt) => {
   const items = menu.value?.items.values();
@@ -20,7 +21,9 @@ hooks.$on("showMenu", (focusAt) => {
 
 const bind = computed(() => {
   return {
-    role: "menu",
+    "role": "menu",
+    "id": menuId.value,
+    "aria-labelledby": triggerId.value,
   } satisfies VBindAttributes;
 });
 </script>
