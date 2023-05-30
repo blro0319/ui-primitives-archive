@@ -2,6 +2,7 @@ export * from "./accordion";
 export * from "./button";
 export * from "./content";
 export * from "./dialog";
+export * from "./dropdown";
 export * from "./field";
 export * from "./fieldset";
 export * from "./form";

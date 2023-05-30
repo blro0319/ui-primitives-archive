@@ -1,5 +1,10 @@
 import type { ComponentAs } from "~/types";
 
+export interface VDropdownEmits {
+  (e: "show-menu"): void;
+  (e: "hide-menu"): void;
+}
+
 export interface VDropdownTriggerProps {
   /**
    * @default
@@ -22,6 +27,16 @@ export interface VDropdownMenuProps {
    * @default
    * ```ts
    * "div"
+   * ```
+   */
+  as?: ComponentAs;
+}
+
+export interface VDropdownItemProps {
+  /**
+   * @default
+   * ```ts
+   * "button"
    * ```
    */
   as?: ComponentAs;
