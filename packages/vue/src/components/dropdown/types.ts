@@ -30,6 +30,13 @@ export interface VDropdownMenuProps {
    * ```
    */
   as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
+  loop?: boolean;
 }
 
 export interface VDropdownItemProps {
