@@ -1,6 +1,10 @@
 <!-- #region script -->
 <script setup lang="ts">
-import { VDialog } from "@blro/ui-primitives-vue";
+import {
+  VDialog,
+  VDialogDescription,
+  VDialogTitle,
+} from "@blro/ui-primitives-vue";
 import { ref } from "vue";
 
 const dialog = ref<InstanceType<typeof VDialog>>();
@@ -13,9 +17,6 @@ function showModal() {
 }
 function close() {
   dialog.value?.close();
-}
-function cancel() {
-  dialog.value?.cancel();
 }
 </script>
 <!-- #endregion script -->
@@ -30,11 +31,11 @@ function cancel() {
       ref="dialog"
       class="dialog"
     >
-      <div class="backdrop" @click.self="cancel()" />
-      <div class="panel">
-        안녕, 다이얼로그!
-        <button class="button" @click="close()">닫기</button>
-      </div>
+      <VDialogTitle as="h2" class="title">안녕, 다이얼로그!</VDialogTitle>
+      <VDialogDescription as="p">
+        다이얼로그는 모달이나 모달이 아닌 형태로 열 수 있습니다.
+      </VDialogDescription>
+      <button class="button" @click="close()">닫기</button>
     </VDialog>
   </div>
 </template>
@@ -43,7 +44,9 @@ function cancel() {
 <style scoped>
 /* 스타일 초기화 */
 button,
-div {
+div,
+h2,
+p {
   all: unset;
 }
 
@@ -53,24 +56,47 @@ div {
 }
 
 .dialog {
-  padding: 0;
+  box-sizing: border-box;
 
-  background: none;
-  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  padding: 16px;
+
+  background-color: #ffffff;
+  border: 1px solid #e7e7e8;
+  border-radius: 16px;
+
+  color: inherit;
 }
-.backdrop {
-  position: fixed;
-  inset: 0;
-
+.dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
-.panel {
-  position: relative;
-  padding: 16px;
-  background-color: #ffffff;
+
+.dialog-enter-active,
+.dialog-leave-active {
+  transition-property: opacity, transform;
+  transition-duration: 250ms;
 }
-.dialog:not(:modal) > .backdrop {
-  display: none;
+.dialog-enter-active::backdrop,
+.dialog-leave-active::backdrop {
+  transition: opacity 250ms;
+}
+.dialog-enter-from,
+.dialog-leave-to {
+  opacity: 0;
+  transform: translateY(16px) scale(90%);
+}
+.dialog-enter-from::backdrop,
+.dialog-leave-to::backdrop {
+  opacity: 0;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .button {
