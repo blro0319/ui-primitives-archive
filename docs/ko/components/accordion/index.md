@@ -84,7 +84,7 @@ import Snippet from "./Snippet.vue";
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
   - 기본값: `"h3"`
 
-  `role` 속성이 `heading`이고, `aria-level` 속성을 가진 요소로 설정해야 합니다. [`<h1>` ~ `<h6>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Heading_Elements) 요소를 사용하는 것이 좋습니다.
+  `role` 속성이 `heading`이고, `aria-level` 속성을 가진 요소로 설정해야 합니다. [`<h1>` ~ `<h6>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Heading_Elements) 요소로 설정하는 것이 좋습니다
 
 `asChild`
 
