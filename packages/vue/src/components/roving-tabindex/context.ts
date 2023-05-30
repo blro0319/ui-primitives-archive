@@ -44,26 +44,28 @@ const { setContext, useContext } = createContext(
     } satisfies VBindAttributes;
 
     function handleKeyDown(event: KeyboardEvent) {
-      event.stopPropagation();
-
       const prevKey = PREV_KEYS[orientation.value];
       const nextKey = NEXT_KEYS[orientation.value];
 
       switch (event.key) {
         case prevKey:
           event.preventDefault();
+          event.stopPropagation();
           moveActiveItem("prev");
           break;
         case nextKey:
           event.preventDefault();
+          event.stopPropagation();
           moveActiveItem("next");
           break;
         case "Home":
           event.preventDefault();
+          event.stopPropagation();
           setActiveItemAt(0);
           break;
         case "End":
           event.preventDefault();
+          event.stopPropagation();
           setActiveItemAt(items.value.size - 1);
           break;
       }
