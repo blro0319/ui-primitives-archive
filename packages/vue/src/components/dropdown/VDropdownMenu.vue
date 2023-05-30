@@ -7,6 +7,7 @@ import type { VDropdownMenuProps } from "./types";
 
 withDefaults(defineProps<VDropdownMenuProps>(), {
   as: (): ComponentAs => "div",
+  loop: false,
 });
 
 const { hooks, triggerId, menuId, visible, menu } =
@@ -33,6 +34,7 @@ const bind = computed(() => {
     v-show="visible"
     :as="as"
     orientation="vertical"
+    :loop="loop"
     v-bind="bind"
     ref="menu"
   >
