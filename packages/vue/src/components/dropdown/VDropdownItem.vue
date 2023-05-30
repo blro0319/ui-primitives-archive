@@ -10,16 +10,16 @@ withDefaults(defineProps<VDropdownItemProps>(), {
   asChild: false,
 });
 
-const { id, hideMenu } = useVDropdownContext("VDropdownMenu");
+const { hideMenu } = useVDropdownContext("VDropdownMenu");
 
 const bind = computed(() => {
   return {
-    "onClick"(event) {
+    onClick(event) {
       nextTick(() => {
         if (!event.defaultPrevented) hideMenu();
       });
     },
-    "data-v-dropdown-item": id.value,
+    role: "menuitem",
   } satisfies VBindAttributes<"button">;
 });
 </script>

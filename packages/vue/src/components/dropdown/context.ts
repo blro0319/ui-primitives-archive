@@ -10,7 +10,9 @@ const { setContext, useContext } = createContext("<VDropdown>", () => {
     hideMenu(): void;
   }>();
 
-  const id = useId("v-dropdown");
+  const triggerId = useId("v-dropdown-trigger");
+  const menuId = useId("v-dropdown-menu");
+
   const visible = ref(false);
 
   const trigger = ref<ComponentPublicInstance>();
@@ -43,7 +45,8 @@ const { setContext, useContext } = createContext("<VDropdown>", () => {
 
   return {
     hooks,
-    id,
+    triggerId,
+    menuId,
     visible,
     trigger,
     triggerElement,

@@ -9,8 +9,16 @@ withDefaults(defineProps<VDropdownTriggerProps>(), {
   asChild: false,
 });
 
-const { hooks, trigger, triggerElement, toggleMenu, showMenu } =
-  useVDropdownContext("VDropdownMenu");
+const {
+  hooks,
+  triggerId,
+  menuId,
+  visible,
+  trigger,
+  triggerElement,
+  toggleMenu,
+  showMenu,
+} = useVDropdownContext("VDropdownMenu");
 
 hooks.$on("hideMenu", () => {
   triggerElement.value?.focus();
@@ -19,6 +27,7 @@ hooks.$on("hideMenu", () => {
 const bind = computed(() => {
   return {
     "ref": trigger,
+    "id": triggerId.value,
     "onClick"() {
       toggleMenu();
     },
@@ -31,6 +40,8 @@ const bind = computed(() => {
         showMenu("bottom");
       }
     },
+    "aria-controls": menuId.value,
+    "aria-expanded": visible.value ? "true" : "false",
     "aria-haspopup": "menu",
   } as VBindAttributes<"button">;
 });
