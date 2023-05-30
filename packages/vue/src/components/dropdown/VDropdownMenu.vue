@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { VRovingTabindex } from "~/components";
 import type { ComponentAs, VBindAttributes } from "~/types";
-import type { VDropdownMenuProps } from "./types";
 import { useVDropdownContext } from "./context";
+import type { VDropdownMenuProps } from "./types";
 
 withDefaults(defineProps<VDropdownMenuProps>(), {
   as: (): ComponentAs => "div",
-  asChild: false,
 });
 
-const { visible } = useVDropdownContext();
+const { hooks, visible, menu } = useVDropdownContext("VDropdownMenu");
 
-const attrs = computed(() => {
+hooks.$on("showMenu", (focusAt) => {
+  const items = menu.value?.items.values();
+  if (!items) return;
+  const index = focusAt === "top" ? 0 : -1;
+  Array.from(items).at(index)?.focus();
+});
+
+const bind = computed(() => {
   return {
     role: "menu",
   } satisfies VBindAttributes;
@@ -19,10 +26,13 @@ const attrs = computed(() => {
 </script>
 
 <template>
-  <template v-lazy-if="visible">
-    <component v-if="!asChild" :is="as" v-bind="attrs">
-      <slot />
-    </component>
-    <slot v-else v-bind="attrs" />
-  </template>
+  <VRovingTabindex
+    v-show="visible"
+    :as="as"
+    orientation="vertical"
+    v-bind="bind"
+    ref="menu"
+  >
+    <slot />
+  </VRovingTabindex>
 </template>
