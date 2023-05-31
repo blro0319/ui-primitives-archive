@@ -39,7 +39,13 @@ export function useVInput<Value = unknown, RuleName extends string = string>(
   const rootElement = computed(() => unrefElement(root.value));
 
   const vFieldContext = useVFieldContext();
-  const field = useField({ value, defaultValue, rules, validityMessages });
+  const field = useField({
+    value,
+    defaultValue,
+    rules,
+    validityMessages,
+    watch: vFieldContext?.watchInputValue,
+  });
 
   vFieldContext?.registerField(field);
 

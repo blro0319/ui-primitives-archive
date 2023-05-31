@@ -1,23 +1,16 @@
-import {
-  computed,
-  type MaybeRefOrGetter,
-  ref,
-  type Ref,
-  toValue,
-  watch,
-  type WatchStopHandle,
-} from "vue";
+import { computed, type MaybeRefOrGetter, ref, toValue } from "vue";
 import { setVContentContext } from "~/components";
 import { useId } from "~/composables";
 import type { VBindAttributes } from "~/types";
 import { createContext } from "~/utils";
 import type { UseField } from "~/validate";
-import type { VFieldReportTiming } from "./types";
+import type { VFieldProps } from "./types";
 
 const { setContext, useContext } = createContext(
   "<VField>",
   (options: VFieldContextOptions) => {
     const reportWhen = computed(() => toValue(options.reportWhen) || "submit");
+    const watchInputValue = computed(() => reportWhen.value.includes("change"));
 
     const id = useId("v-field");
     const inputId = useId("v-field-input");
@@ -35,8 +28,7 @@ const { setContext, useContext } = createContext(
         "aria-describedby": rootAttrs.value["aria-describedby"],
         "aria-invalid": !!errors.value.length,
         "onBlur"() {
-          console.log("onBlur");
-          if (reportWhen.value === "blur") {
+          if (reportWhen.value.includes("blur")) {
             validate()?.then(reportValidity);
           }
         },
@@ -50,9 +42,11 @@ const { setContext, useContext } = createContext(
 
       field.$on("valid", () => {
         errors.value = [];
+        reportValidity();
       });
       field.$on("invalid", (event) => {
         errors.value = [...event.errors];
+        if (watchInputValue.value) reportValidity();
       });
       field.$on("reset", () => {
         errors.value = [];
@@ -60,18 +54,7 @@ const { setContext, useContext } = createContext(
       });
 
       field.$on("submit", () => {
-        if (reportWhen.value === "submit") reportValidity();
-      });
-      watchValue(field.value);
-    }
-
-    let watchHandler: WatchStopHandle | undefined;
-    function watchValue(value: Ref<unknown>) {
-      if (watchHandler) watchHandler();
-      watchHandler = watch(value, async () => {
-        if (reportWhen.value === "change") {
-          validate()?.then(reportValidity);
-        }
+        if (reportWhen.value.includes("submit")) reportValidity();
       });
     }
 
@@ -90,6 +73,7 @@ const { setContext, useContext } = createContext(
 
     return {
       reportWhen,
+      watchInputValue,
       id,
       inputId,
       isRequired,
@@ -110,5 +94,5 @@ export const setVFieldContext = setContext;
 export const useVFieldContext = useContext;
 
 interface VFieldContextOptions {
-  reportWhen?: MaybeRefOrGetter<VFieldReportTiming>;
+  reportWhen?: MaybeRefOrGetter<VFieldProps["reportWhen"]>;
 }
