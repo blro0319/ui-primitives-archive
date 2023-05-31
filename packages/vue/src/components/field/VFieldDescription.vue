@@ -2,7 +2,10 @@
 import { VContentDescription } from "~/components";
 import type { VFieldDescriptionProps } from "./types";
 
-defineProps<VFieldDescriptionProps>();
+withDefaults(defineProps<VFieldDescriptionProps>(), {
+  as: "div",
+  asChild: false,
+});
 </script>
 
 <template>

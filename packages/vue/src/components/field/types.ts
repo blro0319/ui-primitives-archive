@@ -1,7 +1,17 @@
 import type { ComponentAs, OptionalJoin } from "~/types";
+import type { UseFieldValidateResult, UseFormSubmitEvent } from "~/validate";
+
+// ----- Root ----- //
 
 export interface VFieldProps {
   reportWhen?: "none" | OptionalJoin<StringUnionToTuple<VFieldReportTiming>>;
+}
+export interface VFieldEmits {
+  (e: "valid", event: UseFieldValidateResult<string>): void;
+  (e: "invalid", event: UseFieldValidateResult<string>): void;
+  (e: "reset"): void;
+  (e: "submit", event: UseFormSubmitEvent): void;
+  (e: "report"): void;
 }
 
 export type VFieldReportTiming = "change" | "blur" | "submit";
@@ -19,16 +29,59 @@ type ObjectToTuple<Obj> = {} extends Obj
   ? []
   : { [Key in keyof Obj]: [Key, ...ObjectToTuple<Obj[Key]>] }[keyof Obj];
 
+// ----- Label ----- //
+
+export interface VFieldLabelProps {
+  /**
+   * @default
+   * ```ts
+   * "label"
+   * ```
+   */
+  as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
+  asChild?: boolean;
+}
+
 // ----- Description ----- //
 
 export interface VFieldDescriptionProps {
+  /**
+   * @default
+   * ```ts
+   * "div"
+   * ```
+   */
   as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
   asChild?: boolean;
 }
 
 // ----- Error ----- //
 
 export interface VFieldErrorProps {
+  /**
+   * @default
+   * ```ts
+   * "div"
+   * ```
+   */
   as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * false
+   * ```
+   */
   asChild?: boolean;
 }

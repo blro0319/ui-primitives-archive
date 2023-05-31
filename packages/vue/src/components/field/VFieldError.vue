@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { VContentDescription } from "~/components";
-import type { VFieldErrorProps } from "./types";
 import { useVFieldContext } from "./context";
+import type { VFieldErrorProps } from "./types";
 
-defineProps<VFieldErrorProps>();
+withDefaults(defineProps<VFieldErrorProps>(), {
+  as: "div",
+  asChild: false,
+});
 
-const { reportedErrors = ref([]) } = useVFieldContext("<VFieldError>") || {};
+const { reportedErrors } = useVFieldContext("<VFieldError>") || {};
 </script>
 
 <template>
@@ -16,6 +18,6 @@ const { reportedErrors = ref([]) } = useVFieldContext("<VFieldError>") || {};
     </slot>
   </VContentDescription>
   <VContentDescription v-else :as="as">
-    <slot v-bind="{ reportedErrors }">{{ reportedErrors.at(0) }}</slot>
+    <slot v-bind="{ reportedErrors }">{{ reportedErrors?.at(0) }}</slot>
   </VContentDescription>
 </template>
