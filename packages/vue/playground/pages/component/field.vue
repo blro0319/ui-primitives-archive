@@ -14,8 +14,11 @@ const value1 = ref("");
 const value2 = ref("");
 const value3 = ref("");
 const value4 = ref("");
+const value5 = ref("");
 
 const field4 = ref<InstanceType<typeof VField>>();
+
+const form2 = ref<InstanceType<typeof VForm>>();
 </script>
 
 <template>
@@ -58,6 +61,17 @@ const field4 = ref<InstanceType<typeof VField>>();
         />
         <VFieldError />
       </VField>
+    </article>
+    <article>
+      <h2>Reset</h2>
+      <VForm ref="form2">
+        <VField report-when="change submit">
+          <VTextInput v-model="value5" :rules="[required(), maxLength(8)]" />
+          <VFieldError />
+        </VField>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      </VForm>
     </article>
   </div>
 </template>
