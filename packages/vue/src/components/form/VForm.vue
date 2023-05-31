@@ -26,14 +26,12 @@ defineExpose({
 </script>
 
 <template>
-  <VContent as-child v-slot="props">
-    <form
-      v-bind="props"
-      novalidate
-      @submit.prevent="submit()"
-      @reset.prevent="reset()"
-    >
-      <slot />
-    </form>
+  <VContent
+    as="form"
+    novalidate
+    @submit.prevent="submit()"
+    @reset.prevent="reset()"
+  >
+    <slot />
   </VContent>
 </template>
