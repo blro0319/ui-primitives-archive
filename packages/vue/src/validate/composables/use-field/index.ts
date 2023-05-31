@@ -3,6 +3,7 @@ import { cloneDeep } from "lodash-es";
 import {
   computed,
   type MaybeRefOrGetter,
+  nextTick,
   onUnmounted,
   ref,
   type Ref,
@@ -74,9 +75,10 @@ export function useField<RuleName extends string, Value>(
     validityState.value = field.getDefaultValidityState();
     invalidRules.value = [];
 
-    hooks.trigger("reset");
-
-    if (watchFlag.value) startWatch();
+    nextTick(() => {
+      if (watchFlag.value) startWatch();
+      hooks.trigger("reset");
+    });
   }
 
   let watchStopHandler: WatchStopHandle | undefined;
