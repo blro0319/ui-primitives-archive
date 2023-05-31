@@ -2,13 +2,25 @@ import { computed, type MaybeRefOrGetter, ref, toValue } from "vue";
 import { setVContentContext } from "~/components";
 import { useId } from "~/composables";
 import type { VBindAttributes } from "~/types";
-import { createContext } from "~/utils";
-import type { UseField } from "~/validate";
+import { createContext, createEventHooks } from "~/utils";
+import type {
+  UseField,
+  UseFieldValidateResult,
+  UseFormSubmitEvent,
+} from "~/validate";
 import type { VFieldProps } from "./types";
 
 const { setContext, useContext } = createContext(
   "<VField>",
   (options: VFieldContextOptions) => {
+    const hooks = createEventHooks<{
+      valid(event: UseFieldValidateResult<string>): void;
+      invalid(event: UseFieldValidateResult<string>): void;
+      reset(): void;
+      submit(event: UseFormSubmitEvent): void;
+      report(): void;
+    }>();
+
     const reportWhen = computed(() => toValue(options.reportWhen) || "submit");
     const watchInputValue = computed(() => reportWhen.value.includes("change"));
 
@@ -40,31 +52,36 @@ const { setContext, useContext } = createContext(
       if (field) return;
       field = target;
 
-      field.$on("valid", () => {
+      field.$on("valid", (event) => {
         errors.value = [];
+        hooks.trigger("valid", event);
         reportValidity();
       });
       field.$on("invalid", (event) => {
         errors.value = [...event.errors];
+        hooks.trigger("invalid", event);
         if (watchInputValue.value) reportValidity();
       });
       field.$on("reset", () => {
         errors.value = [];
+        hooks.trigger("reset");
         resetReportedValidity();
       });
 
-      field.$on("submit", () => {
+      field.$on("submit", (event) => {
+        hooks.trigger("submit", event);
         if (reportWhen.value.includes("submit")) reportValidity();
       });
     }
 
-    function validate() {
-      return field?.validate();
+    async function validate() {
+      return await field?.validate();
     }
-    function $validate() {
-      return field?.$validate();
+    async function $validate() {
+      return (await field?.$validate()) || false;
     }
     function reportValidity() {
+      hooks.trigger("report");
       reportedErrors.value = [...errors.value];
     }
     function resetReportedValidity() {
@@ -72,6 +89,7 @@ const { setContext, useContext } = createContext(
     }
 
     return {
+      hooks,
       reportWhen,
       watchInputValue,
       id,

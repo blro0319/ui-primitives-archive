@@ -1,12 +1,23 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed } from "vue";
+import type { VBindAttributes } from "~/types";
 import { useVFieldContext } from "./context";
+import type { VFieldLabelProps } from "./types";
 
-const { inputId = ref("") } = useVFieldContext("<VFieldLabel>") || {};
+withDefaults(defineProps<VFieldLabelProps>(), {
+  as: "label",
+  asChild: false,
+});
+
+const { inputId } = useVFieldContext("<VFieldLabel>") || {};
+const bind = computed(() => {
+  return { for: inputId?.value } as VBindAttributes<"label">;
+});
 </script>
 
 <template>
-  <label :for="inputId">
+  <slot v-if="asChild" v-bind="bind" />
+  <label v-else v-bind="bind">
     <slot />
   </label>
 </template>
