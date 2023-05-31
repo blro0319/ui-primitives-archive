@@ -1,10 +1,23 @@
-import type { ComponentAs } from "~/types";
+import type { ComponentAs, OptionalJoin } from "~/types";
 
 export interface VFieldProps {
-  reportWhen?: VFieldReportTiming;
+  reportWhen?: "none" | OptionalJoin<StringUnionToTuple<VFieldReportTiming>>;
 }
 
-export type VFieldReportTiming = "none" | "change" | "blur" | "submit";
+export type VFieldReportTiming = "change" | "blur" | "submit";
+
+// Keywords to tuple
+
+export type StringUnionToTuple<Str extends string> = ObjectToTuple<
+  StringUnionToObject<Str>
+>;
+
+type StringUnionToObject<Union extends string> = {
+  [Key in Union]: StringUnionToObject<Exclude<Union, Key>>;
+};
+type ObjectToTuple<Obj> = {} extends Obj
+  ? []
+  : { [Key in keyof Obj]: [Key, ...ObjectToTuple<Obj[Key]>] }[keyof Obj];
 
 // ----- Description ----- //
 
