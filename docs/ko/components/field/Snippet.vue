@@ -140,7 +140,7 @@ li + li {
   width: 100%;
   padding: 6px 12px;
 
-  border: 1px solid #e7e7e8;
+  border: 1px solid #c6c6c8;
   border-radius: 4px;
 }
 
