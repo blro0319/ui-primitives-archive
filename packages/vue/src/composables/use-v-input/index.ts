@@ -1,12 +1,4 @@
-import { unrefElement } from "@vueuse/core";
-import {
-  type ComponentPublicInstance,
-  computed,
-  type MaybeRefOrGetter,
-  ref,
-  type Ref,
-  toValue,
-} from "vue";
+import { computed, type MaybeRefOrGetter, type Ref, toValue } from "vue";
 import { useVFieldContext } from "~/components";
 import type { VBindAttributes } from "~/types";
 import { useField, type Rule } from "~/validate";
@@ -26,7 +18,7 @@ import { useField, type Rule } from "~/validate";
 export function useVInput<Value = unknown, RuleName extends string = string>(
   options: UseVInputOptions<Value, RuleName>
 ) {
-  const { value } = options;
+  const { value, focus } = options;
   const initial = value.value;
 
   const defaultValue = computed(() => toValue(options.defaultValue) ?? initial);
@@ -34,9 +26,6 @@ export function useVInput<Value = unknown, RuleName extends string = string>(
   const validityMessages = computed(() => {
     return toValue(options.validityMessages) ?? {};
   });
-
-  const root = ref<ComponentPublicInstance | HTMLElement>();
-  const rootElement = computed(() => unrefElement(root.value));
 
   const vFieldContext = useVFieldContext();
   const field = useField({
@@ -50,15 +39,12 @@ export function useVInput<Value = unknown, RuleName extends string = string>(
   vFieldContext?.registerField(field);
 
   field.$on("submit", (event) => {
-    if (event.type === "invalid" && event.order === 0) {
-      rootElement.value?.focus();
-    }
+    if (event.type === "invalid" && event.order === 0) focus();
   });
 
   const inputBind = computed(() => {
     return {
       ...(vFieldContext?.inputBind.value ?? {}),
-      ref: root,
       onBlur() {
         if (vFieldContext?.reportWhen.value === "blur") {
           vFieldContext.validate()?.then(() => {
@@ -69,21 +55,10 @@ export function useVInput<Value = unknown, RuleName extends string = string>(
     } satisfies VBindAttributes<"input">;
   });
 
-  function focus(options?: FocusOptions) {
-    rootElement.value?.focus(options);
-  }
-  function blur() {
-    rootElement.value?.blur();
-  }
-
   return {
-    root,
-    rootElement,
     vFieldContext,
     field,
     inputBind,
-    focus,
-    blur,
   };
 }
 
@@ -95,4 +70,5 @@ export interface UseVInputOptions<
   defaultValue?: MaybeRefOrGetter<Value>;
   rules?: MaybeRefOrGetter<Rule<RuleName, Value>[]>;
   validityMessages?: MaybeRefOrGetter<Partial<Record<RuleName, string>>>;
+  focus(options?: FocusOptions): void;
 }
