@@ -24,11 +24,11 @@ export interface VFieldsetProps {
   disabled?: boolean;
 }
 
-export interface VFieldsetDescriptionProps {
+export interface VFieldsetTitleProps {
   /**
    * @default
    * ```ts
-   * "div"
+   * "legend"
    * ```
    */
   as?: ComponentAs;
@@ -41,11 +41,11 @@ export interface VFieldsetDescriptionProps {
   asChild?: boolean;
 }
 
-export interface VFieldsetTitleProps {
+export interface VFieldsetDescriptionProps {
   /**
    * @default
    * ```ts
-   * "legend"
+   * "div"
    * ```
    */
   as?: ComponentAs;
