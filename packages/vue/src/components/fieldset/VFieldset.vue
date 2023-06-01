@@ -17,7 +17,7 @@ setVFieldsetContext({ disabled });
 const bind = computed(() => {
   return {
     disabled: disabled.value,
-  } as VBindAttributes<"fieldset">;
+  } satisfies VBindAttributes<"fieldset">;
 });
 </script>
 
