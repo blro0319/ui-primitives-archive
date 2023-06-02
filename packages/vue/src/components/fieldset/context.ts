@@ -1,11 +1,43 @@
-import { computed, type MaybeRefOrGetter, toValue } from "vue";
+import { unrefElement } from "@vueuse/core";
+import {
+  type ComponentPublicInstance,
+  computed,
+  type MaybeRefOrGetter,
+  ref,
+  toValue,
+} from "vue";
+import type { VBindAttributes } from "~/types";
 import { createContext } from "~/utils";
 
 const { setContext, useContext } = createContext(
   "<VFieldset>",
   (options?: VFieldsetContextOptions) => {
     const disabled = computed(() => toValue(options?.disabled) ?? false);
-    return { disabled };
+    const legendText = ref("");
+
+    function updateLegendText() {
+      legendText.value = titleElement.value?.textContent ?? "";
+    }
+
+    const title = ref<ComponentPublicInstance | HTMLElement>();
+    const titleElement = computed(() => unrefElement(title.value));
+
+    const titleBind = computed(() => {
+      return {
+        "ref": title,
+        "aria-hidden": true,
+      } satisfies VBindAttributes;
+    });
+
+    return {
+      disabled,
+      legendText,
+      updateLegendText,
+      // Title
+      title,
+      titleElement,
+      titleBind,
+    };
   }
 );
 

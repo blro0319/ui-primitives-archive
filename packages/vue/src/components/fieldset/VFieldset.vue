@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<VFieldsetProps>(), {
 
 const { disabled } = toRefs(props);
 
-setVFieldsetContext({ disabled });
+const { legendText } = setVFieldsetContext({ disabled });
 
 const bind = computed(() => {
   return {
@@ -23,6 +23,19 @@ const bind = computed(() => {
 
 <template>
   <VContent :as="as" :as-child="asChild" v-bind="bind" v-slot="slotBind">
+    <legend
+      v-if="legendText"
+      :style="{
+        overflow: 'hidden',
+        position: 'absolute',
+        width: '1px',
+        height: '1px',
+        clip: 'rect(0 0 0 0)',
+        clipPath: 'inset(50%)',
+        whiteSpace: 'nowrap',
+      }"
+      v-text="legendText"
+    />
     <slot v-bind="{ ...slotBind, ...bind }" />
   </VContent>
 </template>
