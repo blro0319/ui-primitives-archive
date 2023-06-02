@@ -9,6 +9,7 @@ import type {
   UseFormSubmitEvent,
 } from "~/validate";
 import type { VFieldProps } from "./types";
+import { syncRef } from "@vueuse/core";
 
 const { setContext, useContext } = createContext(
   "<VField>",
@@ -72,6 +73,8 @@ const { setContext, useContext } = createContext(
         hooks.trigger("submit", event);
         if (reportWhen.value.includes("submit")) reportValidity();
       });
+
+      syncRef(isRequired, field.isRequired, { direction: "rtl" });
     }
 
     async function validate() {
