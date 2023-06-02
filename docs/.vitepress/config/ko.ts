@@ -72,6 +72,10 @@ export default {
               link: "/ko/components/button/",
             },
             {
+              text: "Checkbox",
+              link: "/ko/components/checkbox/",
+            },
+            {
               text: "Content",
               link: "/ko/components/content/",
             },

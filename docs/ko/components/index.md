@@ -2,6 +2,7 @@
 
 - [Accordion](/ko/components/accordion/)
 - [Button](/ko/components/button/)
+- [Checkbox](/ko/components/checkbox/)
 - [Content](/ko/components/content/)
 - [Dialog](/ko/components/dialog/)
 - [Dropdown](/ko/components/dropdown/)
