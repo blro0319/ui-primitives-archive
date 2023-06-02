@@ -28,7 +28,7 @@ export interface VFieldsetTitleProps {
   /**
    * @default
    * ```ts
-   * "legend"
+   * "div"
    * ```
    */
   as?: ComponentAs;

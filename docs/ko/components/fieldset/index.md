@@ -58,9 +58,7 @@ import Snippet from "./Snippet.vue";
 `as`
 
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
-  - 기본값: `"legend"`
-
-  [`<legend>` 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/legend)로 렌더링되어야 합니다.
+  - 기본값: `"div"`
 
 `asChild`
 
