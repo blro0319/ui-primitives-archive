@@ -76,6 +76,10 @@ export default {
               link: "/ko/components/checkbox/",
             },
             {
+              text: "Checkbox Group",
+              link: "/ko/components/checkbox-group/",
+            },
+            {
               text: "Content",
               link: "/ko/components/content/",
             },

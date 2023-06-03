@@ -1,4 +1,4 @@
-import { computed, type MaybeRefOrGetter, ref, toValue } from "vue";
+import { computed, type MaybeRefOrGetter, nextTick, ref, toValue } from "vue";
 import { setVContentContext } from "~/components";
 import { useId } from "~/composables";
 import type { VBindAttributes } from "~/types";
@@ -66,7 +66,7 @@ const { setContext, useContext } = createContext(
       field.$on("reset", () => {
         errors.value = [];
         hooks.trigger("reset");
-        resetReportedValidity();
+        reportValidity();
       });
 
       field.$on("submit", (event) => {
@@ -84,11 +84,8 @@ const { setContext, useContext } = createContext(
       return (await field?.$validate()) || false;
     }
     function reportValidity() {
-      hooks.trigger("report");
       reportedErrors.value = [...errors.value];
-    }
-    function resetReportedValidity() {
-      reportedErrors.value = [];
+      nextTick(() => hooks.trigger("report"));
     }
 
     return {
@@ -105,7 +102,6 @@ const { setContext, useContext } = createContext(
       $validate,
       registerField,
       reportValidity,
-      resetReportedValidity,
     };
   },
   null

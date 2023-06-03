@@ -1,7 +1,7 @@
 import type { Rule } from "~/validate";
 
 export interface VCheckboxProps<RuleName extends string> {
-  modelValue: any;
+  modelValue?: any;
   value?: any;
   trueValue?: any;
   falseValue?: any;

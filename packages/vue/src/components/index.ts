@@ -1,6 +1,7 @@
 export * from "./accordion";
 export * from "./button";
 export * from "./checkbox";
+export * from "./checkbox-group";
 export * from "./content";
 export * from "./dialog";
 export * from "./dropdown";
