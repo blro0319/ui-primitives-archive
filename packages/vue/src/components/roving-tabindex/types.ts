@@ -36,7 +36,7 @@ export interface VRovingTabindexEmits {
 
 export interface VRovingTabindexChangeEvent {
   target: HTMLElement;
-  old: HTMLElement | undefined;
+  old?: HTMLElement;
 }
 
 export interface VRovingTabindexItemProps {
