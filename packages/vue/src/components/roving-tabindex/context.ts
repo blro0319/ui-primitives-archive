@@ -9,8 +9,9 @@ import {
   ref,
   toValue,
 } from "vue";
-import { createContext, createEventHooks, randomStr } from "~/utils";
+import { useId } from "~/composables";
 import type { VBindAttributes } from "~/types";
+import { createContext, createEventHooks } from "~/utils";
 import type {
   VRovingTabindexChangeEvent,
   VRovingTabindexOrientation,
@@ -23,10 +24,7 @@ const { setContext, useContext } = createContext(
       change(event: VRovingTabindexChangeEvent): void;
     }>();
 
-    const id = ref("");
-    onMounted(() => {
-      id.value = randomStr();
-    });
+    const id = useId();
 
     const orientation = computed(() => {
       return toValue(options.orientation) || "horizontal";
@@ -38,7 +36,7 @@ const { setContext, useContext } = createContext(
     const root = ref<ComponentPublicInstance | HTMLElement>();
     const rootElement = computed(() => unrefElement(root.value));
 
-    const rootAttrs = {
+    const rootBind = {
       ref: root,
       onKeydown: handleKeyDown,
     } satisfies VBindAttributes;
@@ -81,13 +79,16 @@ const { setContext, useContext } = createContext(
     onMounted(() => {
       nextTick(updateItems);
     });
-    onUpdated(updateItems);
+    onUpdated(() => {
+      nextTick(updateItems);
+    });
 
     function updateItems() {
       if (!rootElement.value) return;
       const selector = `[data-v-roving-tabindex-item="${id.value}"]`;
       const children = rootElement.value.querySelectorAll(selector);
       items.value = new Set(Array.from(children) as HTMLElement[]);
+
       if (!activeItem.value && children.length > 0) {
         activeItem.value = children[0] as HTMLElement;
       }
@@ -129,7 +130,7 @@ const { setContext, useContext } = createContext(
       loop,
       // Root
       root,
-      rootAttrs,
+      rootBind,
       // Items
       items,
       activeItem,

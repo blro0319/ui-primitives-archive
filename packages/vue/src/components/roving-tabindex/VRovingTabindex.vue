@@ -16,7 +16,7 @@ const { orientation, loop } = toRefs(props);
 const {
   hooks,
   id,
-  rootAttrs,
+  rootBind,
   items,
   activeItem,
   updateItems,
@@ -41,8 +41,8 @@ defineExpose({
 </script>
 
 <template>
-  <component v-if="!asChild" :is="as" v-bind="rootAttrs">
+  <component v-if="!asChild" :is="as" v-bind="rootBind">
     <slot />
   </component>
-  <slot v-else v-bind="rootAttrs" />
+  <slot v-else v-bind="rootBind" />
 </template>
