@@ -11,7 +11,6 @@
 - [Fieldset](/ko/components/fieldset/)
 - [Form](/ko/components/form/)
 - [Roving Tabindex](/ko/components/roving-tabindex/)
-- [Select](/ko/components/select/)
 - [Tabs](/ko/components/tabs/)
 - [Text Input](/ko/components/text-input/)
 - [Tooltip](/ko/components/tooltip/)
