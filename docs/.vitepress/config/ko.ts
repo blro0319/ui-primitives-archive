@@ -108,10 +108,6 @@ export default {
               link: "/ko/components/roving-tabindex/",
             },
             {
-              text: "Select",
-              link: "/ko/components/select/",
-            },
-            {
               text: "Tabs",
               link: "/ko/components/tabs/",
             },
