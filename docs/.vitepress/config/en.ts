@@ -55,7 +55,6 @@ export default {
           items: [
             { text: "Button", link: "/components/button/" },
             { text: "Dialog", link: "/components/dialog/" },
-            { text: "Select", link: "/components/select/" },
             { text: "Tabs", link: "/components/tabs/" },
             { text: "Tooltip", link: "/components/tooltip/" },
           ],
