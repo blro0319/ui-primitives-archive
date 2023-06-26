@@ -1,6 +1,6 @@
 {
   "name": "@blro/ui-primitives-nuxt",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/blro0319/ui-primitives.git",
@@ -10,23 +10,27 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/primitives-nuxt.mjs",
-      "require": "./dist/primitives-nuxt.cjs"
+      "types": "./dist/module.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
     }
   },
-  "main": "./dist/primitives-nuxt.cjs",
-  "types": "./dist/types.d.ts",
+  "main": "./dist/module.cjs",
+  "types": "./dist/module.d.ts",
   "files": [
     "./dist"
   ],
   "scripts": {
-    "prepack": "nuxt-module-build",
+    "build": "nuxt-module-build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
   },
+  "peerDependencies": {
+    "nuxt": "^3.0.0"
+  },
   "dependencies": {
+    "@blro/ui-primitives-vue": "^0.1.0",
     "@nuxt/kit": "^3.6.0"
   },
   "devDependencies": {
@@ -34,6 +38,7 @@
     "@nuxt/module-builder": "^0.4.0",
     "@nuxt/schema": "^3.6.0",
     "@types/node": "^16.18.36",
-    "nuxt": "^3.6.0"
+    "nuxt": "^3.6.0",
+    "sass": "^1.63.6"
   }
 }

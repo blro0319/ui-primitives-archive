@@ -30,3 +30,6 @@ coverage
 # Docs
 docs/.vitepress/dist
 docs/.vitepress/cache
+
+# Nuxt
+.nuxt
