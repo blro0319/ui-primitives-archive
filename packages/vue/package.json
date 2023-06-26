@@ -15,7 +15,7 @@
   "module": "dist/primitives-vue.es.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --host --port 3190",
     "build": "vite build && npm run build:types",
     "build:types": "vue-tsc --project tsconfig.build.json && tsc-alias --project tsconfig.build.json"
   },
