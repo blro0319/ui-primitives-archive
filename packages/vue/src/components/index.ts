@@ -11,7 +11,6 @@ export * from "./form";
 export * from "./radio";
 export * from "./radio-group";
 export * from "./roving-tabindex";
-export * from "./select";
 export * from "./tabs";
 export * from "./text-input";
 export * from "./tooltip";
