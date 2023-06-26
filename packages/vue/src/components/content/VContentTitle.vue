@@ -7,7 +7,6 @@ import type { VContentTitleProps } from "./types";
 
 withDefaults(defineProps<VContentTitleProps>(), {
   as: (): ComponentAs => "div",
-  asChild: false,
 });
 
 const id = ref("");
@@ -22,8 +21,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <component v-if="!asChild" :is="as" :id="id">
+  <component :is="as" :id="id">
     <slot />
   </component>
-  <slot v-else v-bind="{ id }" />
 </template>

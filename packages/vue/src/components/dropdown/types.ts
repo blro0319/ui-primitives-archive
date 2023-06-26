@@ -13,13 +13,6 @@ export interface VDropdownTriggerProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 export interface VDropdownMenuProps {
@@ -47,11 +40,4 @@ export interface VDropdownItemProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }

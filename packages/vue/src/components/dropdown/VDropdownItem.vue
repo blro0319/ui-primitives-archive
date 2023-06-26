@@ -7,7 +7,6 @@ import type { VDropdownItemProps } from "./types";
 
 withDefaults(defineProps<VDropdownItemProps>(), {
   as: "button",
-  asChild: false,
 });
 
 const { hideMenu } = useVDropdownContext("VDropdownMenu");
@@ -25,12 +24,7 @@ const bind = computed(() => {
 </script>
 
 <template>
-  <VRovingTabindexItem
-    :as="as"
-    :as-child="asChild"
-    v-slot="slotBind"
-    v-bind="bind"
-  >
-    <slot v-bind="{ ...slotBind, ...bind }" />
+  <VRovingTabindexItem :as="as" v-bind="bind">
+    <slot />
   </VRovingTabindexItem>
 </template>

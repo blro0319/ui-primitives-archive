@@ -8,13 +8,6 @@ export interface VRadioGroupProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
   modelValue: string;
 }
 export interface VRadioGroupEmits {
@@ -31,13 +24,6 @@ export interface VRadioGroupTitleProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 // ----- Description ----- //
@@ -50,11 +36,4 @@ export interface VRadioGroupDescriptionProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }

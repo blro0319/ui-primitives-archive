@@ -35,11 +35,6 @@ import Snippet from "./Snippet.vue";
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
   - 기본값: `"div"`
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 `orientation`
 
 : - 유형: `"horizontal" | "vertical"`
@@ -99,11 +94,6 @@ import Snippet from "./Snippet.vue";
   - 기본값: `"button"`
 
   [`<button>` 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/button)처럼 클릭 가능한 요소로 설정해야 합니다.
-
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
 
 `disabled`
 

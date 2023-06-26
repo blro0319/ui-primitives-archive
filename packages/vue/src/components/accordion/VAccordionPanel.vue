@@ -7,7 +7,6 @@ import type { VAccordionPanelProps } from "./types";
 
 withDefaults(defineProps<VAccordionPanelProps>(), {
   as: (): ComponentAs => "div",
-  asChild: false,
 });
 
 const { triggerId, panelId, visible } =
@@ -23,13 +22,7 @@ const bind = computed(() => {
 </script>
 
 <template>
-  <VContent
-    v-show="visible"
-    :as="as"
-    :as-child="asChild"
-    v-bind="bind"
-    v-slot="slotBind"
-  >
-    <slot v-bind="{ ...slotBind, ...bind }" />
+  <VContent v-show="visible" :as="as" v-bind="bind">
+    <slot />
   </VContent>
 </template>

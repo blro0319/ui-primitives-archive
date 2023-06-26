@@ -6,7 +6,6 @@ import type { VRovingTabindexEmits, VRovingTabindexProps } from "./types";
 
 const props = withDefaults(defineProps<VRovingTabindexProps>(), {
   as: (): ComponentAs => "div",
-  asChild: false,
   orientation: "horizontal",
   loop: false,
 });
@@ -41,8 +40,7 @@ defineExpose({
 </script>
 
 <template>
-  <component v-if="!asChild" :is="as" v-bind="rootBind">
+  <component :is="as" v-bind="rootBind">
     <slot />
   </component>
-  <slot v-else v-bind="rootBind" />
 </template>

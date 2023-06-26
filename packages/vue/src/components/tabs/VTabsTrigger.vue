@@ -12,7 +12,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<VTabsTriggerProps>(), {
   as: (): ComponentAs => "button",
-  asChild: false,
   disabled: false,
 });
 
@@ -27,7 +26,7 @@ const controls = computed(() => {
   return `${id.value}-${value.value}-panel`;
 });
 
-const attrs = computed(() => {
+const bind = computed(() => {
   return {
     "id": `${id.value}-${value.value}-trigger`,
     "disabled": disabled.value,
@@ -46,10 +45,7 @@ const attrs = computed(() => {
 </script>
 
 <template>
-  <VRovingTabindexItem as-child :disabled="disabled" v-slot="props">
-    <component v-if="!asChild" :is="as" v-bind="{ ...props, ...attrs }">
-      <slot>{{ value }}</slot>
-    </component>
-    <slot v-else v-bind="{ ...props, ...attrs }">{{ value }}</slot>
+  <VRovingTabindexItem v-bind="bind" :as="as" :disabled="disabled">
+    <slot>{{ value }}</slot>
   </VRovingTabindexItem>
 </template>

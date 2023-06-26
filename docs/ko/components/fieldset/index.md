@@ -39,11 +39,6 @@ import Snippet from "./Snippet.vue";
 
   [`<fieldset>` 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/fieldset)로 렌더링되어야 합니다.
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 `disabled`
 
 : - 유형: `boolean`
@@ -60,11 +55,6 @@ import Snippet from "./Snippet.vue";
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
   - 기본값: `"div"`
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 ## `<VFieldsetDescription>`
 
 ### 속성
@@ -73,8 +63,3 @@ import Snippet from "./Snippet.vue";
 
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
   - 기본값: `"div"`
-
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`

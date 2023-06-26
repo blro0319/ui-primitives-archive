@@ -7,7 +7,6 @@ import type { VTabsListProps } from "./types";
 
 withDefaults(defineProps<VTabsListProps>(), {
   as: (): ComponentAs => "div",
-  asChild: false,
   loop: false,
 });
 
@@ -35,7 +34,6 @@ function handleChangeTabindex(event: VRovingTabindexChangeEvent) {
 <template>
   <VRovingTabindex
     :as="as"
-    :as-child="asChild"
     :orientation="orientation"
     :loop="loop"
     role="tablist"

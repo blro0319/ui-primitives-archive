@@ -6,7 +6,7 @@ defineProps<VDialogTitleProps>();
 </script>
 
 <template>
-  <VContentTitle :as="as" :as-child="asChild" v-slot="props">
-    <slot v-bind="props" />
+  <VContentTitle :as="as">
+    <slot />
   </VContentTitle>
 </template>

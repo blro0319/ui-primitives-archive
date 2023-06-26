@@ -53,22 +53,6 @@ import { VButton, VRovingTabindex, VRovingTabindexItem } from "~/components";
       </VRovingTabindex>
     </article>
     <article>
-      <h2>As Child</h2>
-      <VRovingTabindex as-child v-slot="props">
-        <article v-bind="props">
-          <VRovingTabindexItem as-child v-slot="props">
-            <button v-bind="props">Item 1</button>
-          </VRovingTabindexItem>
-          <VRovingTabindexItem as-child v-slot="props">
-            <button v-bind="props">Item 2</button>
-          </VRovingTabindexItem>
-          <VRovingTabindexItem as-child v-slot="props">
-            <button v-bind="props">Item 3</button>
-          </VRovingTabindexItem>
-        </article>
-      </VRovingTabindex>
-    </article>
-    <article>
       <h2>Nested</h2>
       <VRovingTabindex>
         <VRovingTabindexItem>Item 1</VRovingTabindexItem>

@@ -6,7 +6,7 @@ defineProps<VCheckboxGroupTitleProps>();
 </script>
 
 <template>
-  <VFieldsetTitle :as="as" :as-child="asChild" v-slot="slotBind">
-    <slot v-bind="slotBind" />
+  <VFieldsetTitle :as="as">
+    <slot />
   </VFieldsetTitle>
 </template>

@@ -14,7 +14,6 @@ const props = withDefaults(
   defineProps<VCheckboxGroupProps<Value, RuleName>>(),
   {
     as: (): ComponentAs => "fieldset",
-    asChild: false,
     rules: (): Rule<RuleName, Value>[] => [],
     validityMessages: (): Partial<Record<RuleName, string>> => ({}),
     disabled: false,
@@ -40,13 +39,7 @@ defineExpose({ focus });
 </script>
 
 <template>
-  <VFieldset
-    :as="as"
-    :as-child="asChild"
-    :disabled="disabled"
-    v-bind="rootBind"
-    v-slot="slotBind"
-  >
-    <slot v-bind="{ ...slotBind, ...rootBind }" />
+  <VFieldset :as="as" :disabled="disabled" v-bind="rootBind">
+    <slot />
   </VFieldset>
 </template>

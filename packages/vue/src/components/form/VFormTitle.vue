@@ -6,7 +6,7 @@ defineProps<VFormTitleProps>();
 </script>
 
 <template>
-  <VContentTitle v-bind="$props">
+  <VContentTitle :as="as">
     <slot />
   </VContentTitle>
 </template>

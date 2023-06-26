@@ -6,7 +6,7 @@ defineProps<VDialogDescriptionProps>();
 </script>
 
 <template>
-  <VContentDescription :as="as" :as-child="asChild" v-slot="props">
-    <slot v-bind="props" />
+  <VContentDescription :as="as">
+    <slot />
   </VContentDescription>
 </template>

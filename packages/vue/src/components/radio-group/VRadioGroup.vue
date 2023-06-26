@@ -21,7 +21,7 @@ defineExpose({
 </script>
 
 <template>
-  <VFieldset :as="as" :as-child="asChild" v-bind="rootBind" v-slot="slotBind">
-    <slot v-bind="{ ...rootBind, ...slotBind }" />
+  <VFieldset :as="as" v-bind="rootBind">
+    <slot />
   </VFieldset>
 </template>
