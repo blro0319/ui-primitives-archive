@@ -14,13 +14,6 @@ export interface VFieldsetProps {
    * false
    * ```
    */
-  asChild?: boolean;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
   disabled?: boolean;
 }
 
@@ -32,13 +25,6 @@ export interface VFieldsetTitleProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 export interface VFieldsetDescriptionProps {
@@ -49,11 +35,4 @@ export interface VFieldsetDescriptionProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }

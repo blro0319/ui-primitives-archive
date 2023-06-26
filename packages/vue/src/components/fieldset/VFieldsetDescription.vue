@@ -6,7 +6,7 @@ defineProps<VFieldsetDescriptionProps>();
 </script>
 
 <template>
-  <VContentDescription :as="as" :as-child="asChild" v-slot="slotBind">
-    <slot v-bind="slotBind" />
+  <VContentDescription :as="as">
+    <slot />
   </VContentDescription>
 </template>

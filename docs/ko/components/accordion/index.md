@@ -44,11 +44,6 @@ import Snippet from "./Snippet.vue";
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
   - 기본값: `"div"`
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 `expandMode`
 
 : - 유형: `"single" | "multiple"`
@@ -86,11 +81,6 @@ import Snippet from "./Snippet.vue";
 
   `role` 속성이 `heading`이고, `aria-level` 속성을 가진 요소로 설정해야 합니다. [`<h1>` ~ `<h6>`](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Heading_Elements) 요소로 설정하는 것이 좋습니다
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 ## `<VAccordionTrigger>`
 
 ### 속성
@@ -102,11 +92,6 @@ import Snippet from "./Snippet.vue";
 
   [`<button>` 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/button)처럼 클릭 가능한 요소로 설정해야 합니다.
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 ## `<VAccordionPanel>`
 
 ### 속성
@@ -115,8 +100,3 @@ import Snippet from "./Snippet.vue";
 
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
   - 기본값: `"div"`
-
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`

@@ -6,7 +6,7 @@ defineProps<VRadioGroupDescriptionProps>();
 </script>
 
 <template>
-  <VFieldsetDescription :as="as" :as-child="asChild">
+  <VFieldsetDescription :as="as">
     <slot />
   </VFieldsetDescription>
 </template>

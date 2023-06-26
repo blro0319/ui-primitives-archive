@@ -6,7 +6,6 @@ import type { VDropdownTriggerProps } from "./types";
 
 withDefaults(defineProps<VDropdownTriggerProps>(), {
   as: (): ComponentAs => "button",
-  asChild: false,
 });
 
 const {
@@ -48,8 +47,7 @@ const bind = computed(() => {
 </script>
 
 <template>
-  <slot v-if="asChild" v-bind="bind" />
-  <component v-else :is="as" v-bind="bind">
+  <component :is="as" v-bind="bind">
     <slot />
   </component>
 </template>

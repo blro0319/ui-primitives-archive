@@ -38,18 +38,5 @@ const show = ref(false);
         <VContentDescription as="p">Description</VContentDescription>
       </VContent>
     </article>
-    <article>
-      <h2>As Child</h2>
-      <VContent as-child v-slot="props">
-        <article v-bind="props">
-          <VContentTitle as-child v-slot="props">
-            <h3 v-bind="props">Child Title</h3>
-          </VContentTitle>
-          <VContentDescription as-child v-slot="props">
-            <p v-bind="props">Child description</p>
-          </VContentDescription>
-        </article>
-      </VContent>
-    </article>
   </div>
 </template>

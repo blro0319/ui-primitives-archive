@@ -4,12 +4,11 @@ import type { VFieldDescriptionProps } from "./types";
 
 withDefaults(defineProps<VFieldDescriptionProps>(), {
   as: "div",
-  asChild: false,
 });
 </script>
 
 <template>
-  <VContentDescription :as="as" :as-child="asChild" v-slot="slotBind">
-    <slot v-bind="slotBind" />
+  <VContentDescription :as="as">
+    <slot />
   </VContentDescription>
 </template>

@@ -7,7 +7,6 @@ import { useVRovingTabindexContext } from "./context";
 
 const props = withDefaults(defineProps<VRovingTabindexItemProps>(), {
   as: (): ComponentAs => "button",
-  asChild: false,
   disabled: false,
 });
 
@@ -18,7 +17,7 @@ const nodeElement = computed(() => unrefElement(node.value));
 
 const isActive = computed(() => activeItem.value === nodeElement.value);
 
-const attrs = computed(() => {
+const bind = computed(() => {
   return {
     "ref": node,
     "tabindex": isActive.value ? 0 : -1,
@@ -33,8 +32,7 @@ const attrs = computed(() => {
 </script>
 
 <template>
-  <component v-if="!asChild" :is="as" v-bind="attrs">
+  <component :is="as" v-bind="bind">
     <slot />
   </component>
-  <slot v-else v-bind="attrs" />
 </template>

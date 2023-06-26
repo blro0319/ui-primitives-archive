@@ -8,7 +8,6 @@ import { onBeforeUnmount } from "vue";
 
 withDefaults(defineProps<VContentDescriptionProps>(), {
   as: (): ComponentAs => "div",
-  asChild: false,
 });
 
 const id = ref("");
@@ -24,8 +23,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <component v-if="!asChild" :is="as" :id="id">
+  <component :is="as" :id="id">
     <slot />
   </component>
-  <slot v-else v-bind="{ id }" />
 </template>

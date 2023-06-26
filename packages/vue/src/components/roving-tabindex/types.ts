@@ -11,13 +11,6 @@ export interface VRovingTabindexProps {
   /**
    * @default
    * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
-  /**
-   * @default
-   * ```ts
    * "horizontal"
    * ```
    */
@@ -47,13 +40,6 @@ export interface VRovingTabindexItemProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
   /**
    * @default
    * ```ts

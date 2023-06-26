@@ -40,11 +40,6 @@ import Snippet from "./Snippet.vue";
 
   [`<fieldset>` 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/fieldset)요소로 렌덩링되어야 합니다.
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 `modelValue` (필수)
 
 : - 유형: `any[] | Set<any>`
@@ -93,11 +88,6 @@ import Snippet from "./Snippet.vue";
 : - 유형: `string`
   - 기본값: `"div"`
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 ## `<VCheckboxGroupDescription>`
 
 ### 속성
@@ -107,11 +97,6 @@ import Snippet from "./Snippet.vue";
 : - 유형: `string`
   - 기본값: `"div"`
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 ## `<VCheckboxGroupError>`
 
 ### 속성
@@ -120,8 +105,3 @@ import Snippet from "./Snippet.vue";
 
 : - 유형: `string`
   - 기본값: `"div"`
-
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`

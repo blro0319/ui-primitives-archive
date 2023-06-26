@@ -3,8 +3,19 @@ import type { ComponentAs } from "~/types";
 
 export interface VTabsProps {
   modelValue: string;
-  as?: ComponentAs;
+  /**
+   * @default
+   * ```ts
+   * "horizontal"
+   * ```
+   */
   orientation?: VTabsOrientation;
+  /**
+   * @default
+   * ```ts
+   * "automatic"
+   * ```
+   */
   activationMode?: VTabsActivationMode;
 }
 export interface VTabsEmits {
@@ -25,13 +36,6 @@ export interface VTabsListProps {
    * false
    * ```
    */
-  asChild?: boolean;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
   loop?: boolean;
 }
 
@@ -43,13 +47,6 @@ export interface VTabsTriggerProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
   value: string;
   /**
    * @default

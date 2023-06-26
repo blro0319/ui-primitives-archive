@@ -12,13 +12,6 @@ export interface VCheckboxGroupProps<
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
   modelValue: Value;
   defaultValue?: Value;
   /**
@@ -57,13 +50,6 @@ export interface VCheckboxGroupTitleProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 // ----- Description ----- //
@@ -76,13 +62,6 @@ export interface VCheckboxGroupDescriptionProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 // ----- Error ----- //
@@ -95,11 +74,4 @@ export interface VCheckboxGroupErrorProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }

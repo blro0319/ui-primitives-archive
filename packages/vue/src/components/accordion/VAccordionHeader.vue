@@ -4,13 +4,11 @@ import type { VAccordionHeaderProps } from "./types";
 
 withDefaults(defineProps<VAccordionHeaderProps>(), {
   as: (): ComponentAs => "h3",
-  asChild: false,
 });
 </script>
 
 <template>
-  <slot v-if="asChild" />
-  <component v-else :is="as">
+  <component :is="as">
     <slot />
   </component>
 </template>

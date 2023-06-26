@@ -75,11 +75,6 @@ import Snippet from "./Snippet.vue";
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
   - 기본값: `"div"`
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 ## `<VFormDescription>`
 
 ### 속성
@@ -88,8 +83,3 @@ import Snippet from "./Snippet.vue";
 
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
   - 기본값: `"div"`
-
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`

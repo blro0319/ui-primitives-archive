@@ -21,13 +21,6 @@ export interface VDialogTitleProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 export interface VDialogDescriptionProps {
@@ -38,13 +31,6 @@ export interface VDialogDescriptionProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 export interface VDialogContext {

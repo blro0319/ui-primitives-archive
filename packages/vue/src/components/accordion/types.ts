@@ -11,13 +11,6 @@ export interface VAccordionProps {
   /**
    * @default
    * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
-  /**
-   * @default
-   * ```ts
    * "single"
    * ```
    */
@@ -48,13 +41,6 @@ export interface VAccordionHeaderProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 // ----- Trigger ----- //
@@ -67,13 +53,6 @@ export interface VAccordionTriggerProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 // ----- Panel ----- //
@@ -86,11 +65,4 @@ export interface VAccordionPanelProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }

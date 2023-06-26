@@ -9,9 +9,7 @@ const { reportedErrors } = useVCheckboxGroupContext() ?? {};
 </script>
 
 <template>
-  <VCheckboxGroupDescription :as="as" :as-child="asChild" v-slot="slotBind">
-    <slot v-bind="{ ...slotBind, reportedErrors }">
-      {{ reportedErrors?.at(0) }}
-    </slot>
+  <VCheckboxGroupDescription :as="as">
+    <slot>{{ reportedErrors?.at(0) }}</slot>
   </VCheckboxGroupDescription>
 </template>

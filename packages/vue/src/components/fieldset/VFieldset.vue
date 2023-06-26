@@ -22,7 +22,7 @@ const bind = computed(() => {
 </script>
 
 <template>
-  <VContent :as="as" :as-child="asChild" v-bind="bind" v-slot="slotBind">
+  <VContent :as="as" v-bind="bind">
     <legend
       v-if="legendText"
       :style="{
@@ -36,6 +36,6 @@ const bind = computed(() => {
       }"
       v-text="legendText"
     />
-    <slot v-bind="{ ...slotBind, ...bind }" />
+    <slot />
   </VContent>
 </template>

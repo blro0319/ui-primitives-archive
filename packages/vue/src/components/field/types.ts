@@ -39,13 +39,6 @@ export interface VFieldLabelProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 // ----- Description ----- //
@@ -58,13 +51,6 @@ export interface VFieldDescriptionProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }
 
 // ----- Error ----- //
@@ -77,11 +63,4 @@ export interface VFieldErrorProps {
    * ```
    */
   as?: ComponentAs;
-  /**
-   * @default
-   * ```ts
-   * false
-   * ```
-   */
-  asChild?: boolean;
 }

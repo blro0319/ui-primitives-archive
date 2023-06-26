@@ -6,7 +6,7 @@ defineProps<VFormDescriptionProps>();
 </script>
 
 <template>
-  <VContentDescription v-bind="$props">
+  <VContentDescription :as="as">
     <slot />
   </VContentDescription>
 </template>

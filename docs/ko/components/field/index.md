@@ -123,11 +123,6 @@ import Snippet from "./Snippet.vue";
 
   `<label>` 요소로 렌더링되어야 합니다.
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 ## `<VFieldDescription>`
 
 ### 속성
@@ -137,11 +132,6 @@ import Snippet from "./Snippet.vue";
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
   - 기본값: `"div"`
 
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`
-
 ## `<VFieldError>`
 
 ### 속성
@@ -150,8 +140,3 @@ import Snippet from "./Snippet.vue";
 
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
   - 기본값: `"div"`
-
-`asChild`
-
-: - 유형: `boolean`
-  - 기본값: `false`

@@ -6,7 +6,6 @@ import { useVAccordionContext, useVAccordionItemContext } from "./context";
 
 withDefaults(defineProps<VAccordionTriggerProps>(), {
   as: (): ComponentAs => "button",
-  asChild: false,
 });
 
 const { id, renderedItems, toggleItem } = useVAccordionContext(
@@ -37,8 +36,7 @@ function handleClick(event: MouseEvent) {
 </script>
 
 <template>
-  <slot v-if="asChild" v-bind="bind" />
-  <component v-else :is="as" v-bind="bind">
+  <component :is="as" v-bind="bind">
     <slot />
   </component>
 </template>
