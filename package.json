@@ -10,10 +10,10 @@
   "scripts": {
     "vue:dev": "npm run dev --workspace=packages/vue",
     "vue:build": "npm run build --workspace=packages/vue",
-    "vue:publish": "npm run publish --workspace=packages/vue --access=public",
+    "vue:publish": "npm publish --workspace=packages/vue --access=public",
     "nuxt:dev": "npm run dev --workspace=packages/nuxt",
     "nuxt:build": "npm run build --workspace=packages/nuxt",
-    "nuxt:publish": "npm run publish --workspace=packages/nuxt --access=public",
+    "nuxt:publish": "npm publish --workspace=packages/nuxt --access=public",
     "docs:dev": "vitepress dev docs --host --port 7250",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
