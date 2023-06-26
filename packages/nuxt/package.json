@@ -1,11 +1,39 @@
 {
   "name": "@blro/ui-primitives-nuxt",
   "version": "0.0.0",
-  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/blro0319/ui-primitives.git",
     "directory": "packages/nuxt"
   },
-  "type": "module"
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/primitives-nuxt.mjs",
+      "require": "./dist/primitives-nuxt.cjs"
+    }
+  },
+  "main": "./dist/primitives-nuxt.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
+  },
+  "dependencies": {
+    "@nuxt/kit": "^3.6.0"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "^0.6.4",
+    "@nuxt/module-builder": "^0.4.0",
+    "@nuxt/schema": "^3.6.0",
+    "@types/node": "^16.18.36",
+    "nuxt": "^3.6.0"
+  }
 }
