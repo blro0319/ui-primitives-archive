@@ -12,7 +12,7 @@
     "vue:build": "npm run build --workspace=packages/vue",
     "nuxt:dev": "npm run dev --workspace=packages/nuxt",
     "nuxt:build": "npm run build --workspace=packages/nuxt",
-    "docs:dev": "vitepress dev docs --host",
+    "docs:dev": "vitepress dev docs --host --port 7250",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
