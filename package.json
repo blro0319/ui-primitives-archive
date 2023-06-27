@@ -8,6 +8,7 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "npm run vue:build && npm run nuxt:build",
     "vue:dev": "npm run dev --workspace=packages/vue",
     "vue:build": "npm run build --workspace=packages/vue",
     "vue:publish": "npm publish --workspace=packages/vue --access=public",
@@ -19,8 +20,8 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "@floating-ui/vue": "^1.0.0",
+    "@floating-ui/vue": "^1.0.1",
     "markdown-it-deflist": "^2.1.0",
-    "vitepress": "1.0.0-beta.1"
+    "vitepress": "1.0.0-beta.3"
   }
 }
