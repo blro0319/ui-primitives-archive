@@ -25,6 +25,9 @@ const { inputBind } = useVInput({
 function focus(options: FocusOptions) {
   root.value?.focus(options);
 }
+function blur() {
+  root.value?.blur();
+}
 
 function handleInput() {
   if (!root.value) return;
