@@ -9,7 +9,7 @@ UI Primitives의 컴포넌트는 스타일이 없어 그대로 사용하기 어�
 
 ## 단일 컴포넌트
 
-단일 컴포넌트는 일반 요소처럼 컴포넌트를 사용할 수 있습니다. 이 예시에서는 [`VButton` 컴포넌트](/ko/components/button)를 사용한 구현을 보여줍니다.
+단일 컴포넌트는 일반 요소처럼 컴포넌트를 사용할 수 있습니다. 이 예시에서는 [`VButton` 컴포넌트](/ko/components/button/)를 사용한 구현을 보여줍니다.
 
 <VComponentPreview>
   <Snippet1 />
