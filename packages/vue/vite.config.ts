@@ -20,7 +20,10 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "primitives-vue",
-      fileName: (format) => `primitives-vue.${format}.js`,
+      fileName(format) {
+        if (format === "es") return "primitives-vue.mjs";
+        return "primitives-vue.cjs";
+      },
     },
     rollupOptions: {
       external: ["vue"],
