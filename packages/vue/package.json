@@ -18,7 +18,7 @@
   "files": [
     "dist"
   ],
-  "main": "dist/primitives-vue.umd.js",
+  "main": "dist/primitives-vue.es.js",
   "module": "dist/primitives-vue.es.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
