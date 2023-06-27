@@ -1,7 +1,37 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.config.json" },
-    { "path": "./tsconfig.app.json" }
-  ]
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+      "#playground/*": ["playground/*"]
+    }
+  },
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "playground/**/*",
+    "playground/**/*.vue"
+  ],
+  "exclude": ["dist", "node_modules"]
 }
