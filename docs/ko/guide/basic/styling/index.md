@@ -8,7 +8,7 @@ import Snippet3 from "./Snippet3.vue";
 
 스타일을 지정하는 방법은 기존 Vue 컴포넌트와 동일합니다. `class`와 `style` 속성을 사용하거나 SFC 스타일 블록을 사용할 수 있습니다.
 
-이 예시에서는 [`VTooltip` 컴포넌트](/ko/components/tooltip)의 스타일을 지정합니다.
+이 예시에서는 [`VTooltip` 컴포넌트](/ko/components/tooltip/)의 스타일을 지정합니다.
 
 ## 컴포넌트 배치
 

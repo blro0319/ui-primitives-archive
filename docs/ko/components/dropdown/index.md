@@ -74,7 +74,7 @@ import Snippet from "./Snippet.vue";
 : - 유형: `boolean`
   - 기본값: `false`
 
-  `true`로 설정되면 방향키로 탐색할 때 처음 요소에서 이전으로 가면 마지막 요소로, 마지막 요소에서 다음으로 가면 처음 요소로 초점이 이동합니다. [`<VRovingTabindex>` 컴포넌트](/ko/components/roving-tabindex)의 `loop` 속성과 같습니다.
+  `true`로 설정되면 방향키로 탐색할 때 처음 요소에서 이전으로 가면 마지막 요소로, 마지막 요소에서 다음으로 가면 처음 요소로 초점이 이동합니다. [`<VRovingTabindex>` 컴포넌트](/ko/components/roving-tabindex/)의 `loop` 속성과 같습니다.
 
 ## `<VDropdownItem>`
 
