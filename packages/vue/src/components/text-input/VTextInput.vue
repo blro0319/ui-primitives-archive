@@ -38,7 +38,6 @@ function handleInput() {
   let value = root.value.value;
 
   if (pattern?.value) {
-    console.log(pattern.value);
     const regex = new RegExp(pattern.value, "g");
     if (!regex.test(value)) value = prevValue;
   }
