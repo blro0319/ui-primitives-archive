@@ -33,6 +33,7 @@ export const COMPONENTS = [
   "VForm",
   "VFormDescription",
   "VFormTitle",
+  "VNumberInput",
   "VRadio",
   "VRadioGroup",
   "VRadioGroupDescription",

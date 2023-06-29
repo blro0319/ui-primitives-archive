@@ -8,6 +8,7 @@ export * from "./dropdown";
 export * from "./field";
 export * from "./fieldset";
 export * from "./form";
+export * from "./number-input";
 export * from "./radio";
 export * from "./radio-group";
 export * from "./roving-tabindex";
