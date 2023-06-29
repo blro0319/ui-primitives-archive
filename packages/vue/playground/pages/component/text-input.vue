@@ -12,6 +12,7 @@ const value1 = ref("");
 const value2 = ref("");
 const value3 = ref("");
 const value4 = ref("");
+const value5 = ref("");
 </script>
 
 <template>
@@ -41,6 +42,11 @@ const value4 = ref("");
       <VTextInput v-model="value4" />
       <output class="out">{{ value4 }}</output>
       <button @click="value4 = randomStr()">Change</button>
+    </article>
+    <article>
+      <h2>Pattern</h2>
+      <VTextInput v-model="value5" pattern="^(\d+(\.\d*)?)?$" />
+      <VTextInput v-model="value5" :pattern="/^(\d+(\.\d*)?)?$/" />
     </article>
   </div>
 </template>

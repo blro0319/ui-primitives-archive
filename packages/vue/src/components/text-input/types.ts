@@ -19,6 +19,7 @@ export interface VTextInputProps<RuleName extends string> {
    * ```
    */
   disabled?: boolean;
+  pattern?: string | RegExp;
 }
 export interface VTextInputEmits {
   (e: "update:modelValue", value: string): void;
