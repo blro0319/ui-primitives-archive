@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { VNumberInput } from "~/components";
+import {
+  VField,
+  VFieldDescription,
+  VFieldLabel,
+  VNumberInput,
+} from "~/components";
 
 const value1 = ref(0);
 const value2 = ref(0);
@@ -14,7 +19,11 @@ const value5 = ref(0);
     <h1>VNumberInput</h1>
     <article>
       <h2>Basic Usage</h2>
-      <VNumberInput v-model="value1" />
+      <VField>
+        <VFieldLabel>Label</VFieldLabel>
+        <VFieldDescription>Description</VFieldDescription>
+        <VNumberInput v-model="value1" />
+      </VField>
       <output class="out">{{ value1 }}</output>
     </article>
     <article>

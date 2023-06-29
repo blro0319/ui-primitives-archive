@@ -2,6 +2,7 @@
 import { clamp } from "lodash-es";
 import { computed, nextTick, ref, toRefs, watch } from "vue";
 import { VTextInput } from "~/components";
+import { useVInput } from "~/composables";
 import type { VNumberInputEmits, VNumberInputProps } from "./types";
 
 const MIN_STEP_LEVEL = 1000;
@@ -13,7 +14,17 @@ const props = withDefaults(defineProps<VNumberInputProps<RuleName>>(), {
 });
 const emit = defineEmits<VNumberInputEmits>();
 
-const { modelValue, min, max, step, controlStep } = toRefs(props);
+const {
+  modelValue,
+  defaultValue,
+  rules,
+  validityMessages,
+  min,
+  max,
+  step,
+  controlStep,
+} = toRefs(props);
+const root = ref();
 
 const model = computed<number>({
   get: () => modelValue.value,
@@ -23,6 +34,14 @@ const model = computed<number>({
     $value = Math.trunc($value * MIN_STEP_LEVEL) / MIN_STEP_LEVEL;
     emit("update:modelValue", $value);
   },
+});
+
+const { inputBind } = useVInput({
+  value: model,
+  defaultValue,
+  rules,
+  validityMessages,
+  focus,
 });
 
 const displayModel = ref(String(model.value));
@@ -59,12 +78,25 @@ function handleKeyDown(event: KeyboardEvent) {
     model.value -= controlStep?.value ?? step.value;
   }
 }
+
+function focus(options: FocusOptions) {
+  root.value?.focus(options);
+}
+
+defineExpose({
+  focus,
+  blur() {
+    root.value?.blur();
+  },
+});
 </script>
 
 <template>
   <VTextInput
+    v-bind="inputBind"
     v-model="displayModel"
     :pattern="pattern"
+    ref="root"
     @keydown="handleKeyDown"
   />
 </template>
