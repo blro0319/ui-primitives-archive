@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { VDialog, VDialogDescription, VDialogTitle } from "~/components";
+import {
+  VDialog,
+  VDialogDescription,
+  VDialogTitle,
+  VTransition,
+} from "~/components";
 
 const basic = ref<InstanceType<typeof VDialog>>();
 const transition = ref<InstanceType<typeof VDialog>>();
@@ -36,10 +41,12 @@ function preventCancelHalf(event: Event) {
         <button @click="transition?.show()">Show</button>
         <button @click="transition?.showModal()">Show Modal</button>
       </div>
-      <VDialog :transition="{ name: 'dialog__transition' }" ref="transition">
-        Hello, Transition Dialog!
-        <button @click="transition?.close()">Close</button>
-      </VDialog>
+      <VTransition name="dialog__transition">
+        <VDialog ref="transition">
+          Hello, Transition Dialog!
+          <button @click="transition?.close()">Close</button>
+        </VDialog>
+      </VTransition>
     </article>
     <article>
       <h2>Title & Description</h2>
