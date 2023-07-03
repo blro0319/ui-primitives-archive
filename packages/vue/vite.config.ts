@@ -1,8 +1,15 @@
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
+import { camelCase } from "lodash-es";
 import path from "node:path";
 import { transformLazyShow } from "v-lazy-show";
 import { defineConfig } from "vite";
+import { dependencies, peerDependencies } from "./package.json";
+
+const external = [
+  ...Object.keys(dependencies),
+  ...Object.keys(peerDependencies),
+];
 
 export default defineConfig({
   plugins: [
@@ -26,8 +33,13 @@ export default defineConfig({
       },
     },
     rollupOptions: {
-      external: ["vue"],
-      output: { globals: { vue: "Vue" } },
+      external: external,
+      output: {
+        globals: external.reduce(
+          (acc, name) => ({ ...acc, [name]: camelCase(name) }),
+          {} as Record<string, string>
+        ),
+      },
     },
   },
   resolve: {
