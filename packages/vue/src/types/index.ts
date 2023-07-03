@@ -15,8 +15,6 @@ export type VBindAttributes<
   [key: `data-${string}`]: string;
 };
 
-export type VCompoundType = "VSelectOption" | "VTabsTrigger";
-
 export type ComponentAs = string | Component;
 
 // ----- Any/Maybe * ----- //
