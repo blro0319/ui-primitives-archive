@@ -8,6 +8,7 @@
     "packages/*"
   ],
   "scripts": {
+    "i": "npm install --legacy-peer-deps",
     "build": "npm run vue:build && npm run nuxt:build",
     "vue:dev": "npm run dev --workspace=packages/vue",
     "vue:build": "npm run build --workspace=packages/vue",
