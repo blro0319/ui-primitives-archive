@@ -6,7 +6,7 @@ export default defineComponent({ inheritAttrs: false });
 import { disableBodyScroll, enableBodyScroll } from "@blro/body-scroll-lock";
 import { unrefElement } from "@vueuse/core";
 import { computed, defineComponent, nextTick, ref, toRefs } from "vue";
-import { VContent } from "~/components";
+import { VContent, useVTransitionContext } from "~/components";
 import { useGlobalCancelStack } from "~/composables";
 import { setVDialogContext } from "./context";
 import type { VDialogEmits, VDialogProps } from "./types";
@@ -17,7 +17,8 @@ const props = withDefaults(defineProps<VDialogProps>(), {
 });
 const emit = defineEmits<VDialogEmits>();
 
-const { transition, cancelTrigger } = toRefs(props);
+const { cancelTrigger } = toRefs(props);
+const transition = useVTransitionContext();
 const root = ref<InstanceType<typeof VContent>>();
 const rootElement = computed(() => {
   return unrefElement(root.value) as HTMLDialogElement | undefined;
@@ -54,14 +55,20 @@ async function internalShow(method: "show" | "showModal") {
 
   mode = method;
   emit("show");
-  if (!transition?.value) emit("after-show");
 }
 
 function close() {
   if (!visible.value) return;
   cancelStack.revoke({ historyBack: true });
   visible.value = false;
+  if (!transition) afterClose();
   emit("close");
+}
+transition?.$on("after-leave", afterClose);
+function afterClose() {
+  rootElement.value?.close();
+  activeElement?.focus();
+  if (mode === "showModal") enableBodyScroll();
 }
 
 function cancel() {
@@ -73,13 +80,6 @@ function cancel() {
 
 setVDialogContext({ cancel, close });
 
-function handleAfterClose() {
-  rootElement.value?.close();
-  activeElement?.focus();
-  if (mode === "showModal") enableBodyScroll();
-  emit("after-close");
-}
-
 defineExpose({
   show: () => internalShow("show"),
   showModal: () => internalShow("showModal"),
@@ -89,22 +89,16 @@ defineExpose({
 </script>
 
 <template>
-  <Transition
-    v-bind="transition"
-    @after-enter="emit('after-show')"
-    @after-leave="handleAfterClose"
+  <VContent
+    v-show="visible"
+    v-bind="$attrs"
+    as="dialog"
+    ref="root"
+    class="v-dialog"
+    @cancel.prevent
   >
-    <VContent
-      v-show="visible"
-      v-bind="$attrs"
-      as="dialog"
-      ref="root"
-      class="v-dialog"
-      @cancel.prevent
-    >
-      <slot />
-    </VContent>
-  </Transition>
+    <slot />
+  </VContent>
 </template>
 
 <style lang="scss" scoped>
