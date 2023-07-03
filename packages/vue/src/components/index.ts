@@ -15,3 +15,4 @@ export * from "./roving-tabindex";
 export * from "./tabs";
 export * from "./text-input";
 export * from "./tooltip";
+export * from "./transition";
