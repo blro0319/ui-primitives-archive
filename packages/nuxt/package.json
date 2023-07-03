@@ -35,10 +35,10 @@
     "@nuxt/kit": "^3.6.1"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.6.4",
+    "@nuxt/devtools": "^0.6.6",
     "@nuxt/module-builder": "^0.4.0",
     "@nuxt/schema": "^3.6.1",
-    "@types/node": "^16.18.36",
+    "@types/node": "^20.3.3",
     "nuxt": "^3.6.1",
     "sass": "^1.63.6"
   }
