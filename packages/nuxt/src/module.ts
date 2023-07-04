@@ -1,7 +1,7 @@
 import { addComponent, defineNuxtModule } from "@nuxt/kit";
 import { COMPONENTS } from "@blro/ui-primitives-vue";
 
-export interface Options {
+export interface ModuleOptions {
   /**
    * @default
    * ```ts
@@ -11,7 +11,7 @@ export interface Options {
   components?: boolean;
 }
 
-export default defineNuxtModule<Options>({
+export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: "@blro/ui-primitives-nuxt",
     configKey: "uiPrimitives",
