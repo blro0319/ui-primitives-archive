@@ -19,6 +19,10 @@
       "types": "./dist/types/index.d.ts",
       "import": "./dist/primitives-vue.mjs",
       "require": "./dist/primitives-vue.cjs"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
     }
   },
   "scripts": {
@@ -44,7 +48,7 @@
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vue/tsconfig": "^0.4.0",
     "sass": "^1.63.6",
-    "tsc-alias": "^1.8.6",
+    "tsc-alias": "^1.8.7",
     "typescript": "^5.1.6",
     "v-lazy-show": "^0.2.3",
     "vite": "^4.3.9",
