@@ -12,10 +12,10 @@
     "build": "npm run vue:build && npm run nuxt:build",
     "vue:dev": "npm run dev --workspace=packages/vue",
     "vue:build": "npm run build --workspace=packages/vue",
-    "vue:publish": "npm publish --workspace=packages/vue --access=public",
+    "vue:publish": "npm run vue:build && npm publish --workspace=packages/vue --access=public",
     "nuxt:dev": "npm run dev --workspace=packages/nuxt",
     "nuxt:build": "npm run build --workspace=packages/nuxt",
-    "nuxt:publish": "npm publish --workspace=packages/nuxt --access=public",
+    "nuxt:publish": "npm run nuxt:build && npm publish --workspace=packages/nuxt --access=public",
     "docs:dev": "cd docs && npm run dev && cd ..",
     "docs:build": "cd docs && npm run build && cd ..",
     "docs:preview": "cd docs && npm run preview && cd .."
