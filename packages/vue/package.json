@@ -34,7 +34,7 @@
     "vue": "^3.3.4"
   },
   "dependencies": {
-    "@blro/body-scroll-lock": "^0.1.0",
+    "@blro/body-scroll-lock": "^0.2.0",
     "@vueuse/core": "^10.2.1",
     "date-fns": "^2.30.0",
     "lodash-es": "^4.17.21"
