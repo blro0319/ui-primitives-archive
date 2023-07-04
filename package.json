@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "i": "npm install --legacy-peer-deps",
+    "i": "npm install --legacy-peer-deps && cd docs && npm install && cd ..",
     "build": "npm run vue:build && npm run nuxt:build",
     "vue:dev": "npm run dev --workspace=packages/vue",
     "vue:build": "npm run build --workspace=packages/vue",
@@ -16,13 +16,8 @@
     "nuxt:dev": "npm run dev --workspace=packages/nuxt",
     "nuxt:build": "npm run build --workspace=packages/nuxt",
     "nuxt:publish": "npm publish --workspace=packages/nuxt --access=public",
-    "docs:dev": "vitepress dev docs --host --port 7250",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
-  },
-  "devDependencies": {
-    "@floating-ui/vue": "^1.0.1",
-    "markdown-it-deflist": "^2.1.0",
-    "vitepress": "1.0.0-beta.3"
+    "docs:dev": "cd docs && npm run dev && cd ..",
+    "docs:build": "cd docs && npm run build && cd ..",
+    "docs:preview": "cd docs && npm run preview && cd .."
   }
 }
