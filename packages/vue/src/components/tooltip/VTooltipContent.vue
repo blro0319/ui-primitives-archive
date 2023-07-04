@@ -10,11 +10,11 @@ withDefaults(defineProps<Props>(), {
   as: (): ComponentAs => "div",
 });
 
-const { visible } = useVTooltipContext("<VTooltipContent>");
+const { id, visible } = useVTooltipContext("<VTooltipContent>");
 </script>
 
 <template>
-  <component v-show="visible" :is="as">
+  <component v-show="visible" :is="as" :id="id">
     <slot />
   </component>
 </template>
