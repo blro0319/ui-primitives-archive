@@ -31,7 +31,7 @@
     "nuxt": "^3.0.0"
   },
   "dependencies": {
-    "@blro/ui-primitives-vue": "^0.2.0",
+    "@blro/ui-primitives-vue": "^0.2.1",
     "@nuxt/kit": "^3.6.1"
   },
   "devDependencies": {
