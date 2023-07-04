@@ -24,7 +24,6 @@ const rootElement = computed(() => {
   return unrefElement(root.value) as HTMLDialogElement | undefined;
 });
 const visible = ref(false);
-let activeElement: HTMLElement | null = null;
 let mode: "show" | "showModal" = "show";
 
 const cancelStack = useGlobalCancelStack(
@@ -47,7 +46,6 @@ async function internalShow(method: "show" | "showModal") {
   visible.value = true;
   await nextTick();
 
-  activeElement = document.activeElement as HTMLElement;
   rootElement.value?.[method]();
   if (method === "showModal") {
     disableBodyScroll();
@@ -59,6 +57,7 @@ async function internalShow(method: "show" | "showModal") {
 
 function close() {
   if (!visible.value) return;
+
   cancelStack.revoke({ historyBack: true });
   visible.value = false;
   if (!transition) afterClose();
@@ -67,7 +66,6 @@ function close() {
 transition?.$on("after-leave", afterClose);
 function afterClose() {
   rootElement.value?.close();
-  activeElement?.focus();
   if (mode === "showModal") enableBodyScroll();
 }
 
