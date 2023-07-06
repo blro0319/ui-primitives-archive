@@ -25,6 +25,8 @@ const bind = computed(() => {
 
 <template>
   <VRovingTabindexItem :as="as" v-bind="bind">
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </VRovingTabindexItem>
 </template>

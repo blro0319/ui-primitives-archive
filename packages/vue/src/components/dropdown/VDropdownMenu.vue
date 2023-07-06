@@ -38,6 +38,8 @@ const bind = computed(() => {
     v-bind="bind"
     ref="menu"
   >
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </VRovingTabindex>
 </template>

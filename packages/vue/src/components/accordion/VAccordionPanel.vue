@@ -23,6 +23,8 @@ const bind = computed(() => {
 
 <template>
   <VContent v-show="visible" :as="as" v-bind="bind">
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </VContent>
 </template>

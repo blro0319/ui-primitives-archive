@@ -58,6 +58,8 @@ function handlePointerEvent(event: PointerEvent, toVisible: boolean) {
     @pointerleave="handlePointerEvent($event, false)"
     @click="hide(true)"
   >
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </component>
 </template>

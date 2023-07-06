@@ -12,6 +12,8 @@ const { rootAttrs } = setVContentContext();
 
 <template>
   <component :is="as" v-bind="rootAttrs">
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </component>
 </template>
