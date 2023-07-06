@@ -9,6 +9,8 @@ withDefaults(defineProps<VFieldDescriptionProps>(), {
 
 <template>
   <VContentDescription :as="as">
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </VContentDescription>
 </template>

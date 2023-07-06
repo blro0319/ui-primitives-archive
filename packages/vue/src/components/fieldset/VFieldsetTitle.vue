@@ -16,6 +16,8 @@ onUpdated(() => nextTick(updateLegendText));
 
 <template>
   <component :is="as" v-bind="titleBind">
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </component>
 </template>

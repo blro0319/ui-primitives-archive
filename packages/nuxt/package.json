@@ -1,6 +1,6 @@
 {
   "name": "@blro/ui-primitives-nuxt",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/blro0319/ui-primitives.git",
@@ -31,15 +31,15 @@
     "nuxt": "^3.0.0"
   },
   "dependencies": {
-    "@blro/ui-primitives-vue": "^0.3.1",
-    "@nuxt/kit": "^3.6.1"
+    "@blro/ui-primitives-vue": "^0.4.0",
+    "@nuxt/kit": "^3.6.2"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.6.6",
+    "@nuxt/devtools": "^0.6.7",
     "@nuxt/module-builder": "^0.4.0",
-    "@nuxt/schema": "^3.6.1",
-    "@types/node": "^20.3.3",
-    "nuxt": "^3.6.1",
+    "@nuxt/schema": "^3.6.2",
+    "@types/node": "^20.4.0",
+    "nuxt": "^3.6.2",
     "sass": "^1.63.6"
   }
 }

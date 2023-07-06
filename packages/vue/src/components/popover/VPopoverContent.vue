@@ -32,7 +32,9 @@ function handleClose() {
     @close="handleClose"
     @cancel="handleClose"
   >
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </VDialog>
 </template>
 

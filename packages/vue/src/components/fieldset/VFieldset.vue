@@ -36,6 +36,8 @@ const bind = computed(() => {
       }"
       v-text="legendText"
     />
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </VContent>
 </template>

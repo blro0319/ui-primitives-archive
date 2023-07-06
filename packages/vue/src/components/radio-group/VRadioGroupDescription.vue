@@ -7,6 +7,8 @@ defineProps<VRadioGroupDescriptionProps>();
 
 <template>
   <VFieldsetDescription :as="as">
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </VFieldsetDescription>
 </template>

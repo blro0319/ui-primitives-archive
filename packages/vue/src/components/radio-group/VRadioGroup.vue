@@ -22,6 +22,8 @@ defineExpose({
 
 <template>
   <VFieldset :as="as" v-bind="rootBind">
-    <slot />
+    <template v-for="(_, name) in $slots" #[name]>
+      <slot :name="name" />
+    </template>
   </VFieldset>
 </template>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { unrefElement } from "@vueuse/core";
+import { omit } from "lodash-es";
 import { type ComponentPublicInstance, computed, ref, toRefs } from "vue";
 import { VRovingTabindexItem } from "~/components";
 import type { ComponentAs, VBindAttributes } from "~/types";
@@ -47,5 +48,8 @@ const bind = computed(() => {
 <template>
   <VRovingTabindexItem v-bind="bind" :as="as" :disabled="disabled">
     <slot>{{ value }}</slot>
+    <template v-for="(_, name) in omit($slots, 'default')" #[name]>
+      <slot :name="name" />
+    </template>
   </VRovingTabindexItem>
 </template>
