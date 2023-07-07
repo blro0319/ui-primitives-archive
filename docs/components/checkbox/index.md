@@ -57,7 +57,7 @@ import Snippet from "./Snippet.vue";
 : - 유형: `Rule<string, any>[]`
   - 기본값: `[]`
 
-  유효성 검사 규칙입니다. [유효성 검사](/guide/validation/)에서 사용됩니다.
+  유효성 검사 규칙입니다. [유효성 검사](/guide/basic/validation/)에서 사용됩니다.
 
   ::: warning
 
@@ -70,7 +70,7 @@ import Snippet from "./Snippet.vue";
 : - 유형: `Record<string, string>`
   - 기본값: `{}`
 
-  유효성 검사 메시지입니다. [유효성 검사](/guide/validation/)에서 사용됩니다.
+  유효성 검사 메시지입니다. [유효성 검사](/guide/basic/validation/)에서 사용됩니다.
 
 `disabled`
 
