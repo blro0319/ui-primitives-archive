@@ -48,4 +48,5 @@ export const COMPONENTS = [
   "VTooltip",
   "VTooltipContent",
   "VTooltipTrigger",
+  "VTransition",
 ] as const;
