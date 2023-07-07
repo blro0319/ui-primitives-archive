@@ -22,6 +22,8 @@ const { setContext, useContext } = createContext(
     const defaultValue = computed(() => toValue(options.defaultValue));
     const rules = computed(() => toValue(options.rules));
     const validityMessages = computed(() => toValue(options.validityMessages));
+    const maxLength = computed(() => toValue(options.maxLength));
+
     const reportedErrors = ref<string[]>([]);
     const id = useId();
 
@@ -62,6 +64,7 @@ const { setContext, useContext } = createContext(
       defaultValue,
       rules,
       validityMessages,
+      maxLength,
       reportedErrors,
       id,
       // Root
@@ -84,4 +87,5 @@ interface SetVCheckboxGroupContextOptions {
   defaultValue?: MaybeRefOrGetter<any[] | Set<any>>;
   rules?: MaybeRefOrGetter<Rule<string, any[] | Set<any>>[]>;
   validityMessages?: MaybeRefOrGetter<Partial<Record<string, string>>>;
+  maxLength?: MaybeRefOrGetter<number | null | undefined>;
 }

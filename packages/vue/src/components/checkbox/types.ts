@@ -14,6 +14,7 @@ export interface VCheckboxProps<RuleName extends string> {
    * ```
    */
   disabled?: boolean;
+  maxLength?: number;
 }
 export interface VCheckboxEmits {
   (e: "update:modelValue", value: any): void;

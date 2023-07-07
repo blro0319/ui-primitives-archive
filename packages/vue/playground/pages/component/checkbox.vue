@@ -14,6 +14,7 @@ const value2 = ref("on");
 const value3 = ref([]);
 const value4 = ref(new Set());
 const value5 = ref(false);
+const value6 = ref([]);
 </script>
 
 <template>
@@ -63,6 +64,14 @@ const value5 = ref(false);
         </VField>
         <button>Submit</button>
       </VForm>
+    </article>
+    <article>
+      <h2>Max Length</h2>
+      <VField v-for="i in [1, 2, 3]">
+        <VCheckbox v-model="value6" :value="i" :max-length="2" />
+        <VFieldLabel>{{ i }}</VFieldLabel>
+      </VField>
+      {{ value6 }}
     </article>
   </div>
 </template>

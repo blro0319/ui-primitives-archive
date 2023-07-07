@@ -21,7 +21,8 @@ const props = withDefaults(
 );
 const emit = defineEmits<VCheckboxGroupEmits<Value>>();
 
-const { modelValue, defaultValue, rules, validityMessages } = toRefs(props);
+const { modelValue, defaultValue, rules, validityMessages, maxLength } =
+  toRefs(props);
 
 const model = computed({
   get: () => modelValue.value,
@@ -33,6 +34,7 @@ const { rootBind, focus } = setVCheckboxGroupContext({
   defaultValue,
   rules,
   validityMessages,
+  maxLength,
 });
 
 defineExpose({ focus });
