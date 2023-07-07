@@ -13,11 +13,13 @@ const props = withDefaults(defineProps<VCheckboxProps<RuleName>>(), {
 });
 const emit = defineEmits<VCheckboxEmits>();
 
-const { modelValue, value, rules, validityMessages, disabled } = toRefs(props);
+const { modelValue, value, rules, validityMessages, disabled, maxLength } =
+  toRefs(props);
 const {
   value: groupModel,
   rules: groupRules,
   validityMessages: groupValidityMessages,
+  maxLength: groupMaxLength,
   reportedErrors: groupReportedErrors,
 } = useVCheckboxGroupContext() ?? {};
 const input = ref<HTMLInputElement>();
@@ -28,10 +30,26 @@ const model = computed({
     return modelValue?.value;
   },
   set(value) {
+    if (input.value?.checked && !getCheckable()) {
+      input.value.checked = false;
+      return;
+    }
+
     if (groupModel) groupModel.value = value;
     else emit("update:modelValue", value);
   },
 });
+function getCheckable() {
+  const max = groupMaxLength?.value ?? maxLength?.value;
+  if (typeof max !== "number") return true;
+  if (!Array.isArray(model.value) && !(model.value instanceof Set)) return true;
+
+  const currentLength = Array.isArray(model.value)
+    ? model.value.length
+    : model.value.size;
+
+  return currentLength < max;
+}
 
 const { inputBind, vFieldContext } = useVInput({
   value: model,

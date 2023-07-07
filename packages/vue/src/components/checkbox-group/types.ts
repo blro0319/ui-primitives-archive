@@ -35,6 +35,7 @@ export interface VCheckboxGroupProps<
    * ```
    */
   disabled?: boolean;
+  maxLength?: number;
 }
 export interface VCheckboxGroupEmits<Value extends any[] | Set<any>> {
   (e: "update:modelValue", value: Value): boolean;
