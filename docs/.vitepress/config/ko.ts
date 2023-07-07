@@ -104,6 +104,22 @@ export default {
               link: "/ko/components/form/",
             },
             {
+              text: "Number Input",
+              link: "/ko/components/number-input/",
+            },
+            {
+              text: "Popover",
+              link: "/ko/components/popover/",
+            },
+            {
+              text: "Radio",
+              link: "/ko/components/radio/",
+            },
+            {
+              text: "Radio Group",
+              link: "/ko/components/radio-group/",
+            },
+            {
               text: "Roving Tabindex",
               link: "/ko/components/roving-tabindex/",
             },
