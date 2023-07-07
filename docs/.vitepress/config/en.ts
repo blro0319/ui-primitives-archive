@@ -40,6 +40,10 @@ export default {
               text: "Create Custom Component",
               link: "/guide/basic/component/",
             },
+            {
+              text: "Validation",
+              link: "/guide/basic/validation/",
+            },
           ],
         },
         {
@@ -53,10 +57,82 @@ export default {
         {
           text: "Components",
           items: [
-            { text: "Button", link: "/components/button/" },
-            { text: "Dialog", link: "/components/dialog/" },
-            { text: "Tabs", link: "/components/tabs/" },
-            { text: "Tooltip", link: "/components/tooltip/" },
+            {
+              text: "Accordion",
+              link: "/components/accordion/",
+            },
+            {
+              text: "Button",
+              link: "/components/button/",
+            },
+            {
+              text: "Checkbox",
+              link: "/components/checkbox/",
+            },
+            {
+              text: "Checkbox Group",
+              link: "/components/checkbox-group/",
+            },
+            {
+              text: "Content",
+              link: "/components/content/",
+            },
+            {
+              text: "Dialog",
+              link: "/components/dialog/",
+            },
+            {
+              text: "Dropdown",
+              link: "/components/dropdown/",
+            },
+            {
+              text: "Field",
+              link: "/components/field/",
+            },
+            {
+              text: "Fieldset",
+              link: "/components/fieldset/",
+            },
+            {
+              text: "Form",
+              link: "/components/form/",
+            },
+            {
+              text: "Number Input",
+              link: "/components/number-input/",
+            },
+            {
+              text: "Popover",
+              link: "/components/popover/",
+            },
+            {
+              text: "Radio",
+              link: "/components/radio/",
+            },
+            {
+              text: "Radio Group",
+              link: "/components/radio-group/",
+            },
+            {
+              text: "Roving Tabindex",
+              link: "/components/roving-tabindex/",
+            },
+            {
+              text: "Tabs",
+              link: "/components/tabs/",
+            },
+            {
+              text: "Text Input",
+              link: "/components/text-input/",
+            },
+            {
+              text: "Tooltip",
+              link: "/components/tooltip/",
+            },
+            {
+              text: "Transition",
+              link: "/components/transition/",
+            },
           ],
         },
       ],
