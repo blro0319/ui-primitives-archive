@@ -1,7 +1,7 @@
-# Pre-requisites
+# 사전 지식
 
-This guide assumes you have a basic understanding of web technologies such as HTML, CSS, and JavaScript, as well as a basic understanding of Vue.js and TypeScript.
+이 가이드는 HTML, CSS, JavaScript와 같은 기본 Web 기술부터 Vue.js와 TypeScript의 기본 지식을 가지고 있다고 가정합니다.
 
-- If you don't know the basics of web technologies, check out [Learn web development](https://developer.mozilla.org/en-US/docs/Learn).
-- If you don't know Vue.js, check out [Vue.js documentation](https://vuejs.org/guide/introduction.html).
-- If you don't know TypeScript, check out [TypeScript documentation](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html).
+- 기본 웹 기술을 모르는 경우 [HTML - Web 개발 학습하기](https://developer.mozilla.org/en-US/docs/Learn/HTML)를 확인해보세요.
+- Vue.js를 모르는 경우 [Vue.js 문서](https://vuejs.org/guide/introduction.html)를 확인해보세요.
+- TypeScript를 모르는 경우 [TypeScript 문서](https://www.typescriptlang.org/docs/handbook/typescript-from-scratch.html)를 확인해보세요.
