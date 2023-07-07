@@ -50,6 +50,10 @@ export default {
               text: "나만의 컴포넌트 만들기",
               link: "/ko/guide/basic/component/",
             },
+            {
+              text: "유효성 검증",
+              link: "/ko/guide/basic/validation/",
+            },
           ],
         },
         {
