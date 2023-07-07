@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { VButton } from "~/components";
 import { useGlobalEscapeStack } from "~/composables";
 import type { ComponentAs } from "~/types";
 import { useVTooltipContext } from "./context";
 import type { VTooltipTriggerProps } from "./types";
 
 withDefaults(defineProps<VTooltipTriggerProps>(), {
-  as: (): ComponentAs => VButton,
+  as: (): ComponentAs => "button",
 });
 
 const { enterDelay, leaveDelay, id, trigger, visible, hooks } =
