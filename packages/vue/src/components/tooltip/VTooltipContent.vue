@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import type { ComponentAs } from "~/types";
 import { useVTooltipContext } from "./context";
+import type { VTooltipContentProps } from "./types";
 
-interface Props {
-  as?: ComponentAs;
-}
-
-withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<VTooltipContentProps>(), {
   as: (): ComponentAs => "div",
 });
 
