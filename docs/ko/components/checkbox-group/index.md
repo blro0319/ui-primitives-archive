@@ -38,7 +38,7 @@ import Snippet from "./Snippet.vue";
 : - 유형: `string`
   - 기본값: `"fieldset"`
 
-  [`<fieldset>` 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/fieldset)요소로 렌덩링되어야 합니다.
+  [`<fieldset>` 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/fieldset)요소로 렌더링되어야 합니다.
 
 `modelValue` (필수)
 
