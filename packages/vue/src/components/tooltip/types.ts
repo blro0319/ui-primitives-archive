@@ -10,9 +10,21 @@ export interface VTooltipEmits {
 }
 
 export interface VTooltipTriggerProps {
+  /**
+   * @default
+   * ```ts
+   * "button"
+   * ```
+   */
   as?: ComponentAs;
 }
 
 export interface VTooltipContentProps {
+  /**
+   * @default
+   * ```ts
+   * "div"
+   * ```
+   */
   as?: ComponentAs;
 }
