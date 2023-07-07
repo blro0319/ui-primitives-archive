@@ -26,12 +26,6 @@ import Snippet from "./Snippet.vue";
 
 ### 속성
 
-`transition`
-
-: - 유형: [`TransitionProps`](https://vuejs.org/api/built-in-components.html#transition)
-
-  다이얼로그가 열리고 닫힐 때 사용될 전환 효과 설정입니다. [`<Transition>` 컴포넌트](https://vuejs.org/guide/built-ins/transition.html#the-transition-component)의 속성과 같습니다.
-
 `cancelTrigger`
 : - 유형: `"all" | "escape" | "history"`
   - 기본값: `"all"`
@@ -88,14 +82,6 @@ import Snippet from "./Snippet.vue";
 
   다이얼로그가 열릴 때 발생합니다.
 
-`after-show`
-
-: ```ts
-  function onAfterShow(): void;
-  ```
-
-  다이얼로그가 열린 후 발생합니다. 전환 효과가 지정되었을 때 효과가 끝난 후 발생합니다.
-
 `close`
 
 : ```ts
@@ -103,14 +89,6 @@ import Snippet from "./Snippet.vue";
   ```
 
   다이얼로그가 닫힐 때 발생합니다.
-
-`after-close`
-
-: ```ts
-  function onAfterClose(): void;
-  ```
-
-  다이얼로그가 닫힌 후 발생합니다. 전환 효과가 지정되었을 때 효과가 끝난 후 발생합니다.
 
 `cancel`
 

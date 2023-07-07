@@ -4,6 +4,7 @@ import {
   VDialog,
   VDialogDescription,
   VDialogTitle,
+  VTransition,
 } from "@blro/ui-primitives-vue";
 import { ref } from "vue";
 
@@ -25,18 +26,15 @@ function close() {
   <div class="snippet">
     <button class="button" @click="show()">열기</button>
     <button class="button" @click="showModal()">모달로 열기</button>
-    <VDialog
-      :transition="{ name: 'dialog' }"
-      cancel-trigger="escape"
-      ref="dialog"
-      class="dialog"
-    >
-      <VDialogTitle as="h2" class="title">안녕, 다이얼로그!</VDialogTitle>
-      <VDialogDescription as="p">
-        다이얼로그는 모달이나 모달이 아닌 형태로 열 수 있습니다.
-      </VDialogDescription>
-      <button class="button" @click="close()">닫기</button>
-    </VDialog>
+    <VTransition name="dialog">
+      <VDialog cancel-trigger="escape" ref="dialog" class="dialog">
+        <VDialogTitle as="h2" class="title">안녕, 다이얼로그!</VDialogTitle>
+        <VDialogDescription as="p">
+          다이얼로그는 모달이나 모달이 아닌 형태로 열 수 있습니다.
+        </VDialogDescription>
+        <button class="button" @click="close()">닫기</button>
+      </VDialog>
+    </VTransition>
   </div>
 </template>
 <!-- #endregion template -->
@@ -75,6 +73,7 @@ p {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+/* 전환 효과 */
 .dialog-enter-active,
 .dialog-leave-active {
   transition-property: opacity, transform;
