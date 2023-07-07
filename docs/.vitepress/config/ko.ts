@@ -119,6 +119,10 @@ export default {
               text: "Tooltip",
               link: "/ko/components/tooltip/",
             },
+            {
+              text: "Transition",
+              link: "/ko/components/transition/",
+            },
           ],
         },
       ],

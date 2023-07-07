@@ -14,3 +14,4 @@
 - [Tabs](/ko/components/tabs/)
 - [Text Input](/ko/components/text-input/)
 - [Tooltip](/ko/components/tooltip/)
+- [Transition](/ko/components/transition/)
