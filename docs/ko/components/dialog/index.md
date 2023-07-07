@@ -20,9 +20,18 @@ import Snippet from "./Snippet.vue";
 <<< @/ko/components/dialog/Snippet.vue#script [Script]
 <<< @/ko/components/dialog/Snippet.vue#styles [Styles]
 
-## `<VDialog>`
-
 :::
+
+## 구조
+
+```vue-html
+<VDialog>
+  <VDialogTitle />
+  <VDialogDescription />
+</VDialog>
+```
+
+## `<VDialog>`
 
 ### 속성
 
