@@ -6,7 +6,7 @@ export function useGlobalHistoryStack(handler: (event: PopStateEvent) => void) {
     if (!useGlobalHistoryStack.initialized) addWindowHandler();
 
     useGlobalHistoryStack.stack.push(handler);
-    history.pushState(null, "");
+    if (useGlobalHistoryStack.stack.length === 1) history.pushState(null, "");
   }
   function revoke(
     options?: UseGlobalHistoryStackRevokeOptions
@@ -54,6 +54,7 @@ function handlePopState(event: PopStateEvent) {
     handler?.(event);
   }
   if (!useGlobalHistoryStack.stack.length) removeWindowHandler();
+  if (useGlobalHistoryStack.stack.length) history.pushState(null, "");
 }
 
 export interface UseGlobalHistoryStackRevokeOptions {

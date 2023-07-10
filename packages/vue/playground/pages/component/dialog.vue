@@ -15,6 +15,8 @@ const cancelEscape = ref<InstanceType<typeof VDialog>>();
 const cancelHistory = ref<InstanceType<typeof VDialog>>();
 const preventCancel = ref<InstanceType<typeof VDialog>>();
 const halfPreventCancel = ref<InstanceType<typeof VDialog>>();
+const nested = ref<InstanceType<typeof VDialog>>();
+const nested2 = ref<InstanceType<typeof VDialog>>();
 
 function preventCancelHalf(event: Event) {
   if (Math.random() < 0.5) event.preventDefault();
@@ -94,6 +96,17 @@ function preventCancelHalf(event: Event) {
         50% chance to prevent cancel.
         <button @click="halfPreventCancel?.close()">Close</button>
         <button @click="halfPreventCancel?.cancel()">Cancel</button>
+      </VDialog>
+    </article>
+    <article>
+      <h2>Nested Dialog</h2>
+      <div class="dialog__button-group">
+        <button @click="nested?.showModal()">Show</button>
+      </div>
+      <VDialog ref="nested">
+        This is a dialog.
+        <button @click="nested2?.showModal()">Show Nested</button>
+        <VDialog ref="nested2">This is a nested dialog.</VDialog>
       </VDialog>
     </article>
   </div>
