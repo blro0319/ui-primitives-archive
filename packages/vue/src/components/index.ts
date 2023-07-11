@@ -10,6 +10,7 @@ export * from "./fieldset";
 export * from "./form";
 export * from "./number-input";
 export * from "./popover";
+export * from "./progress";
 export * from "./radio";
 export * from "./radio-group";
 export * from "./roving-tabindex";
