@@ -12,6 +12,7 @@
 - [Form](/ko/components/form/)
 - [Number Input](/ko/components/number-input/)
 - [Popover](/ko/components/popover/)
+- [Progress](/ko/components/progress/)
 - [Radio](/ko/components/radio/)
 - [Radio Group](/ko/components/radio-group/)
 - [Roving Tabindex](/ko/components/roving-tabindex/)

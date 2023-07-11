@@ -12,6 +12,7 @@
 - [Form](/components/form/)
 - [Number Input](/components/number-input/)
 - [Popover](/components/popover/)
+- [Progress](/components/progress/)
 - [Radio](/components/radio/)
 - [Radio Group](/components/radio-group/)
 - [Roving Tabindex](/components/roving-tabindex/)
