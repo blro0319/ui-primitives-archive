@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { omit } from "lodash-es";
 import { computed, toRefs } from "vue";
 import { VContent } from "~/components";
 import type { ComponentAs, VBindAttributes } from "~/types";
@@ -36,7 +37,8 @@ const bind = computed(() => {
       }"
       v-text="legendText"
     />
-    <template v-for="(_, name) in $slots" #[name]>
+    <slot />
+    <template v-for="(_, name) in omit($slots, 'default')" #[name]>
       <slot :name="name" />
     </template>
   </VContent>
