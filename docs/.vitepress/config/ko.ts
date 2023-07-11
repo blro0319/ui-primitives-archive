@@ -116,6 +116,10 @@ export default {
               link: "/ko/components/popover/",
             },
             {
+              text: "Progress",
+              link: "/ko/components/progress/",
+            },
+            {
               text: "Radio",
               link: "/ko/components/radio/",
             },

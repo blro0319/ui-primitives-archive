@@ -106,6 +106,10 @@ export default {
               link: "/components/popover/",
             },
             {
+              text: "Progress",
+              link: "/components/progress/",
+            },
+            {
               text: "Radio",
               link: "/components/radio/",
             },
