@@ -37,6 +37,7 @@ export const COMPONENTS = [
   "VPopover",
   "VPopoverContent",
   "VPopoverTrigger",
+  "VProgress",
   "VRadio",
   "VRadioGroup",
   "VRadioGroupDescription",
