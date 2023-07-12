@@ -7,10 +7,10 @@ const props = withDefaults(defineProps<VTextInputProps<RuleName>>(), {
   type: "text",
   disabled: false,
 });
-const emit = defineEmits<VTextInputEmits>();
+const emit = defineEmits<VTextInputEmits<RuleName>>();
 
 const { modelValue, defaultValue, rules, validityMessages, pattern } =
-  toRefs<VTextInputProps<string>>(props);
+  toRefs<VTextInputProps<RuleName>>(props);
 const root = ref<HTMLInputElement>();
 
 const model = computed({
@@ -18,13 +18,15 @@ const model = computed({
   set: (value) => emit("update:modelValue", value),
 });
 
-const { inputBind } = useVInput({
+const { field, inputBind } = useVInput({
   value: model,
   defaultValue,
   rules: computed(() => rules?.value || []),
   validityMessages: computed(() => validityMessages?.value || {}),
   focus,
 });
+field.$on("valid", (event) => emit("valid", event));
+field.$on("invalid", (event) => emit("invalid", event));
 
 function focus(options: FocusOptions) {
   root.value?.focus(options);
