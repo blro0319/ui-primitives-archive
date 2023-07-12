@@ -58,3 +58,21 @@
   - 기본값: `undefined`
 
   입력될 수 있는 문자열의 패턴입니다. 패턴과 일치하지 않으면 입력이 취소됩니다. 유효성 검사 규칙에는 포함되지 않습니다.
+
+### 이벤트
+
+`valid`
+
+: ```ts
+  function onValid(event: UseFieldValidateResult<string>): void;
+  ```
+
+  유효성 검사를 통과하면 발생합니다.
+
+`invalid`
+
+: ```ts
+  function onInvalid(event: UseFieldValidateResult<string>): void;
+  ```
+
+  유효성 검사를 실패하면 발생합니다.

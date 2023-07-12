@@ -62,3 +62,21 @@
   - 기본값: `false`
 
   설정되면 입력을 비활성화합니다.
+
+### 이벤트
+
+`valid`
+
+: ```ts
+  function onValid(event: UseFieldValidateResult<string>): void;
+  ```
+
+  유효성 검사를 통과하면 발생합니다.
+
+`invalid`
+
+: ```ts
+  function onInvalid(event: UseFieldValidateResult<string>): void;
+  ```
+
+  유효성 검사를 실패하면 발생합니다.
