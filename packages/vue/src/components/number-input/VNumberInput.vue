@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<VNumberInputProps<RuleName>>(), {
   max: Number.MAX_SAFE_INTEGER,
   step: 1 / MIN_STEP_LEVEL,
 });
-const emit = defineEmits<VNumberInputEmits>();
+const emit = defineEmits<VNumberInputEmits<RuleName>>();
 
 const {
   modelValue,
@@ -36,13 +36,15 @@ const model = computed<number>({
   },
 });
 
-const { inputBind } = useVInput({
+const { field, inputBind } = useVInput({
   value: model,
   defaultValue,
   rules,
   validityMessages,
   focus,
 });
+field.$on("valid", (event) => emit("valid", event));
+field.$on("invalid", (event) => emit("invalid", event));
 
 const displayModel = ref(String(model.value));
 watch(displayModel, () => {

@@ -1,4 +1,4 @@
-import type { Rule } from "~/validate";
+import type { Rule, UseFieldValidateResult } from "~/validate";
 
 export interface VNumberInputProps<RuleName extends string> {
   modelValue: number;
@@ -37,6 +37,8 @@ export interface VNumberInputProps<RuleName extends string> {
    */
   disabled?: boolean;
 }
-export interface VNumberInputEmits {
+export interface VNumberInputEmits<RuleName extends string> {
   (e: "update:modelValue", value: number): void;
+  (e: "invalid", event: UseFieldValidateResult<RuleName>): void;
+  (e: "valid", event: UseFieldValidateResult<RuleName>): void;
 }
