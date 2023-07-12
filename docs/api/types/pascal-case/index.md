@@ -8,4 +8,4 @@
 type PascalCase<S extends string> = Capitalize<CamelCase<S>>;
 ```
 
-> [`CamelCase`](/api/types/camel-case)
+> [`CamelCase`](/api/types/camel-case/)

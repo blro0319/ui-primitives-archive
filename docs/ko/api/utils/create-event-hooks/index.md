@@ -19,4 +19,4 @@ function createEventHooks<Hooks extend Record<string, AnyFunction>>(): {
 };
 ```
 
-> [`AnyFunction`](/ko/api/types/any-function)
+> [`AnyFunction`](/ko/api/types/any-function/)
