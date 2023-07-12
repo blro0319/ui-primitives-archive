@@ -1,7 +1,9 @@
 # MaybePromise
 
+## 개요
+
+값 혹은 `Promise`로 감싸진 값을 나타냅니다.
+
 ```ts
 type MaybePromise<T> = T | Promise<T>;
 ```
-
-[`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)일 수 있는 유형을 나타냅니다.

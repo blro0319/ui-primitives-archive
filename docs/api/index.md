@@ -1,27 +1,33 @@
-# API Reference
+# API 참조
 
-## Composables
+## 컴포저블
 
-- [useCurrentVNode](/ko/api/composables/use-current-v-node/)
-- [useGlobalCancelStack](/ko/api/composables/use-global-cancel-stack/)
-- [useGlobalEscapeStack](/ko/api/composables/use-global-escape-stack/)
-- [useGlobalHistoryStack](/ko/api/composables/use-global-history-stack/)
-- [useInstance](/ko/api/composables/use-instance/)
-- [useParentVNode](/ko/api/composables/use-parent-v-node/)
+- [useGlobalCancelStack](/api/composables/use-global-cancel-stack/)
+- [useGlobalEscapeStack](/api/composables/use-global-escape-stack/)
+- [useGlobalHistoryStack](/api/composables/use-global-history-stack/)
+- [useId](/api/composables/use-id/)
+- [useInputSelectionRange](/api/composables/use-input-selection-range/)
+- [useVInput](/api/composables/use-v-input/)
 
-## Types
+## 유형
 
-- [AnyFunction](/ko/api/types/any-function/)
-- [ComponentAs](/ko/api/types/component-as/)
-- [MaybeArray](/ko/api/types/maybe-array/)
-- [MaybePromise](/ko/api/types/maybe-promise/)
-- [VCompoundType](/ko/api/types/v-compound-type/)
+- [AnyFunction](/api/types/any-function/)
+- [CamelCase](/api/types/camel-case/)
+- [ComponentAs](/api/types/component-as/)
+- [MaybeArray](/api/types/maybe-array/)
+- [MaybePromise](/api/types/maybe-promise/)
+- [MaybeString](/api/types/maybe-string/)
+- [OptionalJoin](/api/types/optional-join/)
+- [PascalCase](/api/types/pascal-case/)
+- [Prettify](/api/types/prettify/)
+- [VBindAttributes](/api/types/v-bind-attributes/)
 
-## Utilities
+## 유틸리티
 
-- [createContext](/ko/api/utils/create-context/)
-- [createEventHooks](/ko/api/utils/create-event-hooks/)
-- [filterCompoundVNodes](/ko/api/utils/filter-compound-v-nodes/)
-- [matchCompoundType](/ko/api/utils/match-compound-type/)
-- [randomInt](/ko/api/utils/random-int/)
-- [randomStr](/ko/api/utils/random-str/)
+- [camelCase](/api/utils/camel-case/)
+- [createContext](/api/utils/create-context/)
+- [createEventHooks](/api/utils/create-event-hooks/)
+- [pascalCase](/api/utils/pascal-case/)
+- [randomInt](/api/utils/random-int/)
+- [randomStr](/api/utils/random-str/)
+- [upperFirst](/api/utils/upper-first/)

@@ -145,10 +145,6 @@ export default {
           text: "Composables",
           items: [
             {
-              text: "useCurrentVNode",
-              link: "/api/composables/use-current-v-node/",
-            },
-            {
               text: "useGlobalCancelStack",
               link: "/api/composables/use-global-cancel-stack/",
             },
@@ -161,28 +157,71 @@ export default {
               link: "/api/composables/use-global-history-stack/",
             },
             {
-              text: "useInstance",
-              link: "/api/composables/use-instance/",
+              text: "useId",
+              link: "/api/composables/use-id/",
             },
             {
-              text: "useParentVNode",
-              link: "/api/composables/use-parent-v-node/",
+              text: "useInputSelectionRange",
+              link: "/api/composables/use-input-selection-range/",
+            },
+            {
+              text: "useVInput",
+              link: "/api/composables/use-v-input/",
             },
           ],
         },
         {
           text: "Types",
           items: [
-            { text: "AnyFunction", link: "/api/types/any-function/" },
-            { text: "ComponentAs", link: "/api/types/component-as/" },
-            { text: "MaybeArray", link: "/api/types/maybe-array/" },
-            { text: "MaybePromise", link: "/api/types/maybe-promise/" },
-            { text: "VCompoundType", link: "/api/types/v-compound-type/" },
+            {
+              text: "AnyFunction",
+              link: "/api/types/any-function/",
+            },
+            {
+              text: "CamelCase",
+              link: "/api/types/camel-case/",
+            },
+            {
+              text: "ComponentAs",
+              link: "/api/types/component-as/",
+            },
+            {
+              text: "MaybeArray",
+              link: "/api/types/maybe-array/",
+            },
+            {
+              text: "MaybePromise",
+              link: "/api/types/maybe-promise/",
+            },
+            {
+              text: "MaybeString",
+              link: "/api/types/maybe-string/",
+            },
+            {
+              text: "OptionalJoin",
+              link: "/api/types/optional-join/",
+            },
+            {
+              text: "PascalCase",
+              link: "/api/types/pascal-case/",
+            },
+            {
+              text: "Prettify",
+              link: "/api/types/prettify/",
+            },
+            {
+              text: "VBindAttributes",
+              link: "/api/types/v-bind-attributes/",
+            },
           ],
         },
         {
           text: "Utils",
           items: [
+            {
+              text: "camelCase",
+              link: "/api/utils/camel-case/",
+            },
             {
               text: "createContext",
               link: "/api/utils/create-context/",
@@ -192,12 +231,8 @@ export default {
               link: "/api/utils/create-event-hooks/",
             },
             {
-              text: "filterCompoundVNodes",
-              link: "/api/utils/filter-compound-v-nodes/",
-            },
-            {
-              text: "matchCompoundType",
-              link: "/api/utils/match-compound-type/",
+              text: "pascalCase",
+              link: "/api/utils/pascal-case/",
             },
             {
               text: "randomInt",
@@ -206,6 +241,10 @@ export default {
             {
               text: "randomStr",
               link: "/api/utils/random-str/",
+            },
+            {
+              text: "upperFirst",
+              link: "/api/utils/upper-first/",
             },
           ],
         },
