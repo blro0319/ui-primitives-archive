@@ -8,4 +8,4 @@
 function pascalCase<S extends string>(string: S): PascalCase<S>;
 ```
 
-> [`PascalCase`](/api/types/pascal-case)
+> [`PascalCase`](/api/types/pascal-case/)
