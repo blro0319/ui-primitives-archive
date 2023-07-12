@@ -7,10 +7,14 @@ import {
   VTextInput,
 } from "~/components";
 import { randomStr } from "~/utils";
+import { required } from "~/validate";
 
 const value1 = ref("");
 const value2 = ref("");
+
 const value3 = ref("");
+const invalid3 = ref(false);
+
 const value4 = ref("");
 const value5 = ref("");
 </script>
@@ -30,12 +34,18 @@ const value5 = ref("");
     </article>
     <article>
       <h2>Field</h2>
-      <VField>
+      <VField report-when="change">
         <VFieldLabel>Label</VFieldLabel>
         <VFieldDescription>Description</VFieldDescription>
-        <VTextInput v-model="value3" />
+        <VTextInput
+          v-model="value3"
+          :rules="[required()]"
+          @valid="invalid3 = false"
+          @invalid="invalid3 = true"
+        />
       </VField>
       <output class="out">{{ value3 }}</output>
+      <output class="out">{{ invalid3 }}</output>
     </article>
     <article>
       <h2>Dynamic Value</h2>
