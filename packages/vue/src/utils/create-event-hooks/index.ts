@@ -1,6 +1,28 @@
 import { tryOnBeforeUnmount } from "@vueuse/core";
 import type { AnyFunction } from "~/types";
 
+/**
+ * ---
+ *
+ * [English](https://ui-primitives.blro.dev/api/utils/create-event-hooks/) |
+ * [한국어](https://ui-primitives.blro.dev/ko/api/utils/create-event-hooks/)
+ *
+ * ---
+ *
+ * **English**
+ *
+ * Creates event hooks. Similar to
+ * [VueUse `createEventHook`](https://vueuse.org/shared/createEventHook/),
+ * but can create multiple hooks at once.
+ *
+ * ---
+ *
+ * **한국어**
+ *
+ * 이벤트 후크들을 생성합니다.
+ * [VueUse의 `createEventHook`](https://vueuse.org/shared/createEventHook/)와
+ * 비슷하지만, 여러 후크를 한 번에 생성할 수 있습니다.
+ */
 export function createEventHooks<L extends Record<string, AnyFunction>>() {
   const listenerMap = new Map<keyof L, Set<L[keyof L]>>();
 
