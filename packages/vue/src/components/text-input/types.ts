@@ -23,6 +23,6 @@ export interface VTextInputProps<RuleName extends string> {
 }
 export interface VTextInputEmits<RuleName extends string> {
   (e: "update:modelValue", value: string): void;
-  (e: "invalid", event: UseFieldValidateResult<RuleName>): void;
   (e: "valid", event: UseFieldValidateResult<RuleName>): void;
+  (e: "invalid", event: UseFieldValidateResult<RuleName>): void;
 }
