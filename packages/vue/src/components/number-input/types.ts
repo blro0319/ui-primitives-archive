@@ -39,6 +39,6 @@ export interface VNumberInputProps<RuleName extends string> {
 }
 export interface VNumberInputEmits<RuleName extends string> {
   (e: "update:modelValue", value: number): void;
-  (e: "invalid", event: UseFieldValidateResult<RuleName>): void;
   (e: "valid", event: UseFieldValidateResult<RuleName>): void;
+  (e: "invalid", event: UseFieldValidateResult<RuleName>): void;
 }
