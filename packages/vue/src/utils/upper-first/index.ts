@@ -19,7 +19,7 @@ import { upperFirst as lodashUpperFirst } from "lodash-es";
  *
  * **한국어**
  *
- * `string`의 첫 글자를 대문자로 변환합니다.
+ * 문자열의 첫 글자를 대문자로 변환합니다.
  * [lodash의 `upperFirst`](https://lodash.com/docs/4.17.15#upperFirst)와
  * 같지만, 반환 유형이 `string`이 아닌
  * [`Capitalize`](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html#capitalizestringtype)입니다.
