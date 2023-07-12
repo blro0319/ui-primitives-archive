@@ -27,13 +27,17 @@ export type VBindAttributes<
  *
  * Represents a tag name or a component.
  * Used in the `as` prop of a component.
+ * Same as the first argument of the
+ * [Vue `h()` function](https://vuejs.org/api/render-function.html#h).
  *
  * ---
  *
  * **한국어**
  *
  * 태그 이름 혹은 컴포넌트를 나타냅니다.
- * 컴포넌트의 `as` 속성에 사용되는 유형입니다.
+ * 컴포넌트의 `as` 속성에 사용됩니다.
+ * [Vue `h()` 함수](https://vuejs.org/api/render-function.html#h)의
+ * 첫 번째 인자와 같습니다.
  */
 export type ComponentAs = string | Component;
 
