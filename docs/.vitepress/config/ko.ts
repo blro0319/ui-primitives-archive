@@ -155,10 +155,6 @@ export default {
           text: "컴포저블",
           items: [
             {
-              text: "useCurrentVNode",
-              link: "/ko/api/composables/use-current-v-node/",
-            },
-            {
               text: "useGlobalCancelStack",
               link: "/ko/api/composables/use-global-cancel-stack/",
             },
@@ -171,28 +167,71 @@ export default {
               link: "/ko/api/composables/use-global-history-stack/",
             },
             {
-              text: "useInstance",
-              link: "/ko/api/composables/use-instance/",
+              text: "useId",
+              link: "/ko/api/composables/use-id/",
             },
             {
-              text: "useParentVNode",
-              link: "/ko/api/composables/use-parent-v-node/",
+              text: "useInputSelectionRange",
+              link: "/ko/api/composables/use-input-selection-range/",
+            },
+            {
+              text: "useVInput",
+              link: "/ko/api/composables/use-v-input/",
             },
           ],
         },
         {
           text: "유형",
           items: [
-            { text: "AnyFunction", link: "/ko/api/types/any-function/" },
-            { text: "ComponentAs", link: "/ko/api/types/component-as/" },
-            { text: "MaybeArray", link: "/ko/api/types/maybe-array/" },
-            { text: "MaybePromise", link: "/ko/api/types/maybe-promise/" },
-            { text: "VCompoundType", link: "/ko/api/types/v-compound-type/" },
+            {
+              text: "AnyFunction",
+              link: "/ko/api/types/any-function/",
+            },
+            {
+              text: "CamelCase",
+              link: "/ko/api/types/camel-case/",
+            },
+            {
+              text: "ComponentAs",
+              link: "/ko/api/types/component-as/",
+            },
+            {
+              text: "MaybeArray",
+              link: "/ko/api/types/maybe-array/",
+            },
+            {
+              text: "MaybePromise",
+              link: "/ko/api/types/maybe-promise/",
+            },
+            {
+              text: "MaybeString",
+              link: "/ko/api/types/maybe-string/",
+            },
+            {
+              text: "OptionalJoin",
+              link: "/ko/api/types/optional-join/",
+            },
+            {
+              text: "PascalCase",
+              link: "/ko/api/types/pascal-case/",
+            },
+            {
+              text: "Prettify",
+              link: "/ko/api/types/prettify/",
+            },
+            {
+              text: "VBindAttributes",
+              link: "/ko/api/types/v-bind-attributes/",
+            },
           ],
         },
         {
           text: "유틸리티",
           items: [
+            {
+              text: "camelCase",
+              link: "/ko/api/utils/camel-case/",
+            },
             {
               text: "createContext",
               link: "/ko/api/utils/create-context/",
@@ -202,12 +241,8 @@ export default {
               link: "/ko/api/utils/create-event-hooks/",
             },
             {
-              text: "filterCompoundVNodes",
-              link: "/ko/api/utils/filter-compound-v-nodes/",
-            },
-            {
-              text: "matchCompoundType",
-              link: "/ko/api/utils/match-compound-type/",
+              text: "pascalCase",
+              link: "/ko/api/utils/pascal-case/",
             },
             {
               text: "randomInt",
@@ -216,6 +251,10 @@ export default {
             {
               text: "randomStr",
               link: "/ko/api/utils/random-str/",
+            },
+            {
+              text: "upperFirst",
+              link: "/ko/api/utils/upper-first/",
             },
           ],
         },
