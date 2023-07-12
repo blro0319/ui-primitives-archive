@@ -6,8 +6,11 @@ import {
   VFieldLabel,
   VNumberInput,
 } from "~/components";
+import { min } from "~/validate";
 
 const value1 = ref(0);
+const invalid1 = ref(false);
+
 const value2 = ref(0);
 const value3 = ref(0);
 const value4 = ref(0);
@@ -19,12 +22,18 @@ const value5 = ref(0);
     <h1>VNumberInput</h1>
     <article>
       <h2>Basic Usage</h2>
-      <VField>
+      <VField report-when="change">
         <VFieldLabel>Label</VFieldLabel>
         <VFieldDescription>Description</VFieldDescription>
-        <VNumberInput v-model="value1" />
+        <VNumberInput
+          v-model="value1"
+          :rules="[min(5)]"
+          @valid="invalid1 = false"
+          @invalid="invalid1 = true"
+        />
       </VField>
       <output class="out">{{ value1 }}</output>
+      <output class="out">{{ invalid1 }}</output>
     </article>
     <article>
       <h2>Min/Max</h2>
