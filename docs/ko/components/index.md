@@ -16,6 +16,7 @@
 - [Radio](/ko/components/radio/)
 - [Radio Group](/ko/components/radio-group/)
 - [Roving Tabindex](/ko/components/roving-tabindex/)
+- [Switch](/ko/components/switch/)
 - [Tabs](/ko/components/tabs/)
 - [Text Input](/ko/components/text-input/)
 - [Tooltip](/ko/components/tooltip/)
