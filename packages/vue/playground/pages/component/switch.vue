@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { VField, VFieldDescription, VFieldLabel, VSwitch } from "~/components";
+import {
+  VField,
+  VFieldDescription,
+  VFieldError,
+  VFieldLabel,
+  VForm,
+  VSwitch,
+} from "~/components";
+import { required } from "~/validate";
 
 defineOptions({
   name: "VSwitchTest",
@@ -8,6 +16,7 @@ defineOptions({
 
 const value1 = ref(false);
 const value2 = ref("on");
+const value3 = ref(false);
 </script>
 
 <template>
@@ -29,6 +38,19 @@ const value2 = ref("on");
         </VSwitch>
         <VFieldDescription>on/off</VFieldDescription>
       </VField>
+    </article>
+    <article>
+      <h2>Validation</h2>
+      <VForm>
+        <VField>
+          <VFieldLabel>Label</VFieldLabel>
+          <VSwitch v-model="value3" :rules="[required()]">
+            {{ value3 }}
+          </VSwitch>
+          <VFieldError />
+        </VField>
+        <button>Submit</button>
+      </VForm>
     </article>
   </div>
 </template>
