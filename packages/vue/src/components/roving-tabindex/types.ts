@@ -1,4 +1,7 @@
+import type { MaybeRefOrGetter } from "vue";
 import type { ComponentAs } from "~/types";
+
+// ---------- Root ---------- //
 
 export interface VRovingTabindexProps {
   /**
@@ -31,6 +34,13 @@ export interface VRovingTabindexChangeEvent {
   target: HTMLElement;
   old?: HTMLElement;
 }
+
+export interface SetVRovingTabindexContextOptions {
+  orientation?: MaybeRefOrGetter<VRovingTabindexOrientation>;
+  loop?: MaybeRefOrGetter<boolean>;
+}
+
+// ---------- Item ---------- //
 
 export interface VRovingTabindexItemProps {
   /**

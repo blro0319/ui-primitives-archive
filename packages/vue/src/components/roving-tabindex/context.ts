@@ -2,7 +2,6 @@ import { unrefElement } from "@vueuse/core";
 import {
   type ComponentPublicInstance,
   computed,
-  type MaybeRefOrGetter,
   nextTick,
   onMounted,
   onUpdated,
@@ -13,8 +12,8 @@ import { useId } from "~/composables";
 import type { VBindAttributes } from "~/types";
 import { createContext, createEventHooks } from "~/utils";
 import type {
+  SetVRovingTabindexContextOptions,
   VRovingTabindexChangeEvent,
-  VRovingTabindexOrientation,
 } from "./types";
 
 const { setContext, useContext } = createContext(
@@ -144,8 +143,3 @@ const { setContext, useContext } = createContext(
 
 export const setVRovingTabindexContext = setContext;
 export const useVRovingTabindexContext = useContext;
-
-export interface SetVRovingTabindexContextOptions {
-  orientation?: MaybeRefOrGetter<VRovingTabindexOrientation>;
-  loop?: MaybeRefOrGetter<boolean>;
-}

@@ -1,5 +1,8 @@
 import { computed, type MaybeRefOrGetter, toValue } from "vue";
 import type { FieldLike, FieldValidateResult } from "~/validate";
+import type { FormValidateResult } from "./types";
+
+export * from "./types";
 
 export function createForm(fields: MaybeRefOrGetter<FieldLike[]>) {
   const $fields = computed(() => toValue(fields));
@@ -35,11 +38,4 @@ export function createForm(fields: MaybeRefOrGetter<FieldLike[]>) {
     validate,
     $validate,
   };
-}
-
-export interface FormValidateResult {
-  valid: boolean;
-  fieldsResults: FieldValidateResult<string>[];
-  invalidFields: FieldLike[];
-  invalidIndexes: number[];
 }

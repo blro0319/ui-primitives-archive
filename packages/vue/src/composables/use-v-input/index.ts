@@ -1,7 +1,10 @@
-import { computed, type MaybeRefOrGetter, type Ref, toValue } from "vue";
+import { computed, toValue } from "vue";
 import { useVFieldContext } from "~/components";
 import type { VBindAttributes } from "~/types";
-import { useField, type Rule } from "~/validate";
+import { useField } from "~/validate";
+import type { UseVInputOptions } from "./types";
+
+export * from "./types";
 
 /**
  * [English](https://ui-primitives.blro.dev/api/composables/use-v-input/) |
@@ -60,15 +63,4 @@ export function useVInput<Value = unknown, RuleName extends string = string>(
     field,
     inputBind,
   };
-}
-
-export interface UseVInputOptions<
-  Value = unknown,
-  RuleName extends string = string
-> {
-  value: Ref<Value>;
-  defaultValue?: MaybeRefOrGetter<Value>;
-  rules?: MaybeRefOrGetter<Rule<RuleName, Value>[]>;
-  validityMessages?: MaybeRefOrGetter<Partial<Record<RuleName, string>>>;
-  focus(options?: FocusOptions): void;
 }

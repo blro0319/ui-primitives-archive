@@ -1,5 +1,8 @@
 import { computed, type MaybeRefOrGetter, toValue } from "vue";
 import type { Rule } from "~/validate";
+import type { FieldValidateResult, FieldValidityState } from "./types";
+
+export * from "./types";
 
 export function createField<RuleName extends string, Value>(
   value: MaybeRefOrGetter<Value>,
@@ -50,13 +53,3 @@ export function createField<RuleName extends string, Value>(
     getDefaultValidityState,
   };
 }
-
-export interface FieldValidateResult<RuleName extends string> {
-  valid: boolean;
-  state: FieldValidityState<RuleName>;
-  invalidRules: RuleName[];
-}
-export type FieldValidityState<RuleName extends string> = Record<
-  "valid" | RuleName,
-  boolean
->;

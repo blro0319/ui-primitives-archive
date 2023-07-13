@@ -2,7 +2,6 @@ import { watchImmediate } from "@vueuse/core";
 import { cloneDeep } from "lodash-es";
 import {
   computed,
-  type MaybeRefOrGetter,
   nextTick,
   onUnmounted,
   ref,
@@ -15,11 +14,12 @@ import { createEventHooks } from "~/utils";
 import {
   createField,
   useForm,
-  type FieldValidateResult,
   type FieldValidityState,
-  type Rule,
   type UseFormSubmitEvent,
 } from "~/validate";
+import type { UseFieldOptions, UseFieldValidateResult } from "./types";
+
+export * from "./types";
 
 export function useField<RuleName extends string, Value>(
   options: UseFieldOptions<RuleName, Value>
@@ -125,17 +125,4 @@ export function useField<RuleName extends string, Value>(
   }
 
   return context;
-}
-
-export interface UseFieldOptions<RuleName extends string, Value> {
-  value: Ref<Value>;
-  defaultValue: MaybeRefOrGetter<Value>;
-  rules: MaybeRefOrGetter<Rule<RuleName, Value>[]>;
-  validityMessages: MaybeRefOrGetter<Partial<Record<RuleName, string>>>;
-  watch?: MaybeRefOrGetter<boolean>;
-}
-
-export interface UseFieldValidateResult<RuleName extends string>
-  extends FieldValidateResult<RuleName> {
-  errors: string[];
 }

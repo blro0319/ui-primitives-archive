@@ -1,3 +1,4 @@
+import type { MaybeRefOrGetter } from "vue";
 import type { ComponentAs } from "~/types";
 
 export interface VFieldsetProps {
@@ -35,4 +36,8 @@ export interface VFieldsetDescriptionProps {
    * ```
    */
   as?: ComponentAs;
+}
+
+export interface VFieldsetContextOptions {
+  disabled?: MaybeRefOrGetter<boolean>;
 }

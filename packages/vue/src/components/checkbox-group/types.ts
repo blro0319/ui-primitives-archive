@@ -1,3 +1,4 @@
+import type { MaybeRefOrGetter, Ref } from "vue";
 import type { ComponentAs } from "~/types";
 import type { Rule } from "~/validate";
 
@@ -39,6 +40,14 @@ export interface VCheckboxGroupProps<
 }
 export interface VCheckboxGroupEmits<Value extends any[] | Set<any>> {
   (e: "update:modelValue", value: Value): boolean;
+}
+
+export interface SetVCheckboxGroupContextOptions {
+  value: Ref<any[] | Set<any>>;
+  defaultValue?: MaybeRefOrGetter<any[] | Set<any>>;
+  rules?: MaybeRefOrGetter<Rule<string, any[] | Set<any>>[]>;
+  validityMessages?: MaybeRefOrGetter<Partial<Record<string, string>>>;
+  maxLength?: MaybeRefOrGetter<number | null | undefined>;
 }
 
 // ----- Title ----- //

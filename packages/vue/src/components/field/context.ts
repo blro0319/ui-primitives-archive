@@ -1,4 +1,5 @@
-import { computed, type MaybeRefOrGetter, nextTick, ref, toValue } from "vue";
+import { syncRef } from "@vueuse/core";
+import { computed, nextTick, ref, toValue } from "vue";
 import { setVContentContext } from "~/components";
 import { useId } from "~/composables";
 import type { VBindAttributes } from "~/types";
@@ -8,8 +9,7 @@ import type {
   UseFieldValidateResult,
   UseFormSubmitEvent,
 } from "~/validate";
-import type { VFieldProps } from "./types";
-import { syncRef } from "@vueuse/core";
+import type { VFieldContextOptions } from "./types";
 
 const { setContext, useContext } = createContext(
   "<VField>",
@@ -109,7 +109,3 @@ const { setContext, useContext } = createContext(
 
 export const setVFieldContext = setContext;
 export const useVFieldContext = useContext;
-
-interface VFieldContextOptions {
-  reportWhen?: MaybeRefOrGetter<VFieldProps["reportWhen"]>;
-}
