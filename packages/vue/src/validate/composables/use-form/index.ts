@@ -1,5 +1,8 @@
 import { createContext } from "~/utils";
 import { createForm, type UseField } from "~/validate";
+import type { UseFormSubmitEventHandler } from "./types";
+
+export * from "./types";
 
 const { setContext, useContext } = createContext(
   "setForm",
@@ -52,8 +55,3 @@ const { setContext, useContext } = createContext(
 
 export const setForm = setContext;
 export const useForm = useContext;
-
-export type UseFormSubmitEventHandler = (event: UseFormSubmitEvent) => void;
-export type UseFormSubmitEvent =
-  | { type: "valid" }
-  | { type: "invalid"; order: number };

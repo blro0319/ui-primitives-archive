@@ -1,4 +1,12 @@
+import type { MaybeRefOrGetter } from "vue";
 import type { ComponentAs } from "~/types";
+
+export interface VTooltipContextOptions {
+  enterDelay?: MaybeRefOrGetter<number>;
+  leaveDelay?: MaybeRefOrGetter<number>;
+}
+
+// ---------- Root ---------- //
 
 export interface VTooltipProps {
   enterDelay?: number;
@@ -9,6 +17,8 @@ export interface VTooltipEmits {
   (e: "hide"): void;
 }
 
+// ---------- Trigger ---------- //
+
 export interface VTooltipTriggerProps {
   /**
    * @default
@@ -18,6 +28,8 @@ export interface VTooltipTriggerProps {
    */
   as?: ComponentAs;
 }
+
+// ---------- Content ---------- //
 
 export interface VTooltipContentProps {
   /**

@@ -1,13 +1,6 @@
-import {
-  computed,
-  type MaybeRefOrGetter,
-  ref,
-  type Ref,
-  onMounted,
-  toValue,
-} from "vue";
+import { computed, ref, onMounted, toValue } from "vue";
 import { createContext, randomStr } from "~/utils";
-import type { VTabsActivationMode, VTabsOrientation } from "./types";
+import type { SetVTabsContextOptions } from "./types";
 
 const { setContext, useContext } = createContext(
   "<VTabs>",
@@ -38,9 +31,3 @@ const { setContext, useContext } = createContext(
 
 export const setVTabsContext = setContext;
 export const useVTabsContext = useContext;
-
-interface SetVTabsContextOptions {
-  modelValue: Ref<string>;
-  orientation: MaybeRefOrGetter<VTabsOrientation>;
-  activationMode: MaybeRefOrGetter<VTabsActivationMode>;
-}

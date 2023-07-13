@@ -1,5 +1,17 @@
+import type { MaybeRefOrGetter, Ref } from "vue";
 import type { VRovingTabindexOrientation } from "~/components";
 import type { ComponentAs } from "~/types";
+
+export type VTabsOrientation = VRovingTabindexOrientation;
+export type VTabsActivationMode = "automatic" | "manual";
+
+export interface SetVTabsContextOptions {
+  modelValue: Ref<string>;
+  orientation: MaybeRefOrGetter<VTabsOrientation>;
+  activationMode: MaybeRefOrGetter<VTabsActivationMode>;
+}
+
+// ---------- Root ---------- //
 
 export interface VTabsProps {
   modelValue: string;
@@ -22,6 +34,8 @@ export interface VTabsEmits {
   (e: "update:modelValue", value: string): void;
 }
 
+// ---------- List ---------- //
+
 export interface VTabsListProps {
   /**
    * @default
@@ -38,6 +52,8 @@ export interface VTabsListProps {
    */
   loop?: boolean;
 }
+
+// ---------- Trigger ---------- //
 
 export interface VTabsTriggerProps {
   /**
@@ -57,10 +73,9 @@ export interface VTabsTriggerProps {
   disabled?: boolean;
 }
 
+// ---------- Panel ---------- //
+
 export interface VTabsPanelProps {
   as?: ComponentAs;
   value: string;
 }
-
-export type VTabsOrientation = VRovingTabindexOrientation;
-export type VTabsActivationMode = "automatic" | "manual";

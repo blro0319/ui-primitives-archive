@@ -1,3 +1,4 @@
+import type { MaybeRefOrGetter } from "vue";
 import type { ComponentAs, OptionalJoin } from "~/types";
 import type { UseFieldValidateResult, UseFormSubmitEvent } from "~/validate";
 
@@ -28,6 +29,10 @@ type StringUnionToObject<Union extends string> = {
 type ObjectToTuple<Obj> = {} extends Obj
   ? []
   : { [Key in keyof Obj]: [Key, ...ObjectToTuple<Obj[Key]>] }[keyof Obj];
+
+export interface VFieldContextOptions {
+  reportWhen?: MaybeRefOrGetter<VFieldProps["reportWhen"]>;
+}
 
 // ----- Label ----- //
 

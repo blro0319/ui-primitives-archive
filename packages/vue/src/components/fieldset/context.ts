@@ -1,13 +1,8 @@
 import { unrefElement } from "@vueuse/core";
-import {
-  type ComponentPublicInstance,
-  computed,
-  type MaybeRefOrGetter,
-  ref,
-  toValue,
-} from "vue";
+import { type ComponentPublicInstance, computed, ref, toValue } from "vue";
 import type { VBindAttributes } from "~/types";
 import { createContext } from "~/utils";
+import type { VFieldsetContextOptions } from "./types";
 
 const { setContext, useContext } = createContext(
   "<VFieldset>",
@@ -43,7 +38,3 @@ const { setContext, useContext } = createContext(
 
 export const setVFieldsetContext = setContext;
 export const useVFieldsetContext = useContext;
-
-export interface VFieldsetContextOptions {
-  disabled?: MaybeRefOrGetter<boolean>;
-}

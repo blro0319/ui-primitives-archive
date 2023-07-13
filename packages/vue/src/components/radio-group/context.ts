@@ -6,11 +6,11 @@ import {
   onMounted,
   onUpdated,
   ref,
-  type Ref,
 } from "vue";
 import { useId } from "~/composables";
 import type { VBindAttributes } from "~/types";
 import { createContext } from "~/utils";
+import type { SetVRadioGroupContextOptions } from "./types";
 
 const { setContext, useContext } = createContext(
   "<VRadioGroup>",
@@ -73,7 +73,3 @@ const { setContext, useContext } = createContext(
 
 export const setVRadioGroupContext = setContext;
 export const useVRadioGroupContext = useContext;
-
-interface SetVRadioGroupContextOptions {
-  value: Ref<string>;
-}

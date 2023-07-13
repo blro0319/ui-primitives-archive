@@ -1,19 +1,17 @@
 import {
   type ComponentPublicInstance,
   computed,
-  type MaybeRefOrGetter,
   nextTick,
   onMounted,
   onUpdated,
   ref,
-  type Ref,
   toValue,
 } from "vue";
 import { unrefElement } from "@vueuse/core";
 import { useId } from "~/composables";
 import type { VBindAttributes } from "~/types";
 import { createContext } from "~/utils";
-import type { Rule } from "~/validate";
+import type { SetVCheckboxGroupContextOptions } from "./types";
 
 const { setContext, useContext } = createContext(
   "<VCheckboxGroup>",
@@ -81,11 +79,3 @@ const { setContext, useContext } = createContext(
 
 export const setVCheckboxGroupContext = setContext;
 export const useVCheckboxGroupContext = useContext;
-
-interface SetVCheckboxGroupContextOptions {
-  value: Ref<any[] | Set<any>>;
-  defaultValue?: MaybeRefOrGetter<any[] | Set<any>>;
-  rules?: MaybeRefOrGetter<Rule<string, any[] | Set<any>>[]>;
-  validityMessages?: MaybeRefOrGetter<Partial<Record<string, string>>>;
-  maxLength?: MaybeRefOrGetter<number | null | undefined>;
-}

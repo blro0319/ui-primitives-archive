@@ -2,7 +2,6 @@ import { toValue, unrefElement } from "@vueuse/core";
 import {
   type ComponentPublicInstance,
   computed,
-  type MaybeRefOrGetter,
   nextTick,
   onMounted,
   onUnmounted,
@@ -12,7 +11,10 @@ import {
 import { useId } from "~/composables";
 import { createContext } from "~/utils";
 import type { VBindAttributes } from "~/types";
-import type { VAccordionExpandMode } from "./types";
+import type {
+  VAccordionContextOptions,
+  VAccordionItemContextOptions,
+} from "./types";
 
 const root = createContext(
   "<VAccordion>",
@@ -134,10 +136,6 @@ const root = createContext(
 export const setVAccordionContext = root.setContext;
 export const useVAccordionContext = root.useContext;
 
-export interface VAccordionContextOptions {
-  expandMode?: MaybeRefOrGetter<VAccordionExpandMode>;
-}
-
 // ----- Item ----- //
 
 const item = createContext(
@@ -188,10 +186,6 @@ const item = createContext(
 
 export const setVAccordionItemContext = item.setContext;
 export const useVAccordionItemContext = item.useContext;
-
-export interface VAccordionItemContextOptions {
-  open?: MaybeRefOrGetter<boolean>;
-}
 
 // ----- Header ----- //
 

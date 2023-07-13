@@ -1,6 +1,7 @@
-import { type MaybeRefOrGetter, toValue } from "@vueuse/core";
+import { toValue } from "@vueuse/core";
 import { type ComponentPublicInstance, computed, onMounted, ref } from "vue";
 import { createContext, createEventHooks, randomStr } from "~/utils";
+import type { VTooltipContextOptions } from "./types";
 
 const { setContext, useContext } = createContext(
   "<VTooltip>",
@@ -33,8 +34,3 @@ const { setContext, useContext } = createContext(
 
 export const setVTooltipContext = setContext;
 export const useVTooltipContext = useContext;
-
-interface VTooltipContextOptions {
-  enterDelay?: MaybeRefOrGetter<number>;
-  leaveDelay?: MaybeRefOrGetter<number>;
-}

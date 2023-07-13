@@ -1,3 +1,4 @@
+import type { MaybeRefOrGetter } from "vue";
 import type { ComponentAs } from "~/types";
 
 export interface VAccordionProps {
@@ -19,6 +20,10 @@ export interface VAccordionProps {
 
 export type VAccordionExpandMode = "single" | "multiple";
 
+export interface VAccordionContextOptions {
+  expandMode?: MaybeRefOrGetter<VAccordionExpandMode>;
+}
+
 // ----- Item ----- //
 
 export interface VAccordionItemProps {
@@ -29,6 +34,10 @@ export interface VAccordionItemProps {
    * ```
    */
   open?: boolean;
+}
+
+export interface VAccordionItemContextOptions {
+  open?: MaybeRefOrGetter<boolean>;
 }
 
 // ----- Header ----- //
