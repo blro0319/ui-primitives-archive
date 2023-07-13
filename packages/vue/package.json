@@ -31,7 +31,7 @@
     "build:types": "vue-tsc --project tsconfig.build.json && tsc-alias --project tsconfig.build.json"
   },
   "peerDependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.0.0"
   },
   "dependencies": {
     "@blro/body-scroll-lock": "^1.0.0",
