@@ -1,16 +1,20 @@
-<script setup lang="ts">
+<script setup lang="ts" generic=" RuleName extends string">
 import { computed, ref, toRefs } from "vue";
 import { useVInput } from "~/composables";
+import type { Rule } from "~/validate";
 import type { VSwitchEmits, VSwitchProps } from "./types";
 
-const props = withDefaults(defineProps<VSwitchProps>(), {
+const props = withDefaults(defineProps<VSwitchProps<RuleName>>(), {
   trueValue: true,
   falseValue: false,
+  rules: () => [] as Rule<RuleName, boolean>[],
+  validityMessages: (): Partial<Record<RuleName, string>> => ({}),
   disabled: false,
 });
 const emit = defineEmits<VSwitchEmits>();
 
-const { modelValue, trueValue, falseValue } = toRefs(props);
+const { modelValue, trueValue, falseValue, rules, validityMessages } =
+  toRefs(props);
 const model = computed({
   get: () => modelValue.value === trueValue.value,
   set(value) {
@@ -21,6 +25,8 @@ const model = computed({
 const button = ref<HTMLButtonElement>();
 const { inputBind } = useVInput({
   value: model,
+  rules,
+  validityMessages,
   focus(options: FocusOptions) {
     button.value?.focus(options);
   },
