@@ -8,7 +8,7 @@ import type { VCheckboxEmits, VCheckboxProps } from "./types";
 const props = withDefaults(defineProps<VCheckboxProps<RuleName>>(), {
   trueValue: true,
   falseValue: false,
-  rules: () => [] as Rule<any, RuleName>[],
+  rules: () => [] as Rule<RuleName, any>[],
   validityMessages: (): Partial<Record<RuleName, string>> => ({}),
 });
 const emit = defineEmits<VCheckboxEmits>();
