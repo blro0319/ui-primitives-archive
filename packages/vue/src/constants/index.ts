@@ -44,6 +44,7 @@ export const COMPONENTS = [
   "VRadioGroupTitle",
   "VRovingTabindex",
   "VRovingTabindexItem",
+  "VSwitch",
   "VTabs",
   "VTabsList",
   "VTabsPanel",

@@ -14,6 +14,7 @@ export * from "./progress";
 export * from "./radio";
 export * from "./radio-group";
 export * from "./roving-tabindex";
+export * from "./switch";
 export * from "./tabs";
 export * from "./text-input";
 export * from "./tooltip";
