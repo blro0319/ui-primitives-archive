@@ -16,6 +16,7 @@
 - [Radio](/components/radio/)
 - [Radio Group](/components/radio-group/)
 - [Roving Tabindex](/components/roving-tabindex/)
+- [Switch](/components/switch/)
 - [Tabs](/components/tabs/)
 - [Text Input](/components/text-input/)
 - [Tooltip](/components/tooltip/)
