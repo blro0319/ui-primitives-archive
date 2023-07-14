@@ -17,6 +17,7 @@ export const TYPES = [
   "PascalCase",
   "Prettify",
   "Rule",
+  "RulesName",
   "SetVCheckboxGroupContextOptions",
   "SetVRadioGroupContextOptions",
   "SetVRovingTabindexContextOptions",
@@ -110,4 +111,5 @@ export const TYPES = [
   "VTransitionEventName",
   "VTransitionHooks",
   "VTransitionProps",
+  "ValidityMessages",
 ] as const;
