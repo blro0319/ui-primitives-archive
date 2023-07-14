@@ -7,8 +7,10 @@ export const UTILS = [
   "createField",
   "createForm",
   "createRule",
+  "getDefaultValidityState",
   "pascalCase",
   "randomInt",
   "randomStr",
   "upperFirst",
+  "validate",
 ] as const;
