@@ -13,20 +13,22 @@ import {
 import { createEventHooks } from "~/utils";
 import {
   createField,
-  useForm,
   type FieldValidityState,
+  type Rule,
+  useForm,
   type UseFormSubmitEvent,
+  RulesName,
 } from "~/validate";
 import type { UseFieldOptions, UseFieldValidateResult } from "./types";
 
 export * from "./types";
 
-export function useField<RuleName extends string, Value>(
-  options: UseFieldOptions<RuleName, Value>
+export function useField<Value, Rules extends Rule<string, Value>[]>(
+  options: UseFieldOptions<Value, Rules>
 ) {
   const hooks = createEventHooks<{
-    valid(result: UseFieldValidateResult<RuleName>): void;
-    invalid(result: UseFieldValidateResult<RuleName>): void;
+    valid(result: UseFieldValidateResult<Rules>): void;
+    invalid(result: UseFieldValidateResult<Rules>): void;
     submit(event: UseFormSubmitEvent): void;
     reset(): void;
   }>();
@@ -39,16 +41,16 @@ export function useField<RuleName extends string, Value>(
   const watchFlag = computed(() => toValue(options.watch) ?? false);
 
   const validityState = ref(field.getDefaultValidityState()) as Ref<
-    FieldValidityState<RuleName>
+    FieldValidityState<Rules>
   >;
-  const invalidRules = ref([]) as Ref<RuleName[]>;
+  const invalidRules = ref([]) as Ref<RulesName<Rules>[]>;
   const errors = computed(() => {
     return invalidRules.value.map<string>((ruleName) => {
       return validityMessages.value[ruleName] || ruleName;
     });
   });
 
-  async function validate(): Promise<UseFieldValidateResult<RuleName>> {
+  async function validate(): Promise<UseFieldValidateResult<Rules>> {
     const fieldResult = await field.validate();
 
     validityState.value = fieldResult.state;

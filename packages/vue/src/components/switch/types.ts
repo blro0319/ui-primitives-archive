@@ -1,6 +1,6 @@
-import type { Rule } from "~/validate";
+import type { Rule, ValidityMessages } from "~/validate";
 
-export interface VSwitchProps<RuleName extends string> {
+export interface VSwitchProps<Rules extends Rule<string, boolean>[]> {
   modelValue: any;
   /**
    * @default
@@ -22,14 +22,14 @@ export interface VSwitchProps<RuleName extends string> {
    * []
    * ```
    */
-  rules?: Rule<RuleName, boolean>[];
+  rules?: Rules;
   /**
    * @default
    * ```ts
    * {}
    * ```
    */
-  validityMessages?: Partial<Record<RuleName, string>>;
+  validityMessages?: ValidityMessages<Rules>;
   /**
    * @default
    * ```ts

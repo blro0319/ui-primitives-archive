@@ -1,16 +1,17 @@
-<script setup lang="ts" generic="RuleName extends string">
+<script setup lang="ts" generic="Rules extends Rule<string, string, any>[]">
 import { computed, ref, toRefs } from "vue";
 import { useInputSelectionRange, useVInput } from "~/composables";
+import type { Rule } from "~/validate";
 import type { VTextInputEmits, VTextInputProps } from "./types";
 
-const props = withDefaults(defineProps<VTextInputProps<RuleName>>(), {
+const props = withDefaults(defineProps<VTextInputProps<Rules>>(), {
   type: "text",
   disabled: false,
 });
-const emit = defineEmits<VTextInputEmits<RuleName>>();
+const emit = defineEmits<VTextInputEmits<Rules>>();
 
 const { modelValue, defaultValue, rules, validityMessages, pattern } =
-  toRefs<VTextInputProps<RuleName>>(props);
+  toRefs<VTextInputProps<Rules>>(props);
 const root = ref<HTMLInputElement>();
 
 const model = computed({

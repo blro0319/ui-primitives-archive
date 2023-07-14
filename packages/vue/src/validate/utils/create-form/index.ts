@@ -1,5 +1,5 @@
 import { computed, type MaybeRefOrGetter, toValue } from "vue";
-import type { FieldLike, FieldValidateResult } from "~/validate";
+import type { FieldLike, FieldValidateResult, Rule } from "~/validate";
 import type { FormValidateResult } from "./types";
 
 export * from "./types";
@@ -8,7 +8,7 @@ export function createForm(fields: MaybeRefOrGetter<FieldLike[]>) {
   const $fields = computed(() => toValue(fields));
 
   async function validate(): Promise<FormValidateResult> {
-    const fieldsResults: FieldValidateResult<string>[] = [];
+    const fieldsResults: FieldValidateResult<Rule[]>[] = [];
     const invalidFields: FieldLike[] = [];
     const invalidIndexes: number[] = [];
 
