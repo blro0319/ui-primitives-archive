@@ -1,6 +1,10 @@
 import type { MaybeRefOrGetter } from "vue";
 import type { ComponentAs, OptionalJoin } from "~/types";
-import type { UseFieldValidateResult, UseFormSubmitEvent } from "~/validate";
+import type {
+  Rule,
+  UseFieldValidateResult,
+  UseFormSubmitEvent,
+} from "~/validate";
 
 // ----- Root ----- //
 
@@ -8,8 +12,8 @@ export interface VFieldProps {
   reportWhen?: "none" | OptionalJoin<StringUnionToTuple<VFieldReportTiming>>;
 }
 export interface VFieldEmits {
-  (e: "valid", event: UseFieldValidateResult<string>): void;
-  (e: "invalid", event: UseFieldValidateResult<string>): void;
+  (e: "valid", event: UseFieldValidateResult<Rule[]>): void;
+  (e: "invalid", event: UseFieldValidateResult<Rule[]>): void;
   (e: "reset"): void;
   (e: "submit", event: UseFormSubmitEvent): void;
   (e: "report"): void;
