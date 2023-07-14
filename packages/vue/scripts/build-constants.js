@@ -33,10 +33,10 @@ const OUTPUTS = {
 (async () => {
   await Promise.all([
     buildByFileName("COMPONENTS"),
-    buildByExports("COMPOSABLES", ["const", "function"]),
-    buildByExports("RULES", ["const", "function"]),
+    buildByExports("COMPOSABLES", ["const", "function", "async function"]),
+    buildByExports("RULES", ["const", "function", "async function"]),
     buildByExports("TYPES", ["type", "interface"]),
-    buildByExports("UTILS", ["const", "function"]),
+    buildByExports("UTILS", ["const", "function", "async function"]),
   ]);
 })();
 
