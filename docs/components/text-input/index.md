@@ -64,7 +64,7 @@
 `valid`
 
 : ```ts
-  function onValid(event: UseFieldValidateResult<string>): void;
+  function onValid(event: UseFieldValidateResult<Rule[]>): void;
   ```
 
   유효성 검사를 통과하면 발생합니다.
@@ -72,7 +72,7 @@
 `invalid`
 
 : ```ts
-  function onInvalid(event: UseFieldValidateResult<string>): void;
+  function onInvalid(event: UseFieldValidateResult<Rule[]>): void;
   ```
 
   유효성 검사를 실패하면 발생합니다.

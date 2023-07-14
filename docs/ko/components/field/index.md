@@ -75,7 +75,7 @@ import Snippet from "./Snippet.vue";
 `valid`
 
 : ```ts
-  function onValid(event: UseFieldValidateResult<string>): void;
+  function onValid(event: UseFieldValidateResult<Rule[]>): void;
   ```
 
   유효성 검증 후 결과가 유효할 때 발생합니다.
@@ -83,7 +83,7 @@ import Snippet from "./Snippet.vue";
 `invalid`
 
 : ```ts
-  function onInvalid(event: UseFieldValidateResult<string>): void;
+  function onInvalid(event: UseFieldValidateResult<Rule[]>): void;
   ```
 
   유효성 검증 후 결과가 유효하지 않을 때 발생합니다.
