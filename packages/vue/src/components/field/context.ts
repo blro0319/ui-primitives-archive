@@ -5,6 +5,7 @@ import { useId } from "~/composables";
 import type { VBindAttributes } from "~/types";
 import { createContext, createEventHooks } from "~/utils";
 import type {
+  Rule,
   UseField,
   UseFieldValidateResult,
   UseFormSubmitEvent,
@@ -15,8 +16,8 @@ const { setContext, useContext } = createContext(
   "<VField>",
   (options: VFieldContextOptions) => {
     const hooks = createEventHooks<{
-      valid(event: UseFieldValidateResult<string>): void;
-      invalid(event: UseFieldValidateResult<string>): void;
+      valid(event: UseFieldValidateResult<Rule[]>): void;
+      invalid(event: UseFieldValidateResult<Rule[]>): void;
       reset(): void;
       submit(event: UseFormSubmitEvent): void;
       report(): void;
