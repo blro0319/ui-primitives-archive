@@ -1,26 +1,15 @@
 import { computed, toValue } from "vue";
 import { useVFieldContext } from "~/components";
 import type { VBindAttributes } from "~/types";
-import { useField } from "~/validate";
+import { type Rule, useField } from "~/validate";
 import type { UseVInputOptions } from "./types";
 
 export * from "./types";
 
-/**
- * [English](https://ui-primitives.blro.dev/api/composables/use-v-input/) |
- * [한국어](https://ui-primitives.blro.dev/ko/api/composables/use-v-input/)
- *
- * ---
- *
- * **English**
- *
- * ---
- *
- * **한국어**
- */
-export function useVInput<Value = unknown, RuleName extends string = string>(
-  options: UseVInputOptions<Value, RuleName>
-) {
+export function useVInput<
+  Value = unknown,
+  Rules extends Rule<string, Value>[] = []
+>(options: UseVInputOptions<Value, Rules>) {
   const { value, focus } = options;
   const initial = value.value;
 

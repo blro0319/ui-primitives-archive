@@ -1,7 +1,7 @@
 <script
   setup
   lang="ts"
-  generic="Value extends any[] | Set<any>, RuleName extends string"
+  generic="Value extends any[] | Set<any>, Rules extends Rule<string, Value>[]"
 >
 import { computed, toRefs } from "vue";
 import { VFieldset } from "~/components";
@@ -10,15 +10,12 @@ import type { ComponentAs } from "~/types";
 import { setVCheckboxGroupContext } from "./context";
 import type { VCheckboxGroupEmits, VCheckboxGroupProps } from "./types";
 
-const props = withDefaults(
-  defineProps<VCheckboxGroupProps<Value, RuleName>>(),
-  {
-    as: (): ComponentAs => "fieldset",
-    rules: (): Rule<RuleName, Value>[] => [],
-    validityMessages: (): Partial<Record<RuleName, string>> => ({}),
-    disabled: false,
-  }
-);
+const props = withDefaults(defineProps<VCheckboxGroupProps<Value, Rules>>(), {
+  as: (): ComponentAs => "fieldset",
+  rules: () => [] as unknown as Rules,
+  validityMessages: () => ({}),
+  disabled: false,
+});
 const emit = defineEmits<VCheckboxGroupEmits<Value>>();
 
 const { modelValue, defaultValue, rules, validityMessages, maxLength } =

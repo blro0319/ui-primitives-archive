@@ -1,12 +1,12 @@
-import type { Rule } from "~/validate";
+import type { Rule, ValidityMessages } from "~/validate";
 
-export interface VCheckboxProps<RuleName extends string> {
+export interface VCheckboxProps<Rules extends Rule[]> {
   modelValue?: any;
   value?: any;
   trueValue?: any;
   falseValue?: any;
-  rules?: Rule<RuleName, any>[];
-  validityMessages?: Partial<Record<RuleName, string>>;
+  rules?: Rules;
+  validityMessages?: ValidityMessages<Rules>;
   /**
    * @default
    * ```ts

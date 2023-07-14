@@ -1,10 +1,14 @@
-import type { Rule, UseFieldValidateResult } from "~/validate";
+import type {
+  Rule,
+  UseFieldValidateResult,
+  ValidityMessages,
+} from "~/validate";
 
-export interface VNumberInputProps<RuleName extends string> {
+export interface VNumberInputProps<Rules extends Rule<string, number>[]> {
   modelValue: number;
   defaultValue?: number;
-  rules?: Rule<RuleName, number>[];
-  validityMessages?: Partial<Record<RuleName, string>>;
+  rules?: Rules;
+  validityMessages?: ValidityMessages<Rules>;
   /**
    * @default
    * ```ts
@@ -37,8 +41,8 @@ export interface VNumberInputProps<RuleName extends string> {
    */
   disabled?: boolean;
 }
-export interface VNumberInputEmits<RuleName extends string> {
+export interface VNumberInputEmits<Rules extends Rule<string, number>[]> {
   (e: "update:modelValue", value: number): void;
-  (e: "valid", event: UseFieldValidateResult<RuleName>): void;
-  (e: "invalid", event: UseFieldValidateResult<RuleName>): void;
+  (e: "valid", event: UseFieldValidateResult<Rules>): void;
+  (e: "invalid", event: UseFieldValidateResult<Rules>): void;
 }

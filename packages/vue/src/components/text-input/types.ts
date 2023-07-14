@@ -1,10 +1,14 @@
-import type { Rule, UseFieldValidateResult } from "~/validate";
+import type {
+  Rule,
+  UseFieldValidateResult,
+  ValidityMessages,
+} from "~/validate";
 
-export interface VTextInputProps<RuleName extends string> {
+export interface VTextInputProps<Rules extends Rule[] = []> {
   modelValue: string;
   defaultValue?: string;
-  rules?: Rule<RuleName, string>[];
-  validityMessages?: Partial<Record<RuleName, string>>;
+  rules?: Rules;
+  validityMessages?: ValidityMessages<Rules>;
   /**
    * @default
    * ```ts
@@ -21,8 +25,8 @@ export interface VTextInputProps<RuleName extends string> {
   disabled?: boolean;
   pattern?: string | RegExp;
 }
-export interface VTextInputEmits<RuleName extends string> {
+export interface VTextInputEmits<Rules extends Rule[] = []> {
   (e: "update:modelValue", value: string): void;
-  (e: "valid", event: UseFieldValidateResult<RuleName>): void;
-  (e: "invalid", event: UseFieldValidateResult<RuleName>): void;
+  (e: "valid", event: UseFieldValidateResult<Rules>): void;
+  (e: "invalid", event: UseFieldValidateResult<Rules>): void;
 }

@@ -1,15 +1,15 @@
 import type { MaybeRefOrGetter, Ref } from "vue";
-import type { FieldValidateResult, Rule } from "~/validate";
+import type { FieldValidateResult, Rule, ValidityMessages } from "~/validate";
 
-export interface UseFieldOptions<RuleName extends string, Value> {
+export interface UseFieldOptions<Value, Rules extends Rule<string, Value>[]> {
   value: Ref<Value>;
   defaultValue: MaybeRefOrGetter<Value>;
-  rules: MaybeRefOrGetter<Rule<RuleName, Value>[]>;
-  validityMessages: MaybeRefOrGetter<Partial<Record<RuleName, string>>>;
+  rules: MaybeRefOrGetter<Rules>;
+  validityMessages: MaybeRefOrGetter<ValidityMessages<Rules>>;
   watch?: MaybeRefOrGetter<boolean>;
 }
 
-export interface UseFieldValidateResult<RuleName extends string>
-  extends FieldValidateResult<RuleName> {
+export interface UseFieldValidateResult<Rules extends Rule[]>
+  extends FieldValidateResult<Rules> {
   errors: string[];
 }

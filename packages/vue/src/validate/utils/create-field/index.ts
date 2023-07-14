@@ -1,12 +1,12 @@
 import { computed, type MaybeRefOrGetter, toValue } from "vue";
-import type { Rule } from "~/validate";
+import type { Rule, RulesName } from "~/validate";
 import type { FieldValidateResult, FieldValidityState } from "./types";
 
 export * from "./types";
 
-export function createField<RuleName extends string, Value>(
+export function createField<Value, Rules extends Rule<string, Value>[]>(
   value: MaybeRefOrGetter<Value>,
-  rules: MaybeRefOrGetter<Rule<RuleName, Value>[]>
+  rules: MaybeRefOrGetter<Rules>
 ) {
   const $value = computed(() => toValue(value));
   const $rules = computed(() => toValue(rules));
@@ -15,13 +15,13 @@ export function createField<RuleName extends string, Value>(
     return $rules.value.some((rule) => rule.name === "required");
   });
 
-  async function validate(): Promise<FieldValidateResult<RuleName>> {
+  async function validate(): Promise<FieldValidateResult<Rules>> {
     const validityState = getDefaultValidityState();
-    const invalidRules: RuleName[] = [];
+    const invalidRules: RulesName<Rules>[] = [];
 
     const promises = $rules.value.map(async (rule) => {
       const result = await rule.validator($value.value);
-      validityState[rule.name] = result;
+      validityState[rule.name as RulesName<Rules>] = result;
       if (!result) invalidRules.push(rule.name);
     });
     await Promise.all(promises);
@@ -41,7 +41,7 @@ export function createField<RuleName extends string, Value>(
   function getDefaultValidityState() {
     const result: Record<string, boolean> = { valid: true };
     for (const rule of toValue(rules)) result[rule.name] = false;
-    return result as FieldValidityState<RuleName>;
+    return result as FieldValidityState<Rules>;
   }
 
   return {

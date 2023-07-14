@@ -1,15 +1,15 @@
-<script setup lang="ts" generic=" RuleName extends string">
+<script setup lang="ts" generic="Rules extends Rule[]">
 import { computed, ref, toRefs } from "vue";
 import { useVCheckboxGroupContext } from "~/components";
 import { useVInput } from "~/composables";
-import type { Rule } from "~/validate";
+import type { Rule, ValidityMessages } from "~/validate";
 import type { VCheckboxEmits, VCheckboxProps } from "./types";
 
-const props = withDefaults(defineProps<VCheckboxProps<RuleName>>(), {
+const props = withDefaults(defineProps<VCheckboxProps<Rules>>(), {
   trueValue: true,
   falseValue: false,
-  rules: () => [] as Rule<RuleName, any>[],
-  validityMessages: (): Partial<Record<RuleName, string>> => ({}),
+  rules: () => [] as any as Rules,
+  validityMessages: (): ValidityMessages<Rules> => ({}),
 });
 const emit = defineEmits<VCheckboxEmits>();
 
@@ -56,7 +56,7 @@ const { inputBind, vFieldContext } = useVInput({
   rules: computed(() => {
     return [
       // Replace required rule
-      ...(rules.value as Rule<any, RuleName>[]).map((rule) => {
+      ...(rules.value as Rules).map((rule) => {
         if (rule.name !== "required") return rule;
         return {
           name: "required",

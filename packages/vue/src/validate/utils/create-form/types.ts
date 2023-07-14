@@ -1,8 +1,8 @@
-import type { FieldLike, FieldValidateResult } from "~/validate";
+import type { FieldLike, FieldValidateResult, Rule } from "~/validate";
 
 export interface FormValidateResult {
   valid: boolean;
-  fieldsResults: FieldValidateResult<string>[];
+  fieldsResults: FieldValidateResult<Rule[]>[];
   invalidFields: FieldLike[];
   invalidIndexes: number[];
 }

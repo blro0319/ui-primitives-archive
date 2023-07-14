@@ -1,14 +1,14 @@
-<script setup lang="ts" generic=" RuleName extends string">
+<script setup lang="ts" generic="Rules extends Rule<string, boolean>[]">
 import { computed, ref, toRefs } from "vue";
 import { useVInput } from "~/composables";
-import type { Rule } from "~/validate";
+import type { Rule, ValidityMessages } from "~/validate";
 import type { VSwitchEmits, VSwitchProps } from "./types";
 
-const props = withDefaults(defineProps<VSwitchProps<RuleName>>(), {
+const props = withDefaults(defineProps<VSwitchProps<Rules>>(), {
   trueValue: true,
   falseValue: false,
-  rules: () => [] as Rule<RuleName, boolean>[],
-  validityMessages: (): Partial<Record<RuleName, string>> => ({}),
+  rules: () => [] as unknown as Rules,
+  validityMessages: (): ValidityMessages<Rules> => ({}),
   disabled: false,
 });
 const emit = defineEmits<VSwitchEmits>();

@@ -40,6 +40,7 @@ const value5 = ref("");
         <VTextInput
           v-model="value3"
           :rules="[required()]"
+          :validity-messages="{ required: 'Required' }"
           @valid="invalid3 = false"
           @invalid="invalid3 = true"
         />
