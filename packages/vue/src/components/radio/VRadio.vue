@@ -46,6 +46,7 @@ defineExpose({
     type="radio"
     :name="groupId ?? name"
     :value="value"
+    :disabled="disabled"
     ref="input"
     :data-v-radio="groupId"
   />
