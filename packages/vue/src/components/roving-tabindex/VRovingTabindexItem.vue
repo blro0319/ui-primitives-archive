@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { unrefElement } from "@vueuse/core";
 import { type ComponentPublicInstance, computed, ref, toRefs } from "vue";
+import { VButton } from "~/components";
 import type { ComponentAs, VBindAttributes } from "~/types";
 import type { VRovingTabindexItemProps } from "./types";
 import { useVRovingTabindexContext } from "./context";
 
 const props = withDefaults(defineProps<VRovingTabindexItemProps>(), {
-  as: (): ComponentAs => "button",
+  as: (): ComponentAs => VButton,
   disabled: false,
 });
 
@@ -27,7 +28,7 @@ const bind = computed(() => {
       if (disabled.value || !nodeElement.value) return;
       setActiveItem(nodeElement.value as HTMLElement);
     },
-  } satisfies VBindAttributes;
+  } satisfies VBindAttributes<"button">;
 });
 </script>
 

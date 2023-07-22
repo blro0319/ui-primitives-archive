@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { VButton } from "~/components";
 import type { ComponentAs } from "~/types";
 import { useVPopoverContext } from "./context";
 import type { VPopoverTriggerProps } from "./types";
 
 withDefaults(defineProps<VPopoverTriggerProps>(), {
-  as: (): ComponentAs => "button",
+  as: (): ComponentAs => VButton,
 });
 
 const { hooks, id, trigger } = useVPopoverContext("<VPopoverTrigger>");
