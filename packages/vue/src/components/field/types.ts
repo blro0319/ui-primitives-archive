@@ -1,15 +1,17 @@
 import type { MaybeRefOrGetter } from "vue";
-import type { ComponentAs, OptionalJoin } from "~/types";
+import type { ComponentAs } from "~/types";
 import type {
   Rule,
   UseFieldValidateResult,
   UseFormSubmitEvent,
 } from "~/validate";
 
+export type VFieldReportTiming = "change" | "blur" | "submit";
+
 // ----- Root ----- //
 
 export interface VFieldProps {
-  reportWhen?: "none" | OptionalJoin<StringUnionToTuple<VFieldReportTiming>>;
+  reportWhen?: "none" | VFieldReportTiming | VFieldReportTiming[];
 }
 export interface VFieldEmits {
   (e: "valid", event: UseFieldValidateResult<Rule[]>): void;
@@ -18,21 +20,6 @@ export interface VFieldEmits {
   (e: "submit", event: UseFormSubmitEvent): void;
   (e: "report"): void;
 }
-
-export type VFieldReportTiming = "change" | "blur" | "submit";
-
-// Keywords to tuple
-
-export type StringUnionToTuple<Str extends string> = ObjectToTuple<
-  StringUnionToObject<Str>
->;
-
-type StringUnionToObject<Union extends string> = {
-  [Key in Union]: StringUnionToObject<Exclude<Union, Key>>;
-};
-type ObjectToTuple<Obj> = {} extends Obj
-  ? []
-  : { [Key in keyof Obj]: [Key, ...ObjectToTuple<Obj[Key]>] }[keyof Obj];
 
 export interface VFieldContextOptions {
   reportWhen?: MaybeRefOrGetter<VFieldProps["reportWhen"]>;
