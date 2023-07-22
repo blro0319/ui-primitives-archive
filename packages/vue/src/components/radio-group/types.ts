@@ -1,4 +1,5 @@
 import type { Ref } from "vue";
+import type { VRadioValue } from "~/components";
 import type { ComponentAs } from "~/types";
 
 export interface VRadioGroupProps {
@@ -9,14 +10,14 @@ export interface VRadioGroupProps {
    * ```
    */
   as?: ComponentAs;
-  modelValue: string;
+  modelValue: VRadioValue;
 }
 export interface VRadioGroupEmits {
-  (e: "update:modelValue", value: string): boolean;
+  (e: "update:modelValue", value: VRadioValue): boolean;
 }
 
 export interface SetVRadioGroupContextOptions {
-  value: Ref<string>;
+  value: Ref<VRadioValue>;
 }
 
 // ----- Title ----- //

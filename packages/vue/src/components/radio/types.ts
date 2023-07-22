@@ -1,7 +1,7 @@
 export interface VRadioProps {
-  modelValue?: string;
+  modelValue?: VRadioValue;
   name?: string;
-  value: string;
+  value: VRadioValue;
   /**
    * @default
    * ```ts
@@ -10,6 +10,9 @@ export interface VRadioProps {
    */
   disabled?: boolean;
 }
+
 export interface VRadioEmits {
-  (e: "update:modelValue", value: string): void;
+  (e: "update:modelValue", value: VRadioValue): void;
 }
+
+export type VRadioValue = string | number | bigint | boolean | null | undefined;
