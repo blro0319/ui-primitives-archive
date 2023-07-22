@@ -65,7 +65,7 @@ const form2 = ref<InstanceType<typeof VForm>>();
     <article>
       <h2>Reset</h2>
       <VForm ref="form2">
-        <VField report-when="change submit">
+        <VField :report-when="['change', 'submit']">
           <VTextInput v-model="value5" :rules="[required(), maxLength(8)]" />
           <VFieldError />
         </VField>
