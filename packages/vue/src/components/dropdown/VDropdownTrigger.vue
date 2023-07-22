@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import { VButton } from "~/components";
 import type { ComponentAs, VBindAttributes } from "~/types";
 import { useVDropdownContext } from "./context";
 import type { VDropdownTriggerProps } from "./types";
 
 withDefaults(defineProps<VDropdownTriggerProps>(), {
-  as: (): ComponentAs => "button",
+  as: (): ComponentAs => VButton,
 });
 
 const {

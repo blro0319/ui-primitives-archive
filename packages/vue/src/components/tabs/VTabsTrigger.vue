@@ -2,7 +2,7 @@
 import { unrefElement } from "@vueuse/core";
 import { omit } from "lodash-es";
 import { type ComponentPublicInstance, computed, ref, toRefs } from "vue";
-import { VRovingTabindexItem } from "~/components";
+import { VButton, VRovingTabindexItem } from "~/components";
 import type { ComponentAs, VBindAttributes } from "~/types";
 import { useVTabsContext } from "./context";
 import type { VTabsTriggerProps } from "./types";
@@ -12,7 +12,7 @@ defineOptions({
 });
 
 const props = withDefaults(defineProps<VTabsTriggerProps>(), {
-  as: (): ComponentAs => "button",
+  as: (): ComponentAs => VButton,
   disabled: false,
 });
 
@@ -29,8 +29,8 @@ const controls = computed(() => {
 
 const bind = computed(() => {
   return {
-    "id": `${id.value}-${value.value}-trigger`,
     "disabled": disabled.value,
+    "id": `${id.value}-${value.value}-trigger`,
     "role": "tab",
     "aria-selected": selected.value,
     "aria-controls": controls.value,
