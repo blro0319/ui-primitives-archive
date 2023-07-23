@@ -91,7 +91,7 @@ import Snippet from "./Snippet.vue";
 `as`
 
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
-  - 기본값: `"button"`
+  - 기본값: [`VButton`](/ko/components/button/)
 
   [`<button>` 요소](https://developer.mozilla.org/ko/docs/Web/HTML/Element/button)처럼 클릭 가능한 요소로 설정해야 합니다.
 

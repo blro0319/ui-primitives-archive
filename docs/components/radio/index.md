@@ -8,7 +8,7 @@
 
 `modelValue`
 
-: - 유형: `string`
+: - 유형: `string | number | bigint | boolean | null | undefined`
 
 `name`
 
@@ -16,4 +16,4 @@
 
 `value` (필수)
 
-: - 유형: `string`
+: - 유형: `string | number | bigint | boolean | null | undefined`

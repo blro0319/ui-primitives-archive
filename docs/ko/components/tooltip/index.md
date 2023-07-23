@@ -54,7 +54,7 @@
 `as`
 
 : - 유형: [`ComponentAs`](/ko/api/types/component-as/)
-  - 기본값: `"button"`
+  - 기본값: [`VButton`](/ko/components/button/)
 
 ## `<VTooltipContent>`
 

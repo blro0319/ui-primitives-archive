@@ -45,7 +45,7 @@ function handleSubmit() {
         <VFieldError class="error" />
       </div>
     </VField>
-    <VField report-when="change submit">
+    <VField :report-when="['change', 'submit']">
       <div class="field">
         <VFieldLabel class="label">비밀번호</VFieldLabel>
         <VFieldDescription class="description">
