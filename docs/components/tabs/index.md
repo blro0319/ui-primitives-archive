@@ -60,7 +60,9 @@
 `as`
 
 : - 유형: [`ComponentAs`](/api/types/component-as/)
-  - 기본값: `"div"`
+  - 기본값: [`VButton`](/components/button/)
+
+  [`<button>` 요소](https://developer.mozilla.org/en/docs/Web/HTML/Element/button)처럼 클릭 가능한 요소로 설정해야 합니다.
 
 `value` (필수)
 

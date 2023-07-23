@@ -35,7 +35,7 @@ import Snippet from "./Snippet.vue";
 
 `reportWhen`
 
-: - 유형: `"none"` 또는 공백으로 구분된 문자열
+: - 유형: `"none" | "blur" | "change" | "submit" | ("blur" | "change" | "submit")[]`
   - 기본값: `"submit"`
 
   오류를 사용자에게 보고할 시점을 설정합니다. 사용할 수 있는 값은 다음과 같습니다.
