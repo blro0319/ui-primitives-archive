@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VDialog } from "#components";
+import { VDialog } from "@blro/ui-primitives-vue";
 
 const basic = ref<InstanceType<typeof VDialog>>();
 const transition = ref<InstanceType<typeof VDialog>>();
@@ -9,6 +9,8 @@ const cancelEscape = ref<InstanceType<typeof VDialog>>();
 const cancelHistory = ref<InstanceType<typeof VDialog>>();
 const preventCancel = ref<InstanceType<typeof VDialog>>();
 const halfPreventCancel = ref<InstanceType<typeof VDialog>>();
+const nested = ref<InstanceType<typeof VDialog>>();
+const nested2 = ref<InstanceType<typeof VDialog>>();
 
 function preventCancelHalf(event: Event) {
   if (Math.random() < 0.5) event.preventDefault();
@@ -35,10 +37,12 @@ function preventCancelHalf(event: Event) {
         <button @click="transition?.show()">Show</button>
         <button @click="transition?.showModal()">Show Modal</button>
       </div>
-      <VDialog :transition="{ name: 'dialog__transition' }" ref="transition">
-        Hello, Transition Dialog!
-        <button @click="transition?.close()">Close</button>
-      </VDialog>
+      <VTransition name="dialog__transition">
+        <VDialog ref="transition">
+          Hello, Transition Dialog!
+          <button @click="transition?.close()">Close</button>
+        </VDialog>
+      </VTransition>
     </article>
     <article>
       <h2>Title & Description</h2>
@@ -86,6 +90,17 @@ function preventCancelHalf(event: Event) {
         50% chance to prevent cancel.
         <button @click="halfPreventCancel?.close()">Close</button>
         <button @click="halfPreventCancel?.cancel()">Cancel</button>
+      </VDialog>
+    </article>
+    <article>
+      <h2>Nested Dialog</h2>
+      <div class="dialog__button-group">
+        <button @click="nested?.showModal()">Show</button>
+      </div>
+      <VDialog ref="nested">
+        This is a dialog.
+        <button @click="nested2?.showModal()">Show Nested</button>
+        <VDialog ref="nested2">This is a nested dialog.</VDialog>
       </VDialog>
     </article>
   </div>

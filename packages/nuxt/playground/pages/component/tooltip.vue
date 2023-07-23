@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="tooltip">
     <h1>VTooltip</h1>

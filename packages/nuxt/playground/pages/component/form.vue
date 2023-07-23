@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { integer, pattern, required } from "@blro/ui-primitives-vue";
-
 const value1 = ref("");
 const value2 = ref("");
 </script>

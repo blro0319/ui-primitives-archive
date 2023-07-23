@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { maxLength, required } from "@blro/ui-primitives-vue";
-import { VForm } from "#components";
+import { VForm } from "@blro/ui-primitives-vue";
 
 const form = ref<InstanceType<typeof VForm>>();
 const disabled = ref(false);
@@ -8,6 +7,7 @@ const disabled = ref(false);
 const value1 = ref([1]);
 const value2 = ref(new Set());
 const value3 = ref([]);
+const value4 = ref([]);
 </script>
 
 <template>
@@ -69,6 +69,16 @@ const value3 = ref([]);
         <button>Submit</button>
       </VForm>
       {{ value3 }}
+    </article>
+    <article>
+      <h2>Max Length</h2>
+      <VCheckboxGroup v-model="value4" :disabled="disabled" :max-length="3">
+        <VField v-for="i in [1, 2, 3, 4, 5]">
+          <VCheckbox :value="i" />
+          <VFieldLabel>Item {{ i }}</VFieldLabel>
+        </VField>
+      </VCheckboxGroup>
+      {{ value4 }}
     </article>
   </div>
 </template>
