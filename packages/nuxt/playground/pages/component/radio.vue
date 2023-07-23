@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { VRadio } from "#components";
+import { VRadio } from "@blro/ui-primitives-vue";
 
 const input = ref<InstanceType<typeof VRadio>>();
 
@@ -21,7 +21,12 @@ const value1 = ref("1");
       </VField>
       <VField v-for="i in [2, 3, 4, 5]" :key="i">
         <div style="display: block">
-          <VRadio v-model="value1" name="1" :value="`${i}`" />
+          <VRadio
+            v-model="value1"
+            name="1"
+            :value="`${i}`"
+            :disabled="i === 4"
+          />
           <VFieldLabel>Item {{ i }}</VFieldLabel>
         </div>
       </VField>

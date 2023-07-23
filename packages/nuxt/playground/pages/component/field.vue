@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { maxLength, required } from "@blro/ui-primitives-vue";
-import { VField, VForm } from "#components";
+import { VField, VForm } from "@blro/ui-primitives-vue";
 
 const value1 = ref("");
 const value2 = ref("");
@@ -57,7 +56,7 @@ const form2 = ref<InstanceType<typeof VForm>>();
     <article>
       <h2>Reset</h2>
       <VForm ref="form2">
-        <VField report-when="change submit">
+        <VField :report-when="['change', 'submit']">
           <VTextInput v-model="value5" :rules="[required(), maxLength(8)]" />
           <VFieldError />
         </VField>
