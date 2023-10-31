@@ -27,9 +27,8 @@
   },
   "scripts": {
     "dev": "vite --host --port 3190",
-    "build": "npm run build:constants && vite build && npm run build:types",
-    "build:types": "vue-tsc --project tsconfig.build.json && tsc-alias --project tsconfig.build.json",
-    "build:constants": "node ./scripts/build-constants.js"
+    "build": "vite build && npm run build:types",
+    "build:types": "vue-tsc --project tsconfig.build.json && tsc-alias --project tsconfig.build.json"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
@@ -41,6 +40,7 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
+    "@ariakit/core": "^0.3.4",
     "@babel/types": "^7.22.5",
     "@tsconfig/node18": "^18.2.0",
     "@types/lodash-es": "^4.17.8",
